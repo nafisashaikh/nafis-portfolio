@@ -9,6 +9,7 @@ import ExperienceTimeline from "./components/ExperienceTimeline";
 import SkillsGrid from "./components/SkillsGrid";
 import EducationCerts from "./components/EducationCerts";
 import ResumePDFView from "./components/ResumePDFView";
+import AIAssistant from "./components/AIAssistant";
 import { resumeData } from "./data/resumeData";
 
 export default function App() {
@@ -110,6 +111,7 @@ export default function App() {
       </main>
 
       {/* 8. Fullscreen printable ATS portrait Resume Overlay */}
+      <AIAssistant />
       <ResumePDFView isOpen={pdfOpen} onClose={() => setPdfOpen(false)} />
     </div>
   );
