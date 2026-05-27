@@ -32,7 +32,7 @@ export default function App() {
         : "bg-[#fafafa] text-slate-900 selection:bg-orange-100 selection:text-orange-850"
     }`}>
       {/* 1. Fully-reactive Canvas Background Animation */}
-      <AnimatedBackground />
+      {darkMode && <AnimatedBackground />}
 
       {/* Editorial aesthetic ambient spots underneath */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
