@@ -75,36 +75,35 @@ export default function App() {
 
         {/* Additional Info Completeness Footer section */}
         <footer className="mt-20 border-t border-white/5 pt-16 pb-24 max-w-6xl mx-auto px-6 text-center">
-          <div className="flex flex-col items-center gap-4">
-            <span className="font-mono text-xs tracking-[0.2em] text-orange-500 uppercase">Aspirations // Opportunities</span>
-            <p className="text-sm font-sans font-light text-slate-450 max-w-xl leading-relaxed opacity-80">
-              {resumeData.basics.lookingFor}
+          {/* Looking For Segment */}
+          <div className="max-w-4xl mx-auto px-6 py-12 mb-16 border border-white/10 rounded-2xl bg-slate-900/40 backdrop-blur-sm text-center">
+            <h3 className="text-xl font-medium text-white mb-4">Looking for Opportunities</h3>
+            <p className="text-slate-400 leading-relaxed max-w-2xl mx-auto">
+              {activePersona.basics.lookingFor || "I am currently looking for internship opportunities in Data Analytics, MIS, or Business Analytics where I can apply my skills and gain real world experience."}
             </p>
-            
-            <div className="flex items-center gap-4 flex-wrap justify-center mt-4">
+          </div>  
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 text-slate-400">
               <a 
-                href={`mailto:${resumeData.basics.email}`}
-                className="text-xs font-mono text-orange-400 hover:text-orange-300 hover:underline"
+                href={`mailto:${activePersona.basics.email}`}
+                className="hover:text-orange-400 transition-colors flex items-center gap-2"
               >
-                {resumeData.basics.email}
+                {activePersona.basics.email}
               </a>
-              <span className="text-slate-800 font-mono text-xs">|</span>
               <a 
-                href={resumeData.basics.github} 
+                href={activePersona.basics.github} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-xs font-mono text-orange-400 hover:text-orange-300 hover:underline"
+                className="hover:text-orange-400 transition-colors flex items-center gap-2"
               >
-                GitHub Profile
+                GitHub
               </a>
-              <span className="text-slate-800 font-mono text-xs">|</span>
               <a 
-                href={resumeData.basics.linkedin} 
+                href={activePersona.basics.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="text-xs font-mono text-orange-400 hover:text-orange-300 hover:underline"
+                className="hover:text-orange-400 transition-colors flex items-center gap-2"
               >
-                LinkedIn Profile
+                LinkedIn
               </a>
             </div>
 

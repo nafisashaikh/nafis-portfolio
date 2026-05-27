@@ -1,5 +1,6 @@
-import { X, Printer, Download, MapPin, Mail, Phone, Github, Linkedin, ArrowLeft } from "lucide-react";
-import { resumeData } from "../data/resumeData";
+import { X, Printer, Download, MapPin, Mail, Phone, Github, Linkedin, ArrowLeft, ZoomIn, ZoomOut, Monitor } from "lucide-react";
+import { usePersona } from "../context/PersonaContext";
+import { useState } from "react";
 
 interface ResumePDFViewProps {
   isOpen: boolean;
@@ -7,6 +8,9 @@ interface ResumePDFViewProps {
 }
 
 export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
+  const { activePersona } = usePersona();
+  const [zoom, setZoom] = useState(100);
+
   if (!isOpen) return null;
 
   const handlePrint = () => {
@@ -63,35 +67,35 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
           <div className="border-b-2 border-slate-800 pb-5 flex flex-col md:flex-row md:justify-between md:items-end gap-4">
             <div>
               <h1 className="text-3xl font-serif font-bold tracking-tight text-slate-950 uppercase">
-                {resumeData.basics.name}
+                {activePersona.basics.name}
               </h1>
               <p className="text-sm font-mono text-orange-600 font-semibold uppercase mt-1 tracking-wider">
-                {resumeData.basics.titles[0]}
+                {activePersona.basics.titles[0]}
               </p>
             </div>
             {/* Contact cards */}
             <div className="flex flex-col gap-1.5 text-xs font-sans text-slate-700">
               <div className="flex items-center gap-2">
                 <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                <span>{resumeData.basics.location}</span>
+                <span>{activePersona.basics.location}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                <a href={`mailto:${resumeData.basics.email}`} className="hover:underline">{resumeData.basics.email}</a>
+                <a href={`mailto:${activePersona.basics.email}`} className="hover:underline">{activePersona.basics.email}</a>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-slate-500 shrink-0" />
-                <span>+91 {resumeData.basics.phone}</span>
+                <span>+91 {activePersona.basics.phone}</span>
               </div>
               <div className="flex items-center gap-2 pt-1 flex-wrap">
                 <span className="flex items-center gap-1 hover:underline">
                   <Github className="w-3 h-3 text-slate-500 shrink-0" />
-                  <a href={resumeData.basics.github} target="_blank" rel="noopener noreferrer">github.com/12Nafis12</a>
+                  <a href={activePersona.basics.github} target="_blank" rel="noopener noreferrer">github.com/12Nafis12</a>
                 </span>
                 <span className="text-slate-350 px-1">|</span>
                 <span className="flex items-center gap-1 hover:underline">
                   <Linkedin className="w-3 h-3 text-slate-500 shrink-0" />
-                  <a href={resumeData.basics.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/nafisshaikh</a>
+                  <a href={activePersona.basics.linkedin} target="_blank" rel="noopener noreferrer">linkedin.com/in/nafisshaikh</a>
                 </span>
               </div>
             </div>
@@ -104,7 +108,7 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
                 Objective
               </h2>
               <p className="text-xs font-sans text-slate-700 leading-relaxed">
-                {resumeData.basics.objective}
+                {activePersona.basics.objective}
               </p>
             </div>
 
@@ -114,7 +118,7 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
                 Technical Skills
               </h2>
               <div className="grid sm:grid-cols-2 gap-4">
-                {resumeData.skills.map((sGroup, gIdx) => (
+                {activePersona.skills.map((sGroup, gIdx) => (
                   <div key={gIdx} className="space-y-1">
                     <h3 className="text-xs font-mono font-bold text-slate-900">
                       {sGroup.category}
@@ -133,7 +137,7 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
                 Experience & Simulations
               </h2>
               <div className="space-y-4">
-                {resumeData.experience.map((exp, expIdx) => (
+                {activePersona.experience.map((exp, expIdx) => (
                   <div key={expIdx} className="space-y-1.5">
                     <div className="flex justify-between items-start flex-wrap gap-2">
                       <h3 className="text-xs font-sans font-bold text-slate-950">
@@ -159,7 +163,7 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
                 Academic & Practical Projects
               </h2>
               <div className="space-y-4">
-                {resumeData.projects.map((p, pIdx) => (
+                {activePersona.projects.map((p, pIdx) => (
                   <div key={pIdx} className="space-y-1.5">
                     <div className="flex justify-between items-start flex-wrap gap-2">
                       <h3 className="text-xs font-sans font-bold text-slate-950">
@@ -185,7 +189,7 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
                 Education
               </h2>
               <div className="space-y-3">
-                {resumeData.education.map((edu, eduIdx) => (
+                {activePersona.education.map((edu, eduIdx) => (
                   <div key={eduIdx} className="flex justify-between items-start flex-wrap gap-2">
                     <div>
                       <h3 className="text-xs font-sans font-bold text-slate-950">{edu.degree}</h3>
@@ -203,7 +207,7 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
                 Certifications
               </h2>
               <div className="space-y-3">
-                {resumeData.certifications.map((c, cIdx) => (
+                {activePersona.certifications.map((c, cIdx) => (
                   <div key={cIdx} className="flex justify-between items-start flex-wrap gap-2">
                     <div>
                       <h3 className="text-xs font-sans font-bold text-slate-950">{c.name}</h3>
@@ -221,7 +225,7 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
                 Collaborative Ambition
               </h2>
               <p className="text-xs font-sans text-slate-700 leading-relaxed">
-                {resumeData.basics.lookingFor}
+                {activePersona.basics.lookingFor}
               </p>
             </div>
           </div>

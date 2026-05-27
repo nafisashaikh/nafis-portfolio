@@ -1,36 +1,17 @@
-import { Trophy, Compass, Star } from "lucide-react";
-import { resumeData } from "../data/resumeData";
+import { Trophy, Compass, Star, Zap, Target, Award } from "lucide-react";
+import { usePersona } from "../context/PersonaContext";
 
 export default function ImpactStrip() {
-  const impacts = [
-    {
-      title: "SIH Sentiment Intelligence",
-      description: "Preprocessed & calculated NLP-driven polarities using Python, NumPy, and Pandas to create dashboards tracking data trends.",
-      metric: "NLP Engine",
-      icon: Star,
-      accent: "from-orange-500/10 to-amber-500/10",
-      textAccent: "text-orange-400",
-      iconColor: "#f97316"
-    },
-    {
-      title: "Interactive Analytics Dashboard",
-      description: "Concocted multi-variable Excel Pivot tables, VLOOKUP indicators, and regional breakout charts to isolate top commercial performers.",
-      metric: "Commercial Pivot",
-      icon: Trophy,
-      accent: "from-orange-500/10 to-yellow-500/10",
-      textAccent: "text-orange-400",
-      iconColor: "#f97316"
-    },
-    {
-      title: "Transit Efficiency Optimizer",
-      description: "Diagnosed transit layout and timetable efficiency bottlenecks with operational datasets under Smart India Hackathon.",
-      metric: "System Auditing",
-      icon: Compass,
-      accent: "from-orange-500/10 to-stone-500/10",
-      textAccent: "text-orange-400",
-      iconColor: "#f97316"
-    }
-  ];
+  const { activePersona } = usePersona();
+
+  const iconMap = {
+    Star: Star,
+    Trophy: Trophy,
+    Compass: Compass,
+    Zap: Zap,
+    Target: Target,
+    Award: Award
+  };
 
   return (
     <section id="impact" className="py-16 max-w-6xl mx-auto px-6 text-white scroll-mt-20">
@@ -47,8 +28,8 @@ export default function ImpactStrip() {
 
       {/* Trophy grid layout */}
       <div className="grid md:grid-cols-3 gap-6">
-        {impacts.map((item, idx) => {
-          const Icon = item.icon;
+        {activePersona.achievements.map((item, idx) => {
+          const Icon = iconMap[item.icon as keyof typeof iconMap] || Star;
           return (
             <div
               key={idx}
