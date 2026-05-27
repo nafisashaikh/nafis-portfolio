@@ -19,16 +19,20 @@ export default function App() {
   
   // No longer statically importing resumeData, we get it from context
   const { activePersona } = usePersona();
-
+  const [darkMode, setDarkMode] = useState(true);
 
   if (!splashComplete) {
     return <SplashScreen onComplete={() => setSplashComplete(true)} />;
   }
 
   return (
-    <div className="min-h-screen transition-colors duration-500 overflow-x-hidden dark bg-[#050505] text-[#e5e5e5] selection:bg-orange-100 selection:text-orange-850">
+    <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden ${
+      darkMode 
+        ? "dark bg-[#050505] text-[#e5e5e5]" 
+        : "bg-gradient-to-br from-slate-50 via-slate-100 to-slate-200 text-black selection:bg-orange-100 selection:text-orange-850"
+    }`}>
       {/* 1. Fully-reactive Canvas Background Animation */}
-      <AnimatedBackground />
+      {darkMode && <AnimatedBackground />}
 
       {/* Editorial aesthetic ambient spots underneath */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
@@ -39,6 +43,8 @@ export default function App() {
       {/* 2. Responsive Sticky Header & Drawer Layout */}
       <Navbar 
         onOpenPDF={() => setPdfOpen(true)} 
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
       />
       <RoleSelector />
 

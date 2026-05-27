@@ -4,9 +4,11 @@ import { Logo } from "./Logo";
 
 interface NavbarProps {
   onOpenPDF: () => void;
+  darkMode: boolean;
+  setDarkMode: (value: boolean) => void;
 }
 
-export default function Navbar({ onOpenPDF }: NavbarProps) {
+export default function Navbar({ onOpenPDF, darkMode, setDarkMode }: NavbarProps) {
   const [activeSection, setActiveSection] = useState("hero");
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -82,7 +84,7 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
             className="flex items-center gap-3 cursor-pointer group"
           >
             <div className="w-10 h-10 border border-orange-500 flex items-center justify-center relative overflow-hidden transition-all duration-300 group-hover:bg-orange-500/10 shrink-0">
-              <Logo className="w-8 h-8" />
+              <Logo className="w-8 h-8" isLight={!darkMode} />
             </div>
             <div>
               <span className="text-xs font-mono font-semibold tracking-[0.25em] text-current hidden sm:inline-block">
@@ -126,6 +128,15 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
               <FileText className="w-3.5 h-3.5" />
               <span className="hidden xs:inline">Print Resume</span>
               <span className="inline xs:hidden">CV</span>
+            </button>
+
+            {/* Toggle Theme Custom State Control */}
+            <button
+              onClick={() => setDarkMode(!darkMode)}
+              className="p-2 ml-1 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-orange-500 hover:border-orange-500/30 transition-all text-sm"
+              title="Toggle Theme Presets"
+            >
+              {darkMode ? "☼" : "☾"}
             </button>
 
             {/* Mobile Burger Open button */}
