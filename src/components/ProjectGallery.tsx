@@ -20,7 +20,7 @@ export default function ProjectGallery() {
         <div
           className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-transform duration-500 hover:scale-110"
         >
-          <Terminal className="w-6 h-6 dark:text-white text-slate-900" />
+          <Terminal className="w-6 h-6 text-current" />
         </div>
         <h2 className="text-4xl md:text-5xl font-black tracking-tighter">
           Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Showcase</span>
@@ -75,7 +75,7 @@ export default function ProjectGallery() {
                   href={project.link} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-slate-900 dark:bg-white dark:text-white text-slate-900 dark:text-slate-900 font-semibold text-sm hover:bg-orange-500 dark:hover:bg-orange-400 transition-colors duration-300 active:scale-95"
+                  className="inline-flex items-center justify-center gap-2 w-full py-3 px-4 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold text-sm hover:bg-orange-500 dark:hover:bg-orange-400 transition-colors duration-300 active:scale-95"
                 >
                   {project.link.includes('github.com') ? (
                     <Github className="w-4 h-4" />

@@ -14,7 +14,7 @@ export default function ImpactStrip() {
   };
 
   return (
-    <section id="impact" className="py-16 max-w-6xl mx-auto px-6 dark:text-white text-slate-900 scroll-mt-20">
+    <section id="impact" className="py-16 max-w-6xl mx-auto px-6 text-current scroll-mt-20">
       {/* Visual background element */}
       <div className="absolute left-1/4 h-72 w-72 bg-orange-600/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -50,7 +50,7 @@ export default function ImpactStrip() {
                 {item.metric}
               </span>
 
-              <h3 className="text-sm font-mono font-bold uppercase tracking-wide dark:text-white text-slate-900 group-hover:text-orange-400 transition-colors mb-2">
+              <h3 className="text-sm font-mono font-bold uppercase tracking-wide text-current group-hover:text-orange-400 transition-colors mb-2">
                 {item.title}
               </h3>
 

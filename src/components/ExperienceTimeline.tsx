@@ -16,7 +16,7 @@ export default function ExperienceTimeline() {
         <div className="p-3 bg-orange-500/10 rounded-xl border border-orange-500/20">
           <Briefcase className="w-6 h-6 text-orange-400" />
         </div>
-        <h2 className="text-3xl sm:text-4xl font-sans font-light dark:text-white text-slate-900 tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-sans font-light text-current tracking-tight">
           Experience & <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Achievements</span>
         </h2>
       </div>
@@ -41,7 +41,7 @@ export default function ExperienceTimeline() {
             >
               <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
                 <div>
-                  <h3 className="text-xl font-semibold dark:text-white text-slate-900 group-hover:text-orange-400 transition-colors">
+                  <h3 className="text-xl font-semibold text-current group-hover:text-orange-400 transition-colors">
                     {exp.role}
                   </h3>
                   <div className="flex items-center gap-2 text-lg text-slate-300 mt-1">
