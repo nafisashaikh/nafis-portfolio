@@ -131,5 +131,58 @@ export const personas: Record<string, ResumeData & { id: string }> = {
       { category: "Branding", items: ["Logo Design", "Brand Identity"] },
       { category: "Data Viz", items: ["Dashboard Design", "Infographics", "Charts"] }
     ]
+  }),
+
+  "ai-tech": createPersona("ai-tech", {
+    basics: {
+      ...baseData.basics,
+      titles: ["AI & Tech Intern", "Machine Learning", "Python", "Data Analysis"],
+      objective: "Enthusiastic Computer Engineering student with practical experience in AI/ML projects including sentiment analysis and data-driven transportation systems. Looking for an AI/Tech internship to apply Python, data analysis, and machine learning skills in a real-world setting."
+    },
+    skills: [
+      { category: "AI/ML", items: ["Sentiment Analysis", "NLP (Text Preprocessing, Feature Extraction)", "Data Modeling"] },
+      { category: "Python", items: ["Pandas", "NumPy", "Matplotlib", "Functions", "Data Cleaning"] },
+      { category: "Data Tools", items: ["MS Excel (Pivot Tables, Charts)", "Tableau", "MySQL"] },
+      { category: "Other", items: ["GitHub", "VS Code", "Google Colab"] }
+    ],
+    projects: [
+      {
+        title: "Sentiment Analysis System - NLP (SIH Hackathon)",
+        stack: "Machine Learning / NLP",
+        link: "https://github.com/nafisashaikh",
+        bullets: [
+          "Developed ML-based sentiment classification model for analyzing public text data",
+          "Applied NLP preprocessing: tokenization, stopword removal, and text normalization",
+          "Visualized sentiment insights using Python (Matplotlib, Pandas) with actionable reporting"
+        ]
+      },
+      {
+        title: "AI Driven Metro Rail - Smart India Hackathon",
+        stack: "AI / Data Analytics",
+        link: "https://github.com/nafisashaikh",
+        bullets: [
+          "Built AI-assisted data analysis solution for metro transportation efficiency optimization",
+          "Processed large transportation datasets to detect patterns and support planning decisions",
+          "Presented data-driven recommendations using Python visualizations"
+        ]
+      },
+      {
+        title: "Sales Dashboard - Predictive Analytics (Excel)",
+        stack: "Excel Predictive Analysis",
+        link: "https://github.com/nafisashaikh/excel-sales-dashboard",
+        bullets: [
+          "Analyzed multi-dimensional sales data to surface trends and forecast patterns",
+          "Created interactive dashboards combining region, product, and temporal analysis"
+        ]
+      },
+      {
+        title: "Sehtsetu - AI-Assisted Healthcare Web App",
+        stack: "Full Stack / Data",
+        link: "https://github.com/nafisashaikh",
+        bullets: [
+          "Integrated data handling logic for healthcare record management and user services"
+        ]
+      }
+    ]
   })
 };
