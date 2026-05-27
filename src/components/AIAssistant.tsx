@@ -72,7 +72,7 @@ If someone asks for contact info, tell them to use the links in the header. Keep
       
       // We pass the conversation history and the system instruction to Gemini
       const response = await ai.models.generateContent({
-        model: 'gemini-1.5-flash',
+        model: 'gemini-2.5-flash',
         contents: [
           // Inject system instructions as the very first context message (if the SDK supports system_instruction directly, that's better, but this is a safe fallback)
           { role: 'user', parts: [{ text: `SYSTEM INSTRUCTION (Do not reply to this directly, just follow the rules): ${systemPrompt}` }] },
