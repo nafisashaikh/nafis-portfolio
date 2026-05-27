@@ -110,7 +110,6 @@ export default function App() {
             <p className="text-[10px] font-mono text-slate-500 mt-8 tracking-widest uppercase opacity-40">
               NAFIS ABID SHAIKH © {new Date().getFullYear()} // ALL FACTS VERIFIED
             </p>
-          </div>
         </footer>
       </main>
 
