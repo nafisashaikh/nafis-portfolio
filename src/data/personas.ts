@@ -12,6 +12,13 @@ const createPersona = (id: string, overrides: Partial<ResumeData>): ResumeData &
 };
 
 export const personas: Record<string, ResumeData & { id: string }> = {
+  "all-round": createPersona("all-round", {
+    basics: {
+      ...baseData.basics,
+      titles: ["Computer Engineering Student", "Tech Generalist", "Software & Data Enthusiast"],
+      objective: "Versatile Computer Engineering student with a strong foundation across Data Analytics, Full Stack Development, and UI/UX Design. Passionate about leveraging technology to solve complex problems, from backend database management to frontend interactive dashboards and NLP systems."
+    }
+  }),
   "data-analyst": {
     id: "data-analyst",
     ...baseData

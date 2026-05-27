@@ -11,10 +11,10 @@ interface PersonaContextType {
 const PersonaContext = createContext<PersonaContextType | undefined>(undefined);
 
 export function PersonaProvider({ children }: { children: ReactNode }) {
-  // Default to data-analyst
-  const [activePersonaId, setActivePersonaId] = useState<string>('data-analyst');
+  // Default to all-round
+  const [activePersonaId, setActivePersonaId] = useState<string>('all-round');
 
-  const activePersona = personas[activePersonaId] || personas['data-analyst'];
+  const activePersona = personas[activePersonaId] || personas['all-round'];
   
   const availablePersonas = Object.values(personas).map(p => ({
     id: p.id,
