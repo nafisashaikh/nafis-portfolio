@@ -63,7 +63,7 @@ export default function App() {
         <EducationCerts />
 
         {/* Additional Info Completeness Footer section */}
-        <footer className="mt-20 border-t border-white/5 pt-16 pb-24 max-w-6xl mx-auto px-6 text-center">
+        <footer className="mt-20 border-t border-white/5 pt-16 pb-32 md:pb-24 max-w-6xl mx-auto px-6 text-center">
           {/* Looking For Segment */}
           <div className="max-w-4xl mx-auto px-6 py-12 mb-16 border border-white/10 rounded-2xl bg-slate-900/40 backdrop-blur-sm text-center">
             <h3 className="text-xl font-medium text-white mb-4">Looking for Opportunities</h3>

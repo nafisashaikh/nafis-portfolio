@@ -54,8 +54,8 @@ export default function Hero({ onOpenPDF }: HeroProps) {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-sans font-light tracking-tighter text-white leading-none">
-              NAFIS ABID <span className="text-orange-500 italic block mt-2 font-serif text-6xl sm:text-7xl md:text-8xl leading-none">Shaikh</span>
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-sans font-light tracking-tighter text-white leading-none">
+              NAFIS ABID <span className="text-orange-500 italic block mt-2 font-serif text-5xl xs:text-6xl sm:text-7xl md:text-8xl leading-none">Shaikh</span>
             </h1>
             
             {/* Editorial cycler */}
