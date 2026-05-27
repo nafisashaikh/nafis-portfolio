@@ -20,7 +20,7 @@ export default function ProjectGallery() {
         <div
           className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-transform duration-500 hover:scale-110"
         >
-          <Terminal className="w-6 h-6 text-current" />
+          <Terminal className="w-6 h-6 text-white" />
         </div>
         <h2 className="text-4xl md:text-5xl font-black tracking-tighter">
           Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Showcase</span>

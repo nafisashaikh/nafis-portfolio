@@ -18,7 +18,7 @@ export default function SkillsGrid() {
   };
 
   return (
-    <section id="skills" className="py-20 max-w-6xl mx-auto px-6 text-current scroll-mt-20">
+    <section id="skills" className="py-20 max-w-6xl mx-auto px-6 text-white scroll-mt-20">
       {/* Visual glowing spotlight helper */}
       <div className="absolute left-1/3 w-96 h-96 bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" />
 
@@ -55,7 +55,7 @@ export default function SkillsGrid() {
                 <div className="w-8 h-8 bg-white/5 border border-white/10 flex items-center justify-center text-orange-500 group-hover:text-orange-400 transition-colors">
                   <IconComponent className="w-4 h-4" />
                 </div>
-                <h3 className="font-mono text-[10px] font-bold uppercase tracking-widest text-current">
+                <h3 className="font-mono text-[10px] font-bold uppercase tracking-widest text-white">
                   {cat.category}
                 </h3>
               </div>
@@ -66,7 +66,7 @@ export default function SkillsGrid() {
                   return (
                     <span
                       key={sIdx}
-                      className="px-2.5 py-1 text-[11px] font-mono rounded-none transition-all border text-slate-300 bg-white/5 border-white/10 hover:border-orange-500/35 hover:text-current"
+                      className="px-2.5 py-1 text-[11px] font-mono rounded-none transition-all border text-slate-300 bg-white/5 border-white/10 hover:border-orange-500/35 hover:text-white"
                     >
                       {skill}
                     </span>
