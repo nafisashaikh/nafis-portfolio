@@ -67,19 +67,6 @@
   }
 }
 
-/* Light mode overrides for generic classes to prevent them blending in */
-:not(.dark) .text-slate-400 { color: #475569 !important; }
-:not(.dark) .text-slate-300 { color: #334155 !important; }
-:not(.dark) .bg-white\/5 { background-color: rgba(0, 0, 0, 0.05) !important; }
-:not(.dark) .bg-white\/10 { background-color: rgba(0, 0, 0, 0.08) !important; }
-:not(.dark) .bg-white\/\[0\.02\] { background-color: rgba(0, 0, 0, 0.02) !important; }
-:not(.dark) .border-white\/5 { border-color: rgba(0, 0, 0, 0.05) !important; }
-:not(.dark) .border-white\/10 { border-color: rgba(0, 0, 0, 0.1) !important; }
-:not(.dark) .border-white\/20 { border-color: rgba(0, 0, 0, 0.2) !important; }
-:not(.dark) .bg-slate-900\/50 { background-color: rgba(255, 255, 255, 0.8) !important; }
-:not(.dark) .bg-slate-900\/40 { background-color: rgba(255, 255, 255, 0.6) !important; }
-:not(.dark) .hover\:border-white:hover { border-color: #0f172a !important; }
-
 @keyframes fade-in-up {
   from {
     opacity: 0;

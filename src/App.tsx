@@ -19,20 +19,16 @@ export default function App() {
   
   // No longer statically importing resumeData, we get it from context
   const { activePersona } = usePersona();
-  const [darkMode, setDarkMode] = useState(true);
+
 
   if (!splashComplete) {
     return <SplashScreen onComplete={() => setSplashComplete(true)} />;
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden ${
-      darkMode 
-        ? "dark bg-[#050505] text-[#e5e5e5]" 
-        : "bg-[#fafafa] text-slate-900 selection:bg-orange-100 selection:text-orange-850"
-    }`}>
+    <div className="min-h-screen transition-colors duration-500 overflow-x-hidden dark bg-[#050505] text-[#e5e5e5] selection:bg-orange-100 selection:text-orange-850">
       {/* 1. Fully-reactive Canvas Background Animation */}
-      {darkMode && <AnimatedBackground />}
+      <AnimatedBackground />
 
       {/* Editorial aesthetic ambient spots underneath */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
@@ -40,16 +36,9 @@ export default function App() {
         <div className="absolute bottom-[-5%] left-[-10%] w-[50%] h-[50%] bg-blue-500/8 rounded-full blur-[140px]" />
       </div>
 
-      {/* Cybernetic decorative grid line indicator for light mode override */}
-      {!darkMode && (
-        <div className="fixed inset-0 pointer-events-none bg-[linear-gradient(rgba(100,116,139,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(100,116,139,0.03)_1px,transparent_1px)] bg-[size:40px_40px] -z-10" />
-      )}
-
       {/* 2. Responsive Sticky Header & Drawer Layout */}
       <Navbar 
         onOpenPDF={() => setPdfOpen(true)} 
-        darkMode={darkMode} 
-        setDarkMode={setDarkMode} 
       />
       <RoleSelector />
 
