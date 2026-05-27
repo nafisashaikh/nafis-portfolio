@@ -8,6 +8,17 @@
   --font-signature: "Great Vibes", cursive;
 }
 
+@custom-variant dark (&:is(.dark *));
+
+/* Hide scrollbar globally */
+::-webkit-scrollbar {
+  display: none;
+}
+* {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 @layer utilities {
   /* Print media stylesheet overrides to print the resume perfectly in black/white on physical paper/PDF */
   @media print {

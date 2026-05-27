@@ -38,7 +38,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
   return (
     <section
       id="hero"
-      className="min-h-screen flex flex-col justify-center relative pt-40 pb-20 px-6 max-w-6xl mx-auto overflow-hidden text-white"
+      className="min-h-screen flex flex-col justify-center relative pt-40 pb-20 px-6 max-w-6xl mx-auto overflow-hidden dark:text-white text-slate-900"
     >
       {/* Decorative backdrop graphics */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[140px] pointer-events-none" />
@@ -54,7 +54,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-sans font-light tracking-tighter text-white leading-none">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-sans font-light tracking-tighter dark:text-white text-slate-900 leading-none">
               NAFIS ABID <span className="text-orange-500 italic block mt-2 font-serif text-6xl sm:text-7xl md:text-8xl leading-none">Shaikh</span>
             </h1>
             
@@ -95,7 +95,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
             
             <button
               onClick={onOpenPDF}
-              className="flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent text-white hover:text-black hover:bg-white font-mono text-xs font-bold uppercase tracking-widest border border-white/20 hover:border-white transition-all duration-300 active:scale-95 cursor-pointer"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent dark:text-white text-slate-900 hover:text-black hover:bg-white font-mono text-xs font-bold uppercase tracking-widest border border-white/20 hover:border-white transition-all duration-300 active:scale-95 cursor-pointer"
             >
               <FileText className="w-4 h-4" />
               Download Resume
@@ -121,7 +121,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
                 <Logo className="w-9 h-9" />
               </div>
               <div>
-                <h3 className="font-mono text-xs font-semibold tracking-wider text-white uppercase">Nafit Abid Shaikh</h3>
+                <h3 className="font-mono text-xs font-semibold tracking-wider dark:text-white text-slate-900 uppercase">Nafit Abid Shaikh</h3>
                 <p className="text-[9px] font-mono text-slate-400 leading-tight mt-1 uppercase tracking-widest">
                   Computer Engg. / MU
                 </p>
@@ -132,7 +132,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
               <div className="bg-white/[0.02] border border-white/5 p-3 flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider text-white">Structured Analytics</h4>
+                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider dark:text-white text-slate-900">Structured Analytics</h4>
                   <p className="text-[10px] font-sans text-slate-400 mt-1 leading-relaxed">
                     Excel, SQL & Power BI predictive models and interactive dashboards.
                   </p>
@@ -142,7 +142,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
               <div className="bg-white/[0.02] border border-white/5 p-3 flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider text-white">SIH Hackathon Winner</h4>
+                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider dark:text-white text-slate-900">SIH Hackathon Winner</h4>
                   <p className="text-[10px] font-sans text-slate-400 mt-1 leading-relaxed">
                     National Hackathon. Deployed NLP and transit platforms.
                   </p>
@@ -152,7 +152,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
               <div className="bg-white/[0.02] border border-white/5 p-3 flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-orange-500 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider text-white">Forensic Simulation</h4>
+                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider dark:text-white text-slate-900">Forensic Simulation</h4>
                   <p className="text-[10px] font-sans text-slate-400 mt-1 leading-relaxed">
                     Deloitte Australia forensic data analytics industry simulation.
                   </p>

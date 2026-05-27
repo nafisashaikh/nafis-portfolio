@@ -5,7 +5,7 @@ export default function EducationCerts() {
   const { activePersona } = usePersona();
   
   return (
-    <section id="education" className="py-20 max-w-6xl mx-auto px-6 text-white scroll-mt-20">
+    <section id="education" className="py-20 max-w-6xl mx-auto px-6 dark:text-white text-slate-900 scroll-mt-20">
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left Side: Educational Accolades */}
         <div className="flex flex-col gap-6">
@@ -31,7 +31,7 @@ export default function EducationCerts() {
                   </div>
 
                   <div className="space-y-1">
-                    <h3 className="font-mono text-sm sm:text-base font-bold text-white group-hover:text-orange-400 transition-colors uppercase tracking-wide">
+                    <h3 className="font-mono text-sm sm:text-base font-bold dark:text-white text-slate-900 group-hover:text-orange-400 transition-colors uppercase tracking-wide">
                       {edu.degree}
                     </h3>
                     <p className="text-xs font-sans text-slate-300">{edu.institution}</p>
@@ -74,7 +74,7 @@ export default function EducationCerts() {
 
                   <div className="space-y-3 w-full">
                     <div>
-                      <h3 className="font-mono text-sm sm:text-base font-bold text-white group-hover:text-orange-400 transition-colors uppercase tracking-wide">
+                      <h3 className="font-mono text-sm sm:text-base font-bold dark:text-white text-slate-900 group-hover:text-orange-400 transition-colors uppercase tracking-wide">
                         {cert.name}
                       </h3>
                       <div className="flex items-center justify-between text-xs font-sans text-slate-300 mt-1.5">

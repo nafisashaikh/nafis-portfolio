@@ -87,7 +87,7 @@ export default function Navbar({ onOpenPDF, darkMode, setDarkMode }: NavbarProps
               <Logo className="w-8 h-8" isLight={!darkMode} />
             </div>
             <div>
-              <span className="text-xs font-mono font-semibold tracking-[0.25em] text-white hidden sm:inline-block">
+              <span className="text-xs font-mono font-semibold tracking-[0.25em] dark:text-white text-slate-900 hidden sm:inline-block">
                 NAFIS ABID SHAIKH
               </span>
               <p className="text-[9px] font-mono text-orange-500/80 tracking-widest leading-none hidden sm:block mt-1">
@@ -108,7 +108,7 @@ export default function Navbar({ onOpenPDF, darkMode, setDarkMode }: NavbarProps
                   className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-mono text-xs tracking-wider transition-all duration-300 ${
                     isActive
                       ? "bg-orange-500/10 text-orange-400 border border-orange-500/20"
-                      : "text-gray-400 hover:text-white border border-transparent"
+                      : "text-gray-400 hover:dark:text-white text-slate-900 border border-transparent"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -142,7 +142,7 @@ export default function Navbar({ onOpenPDF, darkMode, setDarkMode }: NavbarProps
             {/* Mobile Burger Open button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 bg-white/5 border border-white/10 text-gray-400 hover:text-white md:hidden transition-all"
+              className="p-1.5 bg-white/5 border border-white/10 text-gray-400 hover:dark:text-white text-slate-900 md:hidden transition-all"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -164,7 +164,7 @@ export default function Navbar({ onOpenPDF, darkMode, setDarkMode }: NavbarProps
                   className={`flex items-center gap-3 px-4 py-3.5 font-mono text-xs tracking-wider text-left transition-all ${
                     isActive
                       ? "bg-orange-500/10 text-orange-400 border border-orange-500/20"
-                      : "text-gray-400 hover:text-white bg-white/5 border border-white/10"
+                      : "text-gray-400 hover:dark:text-white text-slate-900 bg-white/5 border border-white/10"
                   }`}
                 >
                   <Icon className="w-4 h-4 text-orange-500" />
