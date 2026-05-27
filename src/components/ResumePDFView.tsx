@@ -90,7 +90,7 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
               <div className="flex items-center gap-2 pt-1 flex-wrap">
                 <span className="flex items-center gap-1 hover:underline">
                   <Github className="w-3 h-3 text-slate-500 shrink-0" />
-                  <a href={activePersona.basics.github} target="_blank" rel="noopener noreferrer">github.com/12Nafis12</a>
+                  <a href={activePersona.basics.github} target="_blank" rel="noopener noreferrer">github.com/nafisashaikh</a>
                 </span>
                 <span className="text-slate-350 px-1">|</span>
                 <span className="flex items-center gap-1 hover:underline">
