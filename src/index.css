@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Grotesk", "JetBrains Mono", ui-monospace, monospace;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-signature: "Great Vibes", cursive;
+}
+
+@layer utilities {
+  /* Print media stylesheet overrides to print the resume perfectly in black/white on physical paper/PDF */
+  @media print {
+    body {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+    
+    main, header, footer, #animated-bg-canvas, #animated-bg-static {
+      display: none !important;
+    }
+
+    #printable-resume-card {
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      box-shadow: none !important;
+      width: 100% !important;
+      color: #000000 !important;
+      background-color: #ffffff !important;
+      display: block !important;
+    }
+
+    /* Keep lists and bullets styled correctly on printers */
+    ul {
+      list-style-type: disc !important;
+      padding-left: 1.5rem !important;
+    }
+  }
+
+  /* Support subtle hidden print setups during normal application flow */
+  @media screen {
+    .print\:hidden {
+      display: flex !important;
+    }
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
