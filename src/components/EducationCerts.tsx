@@ -1,4 +1,4 @@
-import { GraduationCap, Award, ExternalLink, Calendar, MapPin } from "lucide-react";
+import { GraduationCap, Award, ExternalLink, Calendar, MapPin, CornerDownRight } from "lucide-react";
 import { usePersona } from "../context/PersonaContext";
 
 export default function EducationCerts() {
