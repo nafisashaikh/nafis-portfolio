@@ -70,7 +70,7 @@ export default function AIAssistant() {
       
       // We pass the conversation history and the system instruction to Gemini
       const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
+        model: 'gemini-1.5-flash',
         contents: [
           // Inject system instructions as the very first context message (if the SDK supports system_instruction directly, that's better, but this is a safe fallback)
           { role: 'user', parts: [{ text: `SYSTEM INSTRUCTION (Do not reply to this directly, just follow the rules): ${systemPrompt}` }] },
@@ -85,7 +85,21 @@ export default function AIAssistant() {
       }
     } catch (err: any) {
       console.error("Gemini API Error:", err);
-      setError(err.message || "Failed to connect to the AI. Please try again later.");
+      let errorMessage = err.message || "Failed to connect to the AI. Please try again later.";
+      
+      // Try to parse raw JSON errors from the Google API
+      try {
+        if (errorMessage.includes('{"error"')) {
+          const parsed = JSON.parse(errorMessage.substring(errorMessage.indexOf('{')));
+          if (parsed.error && parsed.error.message) {
+            errorMessage = parsed.error.message;
+          }
+        }
+      } catch (e) {
+        // Ignore parsing errors and fallback to original
+      }
+      
+      setError(`AI Error: ${errorMessage}`);
     } finally {
       setIsLoading(false);
     }
