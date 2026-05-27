@@ -1,5 +1,5 @@
 import { ExternalLink, Github, Terminal } from "lucide-react";
-import { resumeData } from "../data/resumeData";
+import { usePersona } from "../context/PersonaContext";
 
 // Helper function to extract cleanly formatted stack tags
 const parseStack = (stackString: string) => {
@@ -10,6 +10,8 @@ const parseStack = (stackString: string) => {
 };
 
 export default function ProjectGallery() {
+  const { activePersona } = usePersona();
+  
   return (
     <section className="relative w-full max-w-6xl mx-auto px-6 py-24 z-10" id="projects">
       
@@ -29,8 +31,8 @@ export default function ProjectGallery() {
       </div>
 
       {/* Grid Container */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {resumeData.projects.map((project, index) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {activePersona.projects.map((project, index) => (
           <div
             key={index}
             className="group relative h-full flex flex-col justify-between overflow-hidden rounded-3xl backdrop-blur-xl bg-white/5 border border-white/10 dark:bg-[#0a0a0a]/60 dark:border-white/5 transition-all duration-500 hover:-translate-y-2 hover:scale-[1.02] hover:border-orange-500/50 hover:shadow-[0_0_40px_rgba(249,115,22,0.15)] animate-fade-in-up"

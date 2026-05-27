@@ -1,12 +1,16 @@
 import { useState } from "react";
-import { Cpu, Terminal, Brackets, Sliders, LayoutDashboard, Compass } from "lucide-react";
-import { resumeData } from "../data/resumeData";
+import { Cpu, Terminal, Brackets, Sliders, LayoutDashboard, Compass, Monitor, Database, LineChart, Code2, Wrench } from "lucide-react";
+import { usePersona } from "../context/PersonaContext";
 
 export default function SkillsGrid() {
+  const { activePersona } = usePersona();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
-  // Map category strings to modern icons
-  const categoryIcons: { [key: string]: any } = {
+  const ICONS: { [key: string]: any } = {
+    "Languages": Code2,
+    "Frontend": Monitor,
+    "Backend": Database,
+    "Tools": Wrench,
     "Languages & Tools": Brackets,
     "Techniques & Concepts": Sliders,
     "Top Skills & Domains": LayoutDashboard,
@@ -25,9 +29,9 @@ export default function SkillsGrid() {
         </h2>
       </div>
 
-      <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6">
-        {resumeData.skills.map((cat, idx) => {
-          const IconComponent = categoryIcons[cat.category] || Cpu;
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        {activePersona.skills.map((cat, idx) => {
+          const IconComponent = ICONS[cat.category] || Cpu;
           const isSelected = activeCategory === cat.category;
           return (
             <div

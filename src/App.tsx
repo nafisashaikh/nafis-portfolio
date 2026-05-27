@@ -10,11 +10,15 @@ import SkillsGrid from "./components/SkillsGrid";
 import EducationCerts from "./components/EducationCerts";
 import ResumePDFView from "./components/ResumePDFView";
 import AIAssistant from "./components/AIAssistant";
-import { resumeData } from "./data/resumeData";
+import RoleSelector from "./components/RoleSelector";
+import { usePersona } from "./context/PersonaContext";
 
 export default function App() {
   const [splashComplete, setSplashComplete] = useState(false);
   const [pdfOpen, setPdfOpen] = useState(false);
+  
+  // No longer statically importing resumeData, we get it from context
+  const { activePersona } = usePersona();
   const [darkMode, setDarkMode] = useState(true);
 
   if (!splashComplete) {
@@ -47,6 +51,7 @@ export default function App() {
         darkMode={darkMode} 
         setDarkMode={setDarkMode} 
       />
+      <RoleSelector />
 
       {/* Main Container Wrapper */}
       <main className="relative z-10 pt-10 pb-32">

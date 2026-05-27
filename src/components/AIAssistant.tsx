@@ -1,29 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles, User } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
-import { resumeData } from '../data/resumeData';
-
-// Format the resume data into a powerful system prompt for Gemini
-const systemPrompt = `You are Nafis Abid Shaikh's official AI assistant, embedded on his portfolio website.
-Your job is to answer questions from recruiters, hiring managers, and clients about Nafis's skills, experience, and projects.
-Be professional, concise, enthusiastic, and confident. Never make up information. Use only the following data.
-
-ABOUT NAFIS:
-${resumeData.summary}
-
-SKILLS:
-${resumeData.skills.join(', ')}
-
-EDUCATION:
-${resumeData.education.map(e => `- ${e.degree} from ${e.university} (${e.duration})`).join('\n')}
-
-EXPERIENCE:
-${resumeData.experience.map(e => `- ${e.role} at ${e.company} (${e.duration}):\n  ${e.bullets.join('\n  ')}`).join('\n\n')}
-
-PROJECTS:
-${resumeData.projects.map(p => `- ${p.title} (${p.stack}):\n  ${p.bullets.join('\n  ')}`).join('\n\n')}
-
-If someone asks for contact info, tell them to use the links in the header. Keep answers to 2-3 short paragraphs max.`;
+import { usePersona } from '../context/PersonaContext';
 
 type Message = {
   id: string;
@@ -32,6 +10,30 @@ type Message = {
 };
 
 export default function AIAssistant() {
+  const { activePersona } = usePersona();
+  
+  // Generate the system prompt dynamically based on the active persona
+  const systemPrompt = `You are Nafis Abid Shaikh's official AI assistant, embedded on his portfolio website.
+Your job is to answer questions from recruiters, hiring managers, and clients about Nafis's skills, experience, and projects.
+Be professional, concise, enthusiastic, and confident. Never make up information. Use only the following data.
+
+ABOUT NAFIS (${activePersona.roleTitle}):
+${activePersona.summary}
+
+SKILLS:
+${activePersona.skills.map((s: any) => s.category ? `${s.category}: ${s.items.join(', ')}` : s).join('\n')}
+
+EDUCATION:
+${activePersona.education.map((e: any) => `- ${e.degree} from ${e.university} (${e.duration || e.dates})`).join('\n')}
+
+EXPERIENCE:
+${activePersona.experience.map((e: any) => `- ${e.role} at ${e.company} (${e.duration || e.dates}):\n  ${e.bullets.join('\n  ')}`).join('\n\n')}
+
+PROJECTS:
+${activePersona.projects.map((p: any) => `- ${p.title} (${p.stack}):\n  ${p.bullets.join('\n  ')}`).join('\n\n')}
+
+If someone asks for contact info, tell them to use the links in the header. Keep answers to 2-3 short paragraphs max.`;
+
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     { id: '1', role: 'model', content: "Hi! I'm Nafis's AI Assistant. Ask me anything about his experience, projects, or skills!" }

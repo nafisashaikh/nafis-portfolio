@@ -2,9 +2,12 @@ import {StrictMode} from 'react';
 import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
+import { PersonaProvider } from './context/PersonaContext.tsx';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <App />
+    <PersonaProvider>
+      <App />
+    </PersonaProvider>
   </StrictMode>,
 );

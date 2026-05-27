@@ -1,7 +1,9 @@
-import { GraduationCap, Award, Calendar, ShieldCheck, CornerDownRight } from "lucide-react";
-import { resumeData } from "../data/resumeData";
+import { GraduationCap, Award, ExternalLink, Calendar, MapPin } from "lucide-react";
+import { usePersona } from "../context/PersonaContext";
 
 export default function EducationCerts() {
+  const { activePersona } = usePersona();
+  
   return (
     <section id="education" className="py-20 max-w-6xl mx-auto px-6 text-white scroll-mt-20">
       <div className="grid md:grid-cols-2 gap-12">
@@ -15,7 +17,7 @@ export default function EducationCerts() {
           </div>
 
           <div className="space-y-6">
-            {resumeData.education.map((edu, idx) => (
+            {activePersona.education.map((edu, idx) => (
               <div
                 key={idx}
                 className="bg-white/[0.02] border border-white/10 p-6 relative overflow-hidden group hover:border-orange-500/20 transition-all rounded-none"
@@ -57,7 +59,7 @@ export default function EducationCerts() {
           </div>
 
           <div className="space-y-6">
-            {resumeData.certifications.map((cert, idx) => (
+            {(activePersona.certifications || activePersona.experience.slice(0, 2)).map((cert, idx) => (
               <div
                 key={idx}
                 className="bg-white/[0.02] border border-white/10 p-6 relative overflow-hidden group hover:border-orange-500/20 transition-all rounded-none"

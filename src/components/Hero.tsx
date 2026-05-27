@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, FileText, CheckCircle2, ChevronRight } from "lucide-react";
-import { resumeData } from "../data/resumeData";
+import { usePersona } from "../context/PersonaContext";
 import { Logo } from "./Logo";
 
 interface HeroProps {
@@ -8,8 +8,9 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenPDF }: HeroProps) {
+  const { activePersona } = usePersona();
   const [roleIndex, setRoleIndex] = useState(0);
-  const titles = resumeData.basics.titles;
+  const titles = activePersona.basics.titles;
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -70,15 +71,15 @@ export default function Hero({ onOpenPDF }: HeroProps) {
 
           {/* High-Impact summary context */}
           <p className="text-sm sm:text-base font-sans font-light text-slate-355 leading-relaxed max-w-xl opacity-90">
-            {resumeData.basics.objective}
+            {activePersona.basics.objective}
           </p>
 
           <div className="flex flex-col gap-1.5 text-slate-400 font-mono text-xs border-l border-orange-500/30 pl-4 mt-2">
             <div>
-              <span className="text-orange-500">Location:</span> {resumeData.basics.location}
+              <span className="text-orange-500">Location:</span> {activePersona.basics.location}
             </div>
             <div>
-              <span className="text-orange-500">Comm-Channel:</span> {resumeData.basics.email} // {resumeData.basics.phone}
+              <span className="text-orange-500">Comm-Channel:</span> {activePersona.basics.email} // {activePersona.basics.phone}
             </div>
           </div>
 
