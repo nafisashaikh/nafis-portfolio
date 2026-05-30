@@ -12,8 +12,8 @@ export default function EducationCerts() {
             <div className="p-3 bg-white/5 rounded-xl border border-white/10">
               <GraduationCap className="w-6 h-6 text-orange-500" />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-sans font-light tracking-tight text-white">
-              Education <span className="text-slate-400 italic font-serif">Background</span>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-white">
+              Education <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Background</span>
             </h2>
           </div>
 
@@ -56,8 +56,8 @@ export default function EducationCerts() {
             <div className="p-3 bg-white/5 rounded-xl border border-white/10">
               <Award className="w-6 h-6 text-orange-500" />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-sans font-light tracking-tight text-white">
-              Certifications
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-white">
+              Industry <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Certifications</span>
             </h2>
           </div>
 

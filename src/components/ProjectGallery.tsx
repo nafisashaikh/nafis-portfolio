@@ -20,8 +20,8 @@ export default function ProjectGallery() {
           <div className="p-3 bg-white/5 rounded-xl border border-white/10">
             <Terminal className="w-6 h-6 text-orange-500" />
           </div>
-          <h2 className="text-3xl sm:text-4xl font-sans font-light tracking-tight text-white">
-            Engineering Showcase
+          <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-white">
+            Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Showcase</span>
           </h2>
         </div>
         <p className="text-slate-400 text-lg leading-relaxed">

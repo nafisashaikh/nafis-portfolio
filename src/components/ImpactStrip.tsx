@@ -22,8 +22,8 @@ export default function ImpactStrip() {
         <div className="p-3 bg-white/5 rounded-xl border border-white/10">
           <Trophy className="w-6 h-6 text-orange-500" />
         </div>
-        <h2 className="text-3xl sm:text-4xl font-sans font-light tracking-tight text-white">
-          Key Achievements
+        <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-white">
+          Key <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Achievements</span>
         </h2>
       </div>
 
