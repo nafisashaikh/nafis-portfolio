@@ -8,13 +8,11 @@ export default function EducationCerts() {
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left Side: Educational Accolades */}
         <div className="flex flex-col gap-6">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-              <GraduationCap className="w-6 h-6 text-orange-500" />
+          <div className="flex items-center gap-3 mb-8">
+            <div className="p-2 bg-white/5 rounded-lg border border-white/10">
+              <GraduationCap className="w-5 h-5 text-orange-500" />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-white">
-              Education <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Background</span>
-            </h2>
+            <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight mt-1">Education</h2>
           </div>
 
           <div className="space-y-6">
@@ -52,13 +50,11 @@ export default function EducationCerts() {
 
         {/* Right Side: Industry Certifications */}
         <div className="flex flex-col gap-6">
-          <div className="flex items-center gap-3 mb-12">
-            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-              <Award className="w-6 h-6 text-orange-500" />
+          <div className="flex items-center gap-3 mb-8">
+            <div className="p-2 bg-white/5 rounded-lg border border-white/10">
+              <Award className="w-5 h-5 text-orange-500" />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-white">
-              Industry <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Certifications</span>
-            </h2>
+            <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight mt-1">Certifications</h2>
           </div>
 
           <div className="space-y-6">

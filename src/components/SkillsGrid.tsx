@@ -21,13 +21,11 @@ export default function SkillsGrid() {
       {/* Visual glowing spotlight helper */}
       <div className="absolute left-1/3 w-96 h-96 bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="flex items-center gap-3 mb-12">
-        <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-          <Code2 className="w-6 h-6 text-orange-500" />
+      <div className="flex items-center gap-3 mb-10">
+        <div className="p-2 bg-white/5 rounded-lg border border-white/10">
+          <Code2 className="w-5 h-5 text-orange-500" />
         </div>
-        <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-white">
-          Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Arsenal</span>
-        </h2>
+        <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight">Technical Arsenal</h2>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">

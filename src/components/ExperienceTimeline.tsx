@@ -15,8 +15,8 @@ export default function ExperienceTimeline() {
         <div className="p-3 bg-white/5 rounded-xl border border-white/10">
           <Briefcase className="w-6 h-6 text-orange-500" />
         </div>
-        <h2 className="text-3xl sm:text-4xl font-black tracking-tighter text-white">
-          Professional <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Experience</span>
+        <h2 className="text-3xl sm:text-4xl font-sans font-light text-white tracking-tight">
+          Professional Experience
         </h2>
       </div>
 
