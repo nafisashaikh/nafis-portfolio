@@ -16,13 +16,15 @@ export default function ProjectGallery() {
 
       {/* Section Header */}
       <div className="relative mb-16 max-w-2xl">
-        <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(249,115,22,0.3)] transition-transform duration-500 hover:scale-110">
-          <Terminal className="w-6 h-6 text-white" />
+        <div className="flex items-center gap-3 mb-4">
+          <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+            <Terminal className="w-6 h-6 text-orange-500" />
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-sans font-light tracking-tight text-white">
+            Engineering Showcase
+          </h2>
         </div>
-        <h2 className="text-4xl md:text-5xl font-black tracking-tighter text-white">
-          Engineering <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Showcase</span>
-        </h2>
-        <p className="mt-4 text-slate-400 text-lg leading-relaxed">
+        <p className="text-slate-400 text-lg leading-relaxed">
           A highly curated selection of systems, platforms, and analytical engines I've engineered.
         </p>
       </div>

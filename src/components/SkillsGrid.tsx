@@ -21,10 +21,12 @@ export default function SkillsGrid() {
       {/* Visual glowing spotlight helper */}
       <div className="absolute left-1/3 w-96 h-96 bg-orange-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-      <div className="flex flex-col gap-2 mb-10">
-        <span className="font-mono text-xs tracking-[0.25em] text-orange-500 uppercase font-semibold">Expertise & Stacks</span>
-        <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight">
-          Holographic <span className="text-slate-400 italic font-serif">Skill Matrices</span>
+      <div className="flex items-center gap-3 mb-12">
+        <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+          <Code2 className="w-6 h-6 text-orange-500" />
+        </div>
+        <h2 className="text-3xl sm:text-4xl font-sans font-light tracking-tight text-white">
+          Technical Arsenal
         </h2>
       </div>
 

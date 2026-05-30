@@ -8,9 +8,11 @@ export default function EducationCerts() {
       <div className="grid md:grid-cols-2 gap-12">
         {/* Left Side: Educational Accolades */}
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col">
-            <span className="font-mono text-xs tracking-[0.25em] text-orange-500 uppercase font-semibold">Academic Registries</span>
-            <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight mt-1">
+          <div className="flex items-center gap-3 mb-12">
+            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+              <GraduationCap className="w-6 h-6 text-orange-500" />
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-sans font-light tracking-tight text-white">
               Education <span className="text-slate-400 italic font-serif">Background</span>
             </h2>
           </div>
@@ -50,10 +52,12 @@ export default function EducationCerts() {
 
         {/* Right Side: Industry Certifications */}
         <div className="flex flex-col gap-6">
-          <div className="flex flex-col">
-            <span className="font-mono text-xs tracking-[0.25em] text-orange-500 uppercase font-semibold">Professional Credentials</span>
-            <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight mt-1">
-              Certificates & <span className="text-slate-400 italic font-serif">Simulations</span>
+          <div className="flex items-center gap-3 mb-12">
+            <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+              <Award className="w-6 h-6 text-orange-500" />
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-sans font-light tracking-tight text-white">
+              Certifications
             </h2>
           </div>
 

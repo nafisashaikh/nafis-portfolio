@@ -11,12 +11,12 @@ export default function ExperienceTimeline() {
 
   return (
     <section className="relative w-full max-w-4xl mx-auto px-6 py-24 z-10" id="experience">
-      <div className="flex items-center gap-4 mb-12 animate-fade-in-up">
-        <div className="p-3 bg-orange-500/10 rounded-xl border border-orange-500/20">
-          <Briefcase className="w-6 h-6 text-orange-400" />
+      <div className="flex items-center gap-3 mb-12">
+        <div className="p-3 bg-white/5 rounded-xl border border-white/10">
+          <Briefcase className="w-6 h-6 text-orange-500" />
         </div>
-        <h2 className="text-3xl sm:text-4xl font-sans font-light text-white tracking-tight">
-          Experience & <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-red-500">Achievements</span>
+        <h2 className="text-3xl sm:text-4xl font-sans font-light tracking-tight text-white">
+          Professional Experience
         </h2>
       </div>
 
