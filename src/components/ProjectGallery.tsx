@@ -17,7 +17,7 @@ export default function ProjectGallery() {
       {/* Section Header */}
       <div className="flex flex-col gap-2 mb-12">
         <span className="font-mono text-xs tracking-[0.25em] text-orange-500 uppercase font-semibold">Featured Work</span>
-        <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight text-white">
+        <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight">
           Engineering <span className="text-slate-400 italic font-serif">Showcase</span>
         </h2>
       </div>
