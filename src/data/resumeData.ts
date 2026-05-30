@@ -58,14 +58,14 @@ export const resumeData: ResumeData = {
       ]
     },
     {
-      title: "Nexus - Real-time Supply Chain Pipeline",
-      stack: "Next.js, Node.js, PostgreSQL, Redis",
-      link: "https://github.com/nafisashaikh/nexus-pipeline",
-      demoLink: "https://nexus-logistics.vercel.app",
+      title: "AI News Platform",
+      stack: "Next.js, Python, OpenAI API, PostgreSQL",
+      link: "https://github.com/nafisashaikh",
+      demoLink: "https://nafisashaikh.github.io",
       bullets: [
-        "Architected a high-performance web platform for real-time logistics tracking and inventory management",
-        "Implemented Redis caching to reduce database query loads by 40% during peak operational hours",
-        "Built dynamic data visualizations to monitor supply chain choke points and predictive inventory alerts"
+        "Engineered an automated AI news aggregation platform that fetches, summarizes, and categorizes real-time global news",
+        "Integrated advanced NLP models to distill lengthy articles into concise, actionable intelligence briefs",
+        "Architected a scalable full-stack ecosystem with a highly responsive frontend and automated data pipelines"
       ]
     },
     {
@@ -179,14 +179,19 @@ export const resumeData: ResumeData = {
   ],
   achievements: [
     {
-      title: "SIH Smart Transit Automation Planning",
-      context: "Optimized operational scheduling models using transportation datasets for Smart India Hackathon.",
-      badge: "National Hackathon"
+      title: "AI News Platform Deployment",
+      context: "Engineered and launched an automated AI-driven platform that aggregates, analyzes, and summarizes real-time global news data.",
+      badge: "Full Stack AI"
     },
     {
-      title: "Interactive Analytics Dashboard Deployment",
-      context: "Formulated dynamic Pivot tables and multi-variable filtering to distill unorganized records into visual insights.",
-      badge: "Commercial Analysis"
+      title: "Sehtsetu Healthcare System",
+      context: "Architected a comprehensive full-stack healthcare web application, successfully implementing secure user data management and service delivery.",
+      badge: "System Architecture"
+    },
+    {
+      title: "AI Driven Metro Rail Planning",
+      context: "Optimized operational scheduling models using extensive transportation datasets for the Smart India Hackathon.",
+      badge: "National Hackathon"
     }
   ],
   extra: [
