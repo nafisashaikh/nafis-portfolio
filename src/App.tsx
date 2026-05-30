@@ -66,8 +66,13 @@ export default function App() {
         {/* Additional Info Completeness Footer section */}
         <footer className="mt-20 border-t border-white/5 pt-16 pb-32 md:pb-24 max-w-6xl mx-auto px-6 text-center">
           {/* Looking For Segment */}
-          <div className="max-w-4xl mx-auto px-6 py-12 mb-16 border border-white/10 rounded-2xl bg-slate-900/40 backdrop-blur-sm text-center">
-            <h3 className="text-xl font-medium text-white mb-4">Looking for Opportunities</h3>
+          <div className="max-w-4xl mx-auto px-6 py-12 mb-16 border border-white/10 rounded-2xl bg-slate-900/40 backdrop-blur-sm text-center flex flex-col items-center">
+            <div className="flex flex-col gap-2 mb-6 items-center">
+              <span className="font-mono text-xs tracking-[0.25em] text-orange-500 uppercase font-semibold">Open To Work</span>
+              <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight">
+                Looking for <span className="text-slate-400 italic font-serif">Opportunities</span>
+              </h2>
+            </div>
             <p className="text-slate-400 leading-relaxed max-w-2xl mx-auto">
               {activePersona.basics.lookingFor || "I am currently looking for internship opportunities in Data Analytics, MIS, or Business Analytics where I can apply my skills and gain real world experience."}
             </p>
