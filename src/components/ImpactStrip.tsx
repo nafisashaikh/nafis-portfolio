@@ -1,8 +1,7 @@
 import { Trophy, Compass, Star, Zap, Target, Award } from "lucide-react";
-import { usePersona } from "../context/PersonaContext";
+import { resumeData as activePersona } from '../data/resumeData';
 
 export default function ImpactStrip() {
-  const { activePersona } = usePersona();
 
   const iconMap = {
     Star: Star,

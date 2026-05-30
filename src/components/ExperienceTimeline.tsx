@@ -1,9 +1,8 @@
 import { Briefcase, Calendar, MapPin, ChevronDown, ChevronUp } from "lucide-react";
-import { usePersona } from "../context/PersonaContext";
+import { resumeData as activePersona } from '../data/resumeData';
 import { useState } from "react";
 
 export default function ExperienceTimeline() {
-  const { activePersona } = usePersona();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(0);
   
   if (!activePersona.experience || activePersona.experience.length === 0) {

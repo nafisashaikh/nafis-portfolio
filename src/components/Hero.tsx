@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, FileText, CheckCircle2, ChevronRight } from "lucide-react";
-import { usePersona } from "../context/PersonaContext";
+import { resumeData as activePersona } from '../data/resumeData';
 import { Logo } from "./Logo";
 
 interface HeroProps {
@@ -8,7 +8,6 @@ interface HeroProps {
 }
 
 export default function Hero({ onOpenPDF }: HeroProps) {
-  const { activePersona } = usePersona();
   const [roleIndex, setRoleIndex] = useState(0);
   const titles = activePersona.basics.titles;
 

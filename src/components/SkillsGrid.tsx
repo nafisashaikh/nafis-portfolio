@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { Cpu, Terminal, Brackets, Sliders, LayoutDashboard, Compass, Monitor, Database, LineChart, Code2, Wrench } from "lucide-react";
-import { usePersona } from "../context/PersonaContext";
+import { resumeData as activePersona } from '../data/resumeData';
 
 export default function SkillsGrid() {
-  const { activePersona } = usePersona();
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
 
   const ICONS: { [key: string]: any } = {

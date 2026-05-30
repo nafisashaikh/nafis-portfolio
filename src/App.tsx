@@ -10,15 +10,15 @@ import SkillsGrid from "./components/SkillsGrid";
 import EducationCerts from "./components/EducationCerts";
 import ResumePDFView from "./components/ResumePDFView";
 import AIAssistant from "./components/AIAssistant";
-import RoleSelector from "./components/RoleSelector";
-import { usePersona } from "./context/PersonaContext";
+import { resumeData } from "./data/resumeData";
 
 export default function App() {
   const [splashComplete, setSplashComplete] = useState(false);
   const [pdfOpen, setPdfOpen] = useState(false);
+  const [darkMode, setDarkMode] = useState(true);
   
-  // No longer statically importing resumeData, we get it from context
-  const { activePersona } = usePersona();
+  // Direct access to master profile data
+  const activePersona = resumeData;
 
 
   if (!splashComplete) {
@@ -26,7 +26,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen transition-colors duration-500 overflow-x-hidden dark bg-[#050505] text-[#e5e5e5] selection:bg-orange-100 selection:text-orange-850">
+    <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden ${darkMode ? "dark bg-[#050505] text-[#e5e5e5]" : "bg-white text-slate-900"} selection:bg-orange-100 selection:text-orange-850`}>
       {/* 1. Fully-reactive Canvas Background Animation */}
       <AnimatedBackground />
 
@@ -39,8 +39,9 @@ export default function App() {
       {/* 2. Responsive Sticky Header & Drawer Layout */}
       <Navbar 
         onOpenPDF={() => setPdfOpen(true)} 
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
       />
-      <RoleSelector />
 
       {/* Main Container Wrapper */}
       <main className="relative z-10 pt-10 pb-32">

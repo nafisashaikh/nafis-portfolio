@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles, User } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
-import { usePersona } from '../context/PersonaContext';
+import { resumeData as activePersona } from '../data/resumeData';
 
 type Message = {
   id: string;
@@ -10,7 +10,6 @@ type Message = {
 };
 
 export default function AIAssistant() {
-  const { activePersona } = usePersona();
   
   // Generate the system prompt dynamically based on the active persona
   const systemPrompt = `You are Nafis Abid Shaikh's official AI assistant, embedded on his portfolio website.

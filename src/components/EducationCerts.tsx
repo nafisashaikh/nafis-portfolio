@@ -1,8 +1,7 @@
 import { GraduationCap, Award, ExternalLink, Calendar, MapPin, CornerDownRight } from "lucide-react";
-import { usePersona } from "../context/PersonaContext";
+import { resumeData as activePersona } from "../data/resumeData";
 
 export default function EducationCerts() {
-  const { activePersona } = usePersona();
   
   return (
     <section id="education" className="py-20 max-w-6xl mx-auto px-6 text-white scroll-mt-20">

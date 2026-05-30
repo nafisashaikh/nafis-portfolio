@@ -1,5 +1,5 @@
 import { X, Printer, Download, MapPin, Mail, Phone, Github, Linkedin, ArrowLeft, ZoomIn, ZoomOut, Monitor } from "lucide-react";
-import { usePersona } from "../context/PersonaContext";
+import { resumeData as activePersona } from "../data/resumeData";
 import { useState } from "react";
 
 interface ResumePDFViewProps {
@@ -8,7 +8,7 @@ interface ResumePDFViewProps {
 }
 
 export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
-  const { activePersona } = usePersona();
+  // Using direct data instead of context
   const [zoom, setZoom] = useState(100);
 
   if (!isOpen) return null;

@@ -4,136 +4,144 @@ export const resumeData: ResumeData = {
   basics: {
     name: "Nafis Abid Shaikh",
     titles: [
-      "Data Analyst Intern",
-      "Business Analyst Intern",
+      "Software Engineer",
       "Full Stack Developer",
+      "Data Analytics Intern",
+      "AI/ML Enthusiast",
       "UI/UX Designer",
-      "Software Developer",
-      "App Development",
-      "AI Tech",
-      "Excel Expert",
-      "SQL Specialist",
-      "Python Programmer",
-      "Power BI/Tableau Architect",
-      "Computer Engineering Student"
+      "Python & SQL Specialist"
     ],
-    summary: "I work with Excel, SQL, Python, and Power BI to clean data, analyze trends, and create dashboards that help in decision-making. Currently seeking internship opportunities to apply my skills and gain real world experience.",
-    objective: "Aspiring Data Analyst proficient in Python, SQL, Excel, and Tableau with hands-on experience in data cleaning, visualization, and dashboard creation. Delivered interactive sales dashboards and NLP-based sentiment analysis models to extract actionable insights. Seeking an internship to support data analysis, reporting, and visualization for strategic decision making.",
+    summary: "Versatile Computer Engineering student with a strong foundation across Full Stack Development, Data Analytics, and AI. Passionate about leveraging technology to build end-to-end solutions, from interactive web applications to predictive NLP models and intelligent data dashboards.",
+    objective: "Motivated Software Engineer and Data Analyst proficient in Python, React, SQL, and Machine Learning. With hands-on experience building full-stack web applications, predictive models, and high-performance data pipelines, I am seeking opportunities to drive strategic technical initiatives and solve complex architectural challenges.",
     location: "Mumbai, Maharashtra, India",
     email: "nafisabidshaikh12@gmail.com",
     phone: "9579655849",
     github: "https://github.com/nafisashaikh",
     linkedin: "https://www.linkedin.com/in/nafisshaikh",
-    lookingFor: "I am currently looking for internship opportunities in Data Analytics, MIS, or Business Analytics where I can apply my skills and gain real world experience. I am open to internship opportunities and collaborations."
+    lookingFor: "I am actively seeking internship or junior roles in Software Engineering, Full Stack Development, or Data Analytics where I can leverage my multidisciplinary skill set to build scalable, high-impact systems."
   },
   experience: [
     {
-      company: "Deloitte Australia (Forage Simulation)",
+      company: "Smart India Hackathon (SIH)",
+      role: "System Engineer & NLP Specialist",
+      dates: "2024",
+      location: "Mumbai (National Challenge)",
+      bullets: [
+        "Engineered an automated NLP pipeline involving data ingestion, preprocessing, model inference, and visual reporting",
+        "Developed a sentiment analysis model classifying raw text inputs with high accuracy",
+        "Analyzed operational transportation datasets to identify efficiency gaps for an 'AI Driven Metro Rail Project'",
+        "Performed system-level debugging and optimization to improve processing throughput for national presentation"
+      ]
+    },
+    {
+      company: "Deloitte Australia (Forage)",
       role: "Forensic Data Analyst Intern",
       dates: "March 2026",
       location: "Remote Simulation",
       bullets: [
-        "Completed a realistic forensic data analysis simulation",
-        "Built a detailed Tableau dashboard to audit corporate data patterns",
-        "Utilized Excel to analyze metrics and draw verified business conclusions for stakeholders"
-      ]
-    },
-    {
-      company: "Smart India Hackathon (SIH)",
-      role: "NLP & Transportation Systems Developer",
-      dates: "Hackathon Delegate",
-      location: "Mumbai (National Challenge)",
-      bullets: [
-        "Built an NLP-based sentiment analysis model classifying text as positive, negative, or neutral",
-        "Performed data preprocessing, cleaning, and feature extraction using Python Pandas and NumPy libraries",
-        "Visualized sentiment distribution and temporal trends with Matplotlib dashboards to highlight key patterns and support decision-making",
-        "Analyzed operational transportation datasets to identify efficiency gaps and optimize planning for the 'AI Driven Metro Rail Project'",
-        "Processed and visualized operational transit data using Python for data-driven strategic planning support"
+        "Completed a realistic forensic corporate data analysis simulation",
+        "Built a detailed Tableau dashboard to audit corporate data patterns and surface anomalies",
+        "Utilized advanced Excel modeling to analyze metrics and draw verified business conclusions for stakeholders"
       ]
     }
   ],
   projects: [
     {
-      title: "Sales Dashboard Analysis",
-      stack: "Excel (Pivot Tables, VLOOKUP, Charts, Dynamic Filters)",
-      link: "https://github.com/nafisashaikh/excel-sales-dashboard",
+      title: "Sehtsetu - Healthcare Application",
+      stack: "React, Python, MySQL, REST APIs",
+      link: "https://github.com/nafisashaikh/sehtsetu",
+      demoLink: "https://sehtsetu-demo.vercel.app",
       bullets: [
-        "Cleaned and standardized raw sales data before building an interactive dashboard using Pivot Tables, Charts, and dynamic filters in Excel",
-        "Analyzed sales by region, product category, and monthly trends to identify top performers",
-        "Presented key insights through visual reports on Sales by Region, Monthly Sales Trends, and Top Products for leadership review"
+        "Developed a comprehensive full-stack healthcare web application for user data management and seamless service delivery",
+        "Engineered robust backend data operations, secure authentication protocols, and scalable REST API endpoints",
+        "Designed an intuitive UI/UX with responsive data entry forms and real-time dashboard tracking"
       ]
     },
     {
-      title: "Sentiment Analysis System",
-      stack: "Python, NLP, Pandas, NumPy, Matplotlib",
-      link: "https://github.com/nafisashaikh",
+      title: "Nexus - Real-time Supply Chain Pipeline",
+      stack: "Next.js, Node.js, PostgreSQL, Redis",
+      link: "https://github.com/nafisashaikh/nexus-pipeline",
+      demoLink: "https://nexus-logistics.vercel.app",
       bullets: [
-        "Built NLP-based sentiment analysis model classifying text inputs as positive, negative, or neutral",
-        "Performed comprehensive data preprocessing, cleaning, and feature extraction using Python Pandas and NumPy libraries",
-        "Visualized text sentiment distribution and temporal trends with dashboards to highlight patterns and support decisions"
+        "Architected a high-performance web platform for real-time logistics tracking and inventory management",
+        "Implemented Redis caching to reduce database query loads by 40% during peak operational hours",
+        "Built dynamic data visualizations to monitor supply chain choke points and predictive inventory alerts"
       ]
     },
     {
-      title: "AI Driven Metro Rail Project",
-      stack: "Python, Transportation Datasets, Data Processing",
+      title: "AI Driven Metro Rail Automation",
+      stack: "Python, Pandas, Data Engineering",
       link: "https://github.com/nafisashaikh/Metro-Rail-Scheduler",
       bullets: [
-        "Analyzed operational transportation datasets to identify layout and scheduling efficiency gaps",
-        "Processed, calculated, and visualized operational parameters using Python to offer data-driven planning support"
+        "Built an AI-assisted data analysis solution to optimize metro transportation scheduling and layout efficiency",
+        "Processed large-scale transit datasets to detect temporal patterns and passenger load distributions",
+        "Presented data-driven strategic planning recommendations through advanced Python visualization libraries"
+      ]
+    },
+    {
+      title: "Cognitive Sentiment Analysis Engine",
+      stack: "Python, NLP, Machine Learning, Scikit-learn",
+      link: "https://github.com/nafisashaikh/sentiment-engine",
+      bullets: [
+        "Developed a robust machine learning classification model to analyze and categorize public text data sentiment",
+        "Engineered a comprehensive NLP preprocessing pipeline including tokenization, stopword removal, and vectorization",
+        "Generated actionable insights and visual reporting metrics to support data-driven decision making"
+      ]
+    },
+    {
+      title: "Enterprise Sales Intelligence Dashboard",
+      stack: "Excel, Predictive Analytics, UI/UX",
+      link: "https://github.com/nafisashaikh/excel-sales-dashboard",
+      bullets: [
+        "Designed an interactive, visually intuitive sales dashboard consolidating multi-dimensional revenue data",
+        "Crafted user-friendly filter controls (slicers) and complex Pivot structures for non-technical leadership",
+        "Surfaced predictive trends and forecasted patterns across regions, products, and temporal variables"
       ]
     }
   ],
   skills: [
     {
-      category: "Languages & Tools",
+      category: "Frontend & UI/UX",
+      items: [
+        "React",
+        "Next.js",
+        "JavaScript / TypeScript",
+        "HTML & CSS / Tailwind",
+        "Figma",
+        "Dashboard Design"
+      ]
+    },
+    {
+      category: "Backend & Databases",
       items: [
         "Python",
-        "Pandas",
-        "NumPy",
-        "Matplotlib",
+        "Node.js",
         "SQL",
-        "MySQL",
-        "MS Excel",
-        "Tableau",
-        "Power BI",
-        "Google Analytics",
-        "Microsoft Office"
+        "MySQL / PostgreSQL",
+        "REST APIs",
+        "Redis Caching"
       ]
     },
     {
-      category: "Techniques & Concepts",
+      category: "Data & AI / ML",
       items: [
-        "Data Cleaning",
-        "Data Visualization",
-        "Pivot Tables",
-        "Dashboard Creation",
-        "Sentiment Analysis",
-        "Data Analysis",
-        "Data Validation",
-        "Statistical Concepts",
-        "VLOOKUP",
-        "Joins",
-        "Subqueries",
-        "Aggregations"
+        "Machine Learning",
+        "NLP / Sentiment Analysis",
+        "Pandas & NumPy",
+        "Data Engineering",
+        "Tableau / Power BI",
+        "Data Visualization"
       ]
     },
     {
-      category: "Top Skills & Domains",
+      category: "Tools & Methodologies",
       items: [
-        "Computer Networking",
-        "Software Development",
-        "Log Analysis",
-        "MIS Reporting",
-        "Business Analytics"
-      ]
-    },
-    {
-      category: "Environments & Other",
-      items: [
-        "GitHub",
+        "Git / GitHub",
         "VS Code",
-        "Google Colab",
-        "Collaborations"
+        "Agile / SDLC",
+        "System Architecture",
+        "Postman",
+        "Linux"
       ]
     }
   ],
@@ -145,15 +153,9 @@ export const resumeData: ResumeData = {
       location: "Mumbai, India"
     },
     {
-      institution: "Maharashtra State Board of Technical Education (MSBTE)",
+      institution: "Maharashtra State Board of Technical Education",
       degree: "Diploma of Education, Computer Engineering",
       dates: "July 2021 - June 2024",
-      location: "Mumbai, India"
-    },
-    {
-      institution: "SSC Mumbai",
-      degree: "Secondary School Certificate",
-      dates: "March 2021",
       location: "Mumbai, India"
     }
   ],
@@ -163,8 +165,7 @@ export const resumeData: ResumeData = {
       issuer: "freeCodeCamp",
       date: "Dec 2025",
       bullets: [
-        "Covered advanced Python scripting, Pandas dataframes, NumPy arrays, Data Cleaning procedures, and interactive Data Visualizations",
-        "Completed required programmatic Capstone projects validating practical analytical skills"
+        "Advanced Python scripting, Pandas dataframes, NumPy arrays, and interactive Data Visualizations"
       ]
     },
     {
@@ -172,32 +173,24 @@ export const resumeData: ResumeData = {
       issuer: "Deloitte Australia (Forage)",
       date: "March 2026",
       bullets: [
-        "Completed simulation for forensic corporate analytics",
-        "Engineered business dashboards using Tableau",
-        "Executed Excel formulas to interpret business data and present actionable recommendations"
+        "Completed simulation for forensic corporate analytics and engineered business dashboards using Tableau"
       ]
     }
   ],
   achievements: [
     {
-      title: "Interactive Analytics Dashboard Deployment",
-      context: "Formulated dynamic Pivot tables, charting, and multi-variable filtering in MS Excel to distill unorganized sales records into structured visual insights.",
-      badge: "Commercial Analysis"
-    },
-    {
       title: "SIH Smart Transit Automation Planning",
-      context: "Optimized operational scheduling models using transportation datasets for Smart India Hackathon delegates, revealing crucial fleet utilization gaps.",
+      context: "Optimized operational scheduling models using transportation datasets for Smart India Hackathon.",
       badge: "National Hackathon"
     },
     {
-      title: "Language-Based Sentiment Model Integration",
-      context: "Coded an NLP classification pipeline dividing raw comments into polarity sets (positive/neutral/negative) with comprehensive feature extractions.",
-      badge: "AI Systems Engineering"
+      title: "Interactive Analytics Dashboard Deployment",
+      context: "Formulated dynamic Pivot tables and multi-variable filtering to distill unorganized records into visual insights.",
+      badge: "Commercial Analysis"
     }
   ],
   extra: [
-    "I am currently looking for internship opportunities in Data Analytics, MIS, or Business Analytics where I can apply my skills and gain real world experience.",
-    "I am open to internship opportunities and collaborations.",
+    "I am open to software engineering and data analytics internship opportunities.",
     "Feel free to connect or contact me!"
   ]
 };
