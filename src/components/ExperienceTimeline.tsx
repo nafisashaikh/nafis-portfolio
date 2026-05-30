@@ -11,12 +11,10 @@ export default function ExperienceTimeline() {
 
   return (
     <section className="relative w-full max-w-4xl mx-auto px-6 py-24 z-10" id="experience">
-      <div className="flex items-center gap-3 mb-12">
-        <div className="p-3 bg-white/5 rounded-xl border border-white/10">
-          <Briefcase className="w-6 h-6 text-orange-500" />
-        </div>
-        <h2 className="text-3xl sm:text-4xl font-sans font-light text-white tracking-tight">
-          Professional Experience
+      <div className="flex flex-col gap-2 mb-12">
+        <span className="font-mono text-xs tracking-[0.25em] text-orange-500 uppercase font-semibold">Career Journey</span>
+        <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight text-white">
+          Professional <span className="text-slate-400 italic font-serif">Experience</span>
         </h2>
       </div>
 

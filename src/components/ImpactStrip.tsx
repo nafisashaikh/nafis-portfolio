@@ -18,11 +18,11 @@ export default function ImpactStrip() {
       <div className="absolute left-1/4 h-72 w-72 bg-orange-600/5 rounded-full blur-3xl pointer-events-none" />
 
       {/* Header heading */}
-      <div className="flex items-center gap-3 mb-8">
-        <div className="p-2 bg-white/5 rounded-lg border border-white/10">
-          <Trophy className="w-5 h-5 text-orange-500" />
-        </div>
-        <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight text-white">Key Achievements</h2>
+      <div className="flex flex-col gap-2 mb-10">
+        <span className="font-mono text-xs tracking-[0.25em] text-orange-500 uppercase font-semibold">Top 3 Accomplishments</span>
+        <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight text-white">
+          High-Impact <span className="text-slate-400 italic font-serif">Distinctions</span>
+        </h2>
       </div>
 
       {/* Trophy grid layout */}
