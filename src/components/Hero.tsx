@@ -9,14 +9,36 @@ interface HeroProps {
 
 export default function Hero({ onOpenPDF }: HeroProps) {
   const [roleIndex, setRoleIndex] = useState(0);
+  const [displayText, setDisplayText] = useState("");
+  const [isTyping, setIsTyping] = useState(true);
   const titles = activePersona.basics.titles;
 
+  // Typing effect logic
   useEffect(() => {
-    const timer = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % titles.length);
-    }, 2800);
-    return () => clearInterval(timer);
-  }, [titles.length]);
+    let timeout: ReturnType<typeof setTimeout>;
+    
+    if (isTyping) {
+      const currentTitle = titles[roleIndex];
+      if (displayText.length < currentTitle.length) {
+        timeout = setTimeout(() => {
+          setDisplayText(currentTitle.slice(0, displayText.length + 1));
+        }, 80); // Typing speed
+      } else {
+        timeout = setTimeout(() => setIsTyping(false), 2000); // Pause at end
+      }
+    } else {
+      if (displayText.length > 0) {
+        timeout = setTimeout(() => {
+          setDisplayText(displayText.slice(0, -1));
+        }, 40); // Deleting speed
+      } else {
+        setRoleIndex((prev) => (prev + 1) % titles.length);
+        setIsTyping(true);
+      }
+    }
+    
+    return () => clearTimeout(timeout);
+  }, [displayText, isTyping, roleIndex, titles]);
 
   const scrollToExperience = () => {
     const element = document.getElementById("projects");
@@ -57,12 +79,13 @@ export default function Hero({ onOpenPDF }: HeroProps) {
               NAFIS ABID <span className="text-orange-500 italic block mt-2 font-serif text-5xl xs:text-6xl sm:text-7xl md:text-8xl leading-none">Shaikh</span>
             </h1>
             
-            {/* Editorial cycler */}
+            {/* Editorial cycler with typing effect */}
             <div className="h-10 mt-3 flex items-center">
               <div className="font-mono text-xs sm:text-sm tracking-[0.3em] text-slate-400 flex items-center gap-2 uppercase">
                 <span className="text-orange-500 font-bold">//</span>
-                <span>
-                  {titles[roleIndex]}
+                <span className="relative">
+                  {displayText}
+                  <span className="absolute -right-2 top-0 bottom-0 w-[2px] bg-orange-500 animate-pulse" />
                 </span>
               </div>
             </div>

@@ -51,52 +51,42 @@ export const resumeData: ResumeData = {
       stack: "React, Python, MySQL, REST APIs",
       link: "https://github.com/nafisashaikh/sehtsetu",
       demoLink: "https://sehtsetu-demo.vercel.app",
-      bullets: [
-        "Developed a comprehensive full-stack healthcare web application for user data management and seamless service delivery",
-        "Engineered robust backend data operations, secure authentication protocols, and scalable REST API endpoints",
-        "Designed an intuitive UI/UX with responsive data entry forms and real-time dashboard tracking"
-      ]
+      problem: "Managing patient data and coordinating service delivery across multiple healthcare touchpoints is fragmented and inefficient.",
+      solution: "Architected a comprehensive full-stack platform with secure authentication, intuitive data entry forms, and RESTful API data synchronization.",
+      impact: "Streamlined user data management and enabled real-time dashboard tracking for healthcare providers."
     },
     {
       title: "AI News Platform",
       stack: "Next.js, Python, OpenAI API, PostgreSQL",
       link: "https://github.com/nafisashaikh",
       demoLink: "https://nafisashaikh.github.io",
-      bullets: [
-        "Engineered an automated AI news aggregation platform that fetches, summarizes, and categorizes real-time global news",
-        "Integrated advanced NLP models to distill lengthy articles into concise, actionable intelligence briefs",
-        "Architected a scalable full-stack ecosystem with a highly responsive frontend and automated data pipelines"
-      ]
+      problem: "Readers are overwhelmed by information overload and struggle to find concise, categorized global news.",
+      solution: "Engineered an automated aggregation pipeline using advanced NLP to distill lengthy articles into actionable intelligence briefs.",
+      impact: "Delivered a highly responsive frontend ecosystem that provides categorized, real-time news intelligence at a glance."
     },
     {
       title: "AI Driven Metro Rail Automation",
       stack: "Python, Pandas, Data Engineering",
       link: "https://github.com/nafisashaikh/Metro-Rail-Scheduler",
-      bullets: [
-        "Built an AI-assisted data analysis solution to optimize metro transportation scheduling and layout efficiency",
-        "Processed large-scale transit datasets to detect temporal patterns and passenger load distributions",
-        "Presented data-driven strategic planning recommendations through advanced Python visualization libraries"
-      ]
+      problem: "Suboptimal metro transportation scheduling leads to congestion and inefficient layout planning.",
+      solution: "Processed large-scale transit datasets using AI-assisted analysis to detect temporal patterns and passenger load distributions.",
+      impact: "Generated data-driven strategic planning recommendations to optimize scheduling and layout efficiency."
     },
     {
       title: "Cognitive Sentiment Analysis Engine",
       stack: "Python, NLP, Machine Learning, Scikit-learn",
       link: "https://github.com/nafisashaikh/sentiment-engine",
-      bullets: [
-        "Developed a robust machine learning classification model to analyze and categorize public text data sentiment",
-        "Engineered a comprehensive NLP preprocessing pipeline including tokenization, stopword removal, and vectorization",
-        "Generated actionable insights and visual reporting metrics to support data-driven decision making"
-      ]
+      problem: "Organizations struggle to categorize and understand public sentiment from massive unstructued text data.",
+      solution: "Developed a robust NLP preprocessing pipeline and machine learning classification model to analyze text sentiment.",
+      impact: "Provided visual reporting metrics that enable data-driven decision making with high-accuracy sentiment detection."
     },
     {
       title: "Enterprise Sales Intelligence Dashboard",
       stack: "Excel, Predictive Analytics, UI/UX",
       link: "https://github.com/nafisashaikh/excel-sales-dashboard",
-      bullets: [
-        "Designed an interactive, visually intuitive sales dashboard consolidating multi-dimensional revenue data",
-        "Crafted user-friendly filter controls (slicers) and complex Pivot structures for non-technical leadership",
-        "Surfaced predictive trends and forecasted patterns across regions, products, and temporal variables"
-      ]
+      problem: "Non-technical leadership lacked an intuitive way to explore multi-dimensional revenue data and forecast trends.",
+      solution: "Designed a visually intuitive sales dashboard with user-friendly slicers and complex Pivot structures.",
+      impact: "Surfaced predictive trends across regions and products, empowering leaders to make strategic business forecasts."
     }
   ],
   skills: [

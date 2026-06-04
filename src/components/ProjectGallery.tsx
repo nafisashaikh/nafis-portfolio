@@ -52,15 +52,37 @@ export default function ProjectGallery() {
                 ))}
               </div>
 
-              {/* Bullet Points */}
-              <ul className="flex-1 space-y-3 mb-8">
-                {project.bullets.map((bullet: string, bIdx: number) => (
-                  <li key={bIdx} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
-                    <ArrowRight className="w-4 h-4 text-orange-500 shrink-0 mt-0.5 opacity-70 group-hover:opacity-100 transition-opacity" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
+              {/* Case Study Details */}
+              <div className="flex-1 space-y-4 mb-8">
+                {project.problem && (
+                  <div>
+                    <h4 className="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest mb-1">The Problem</h4>
+                    <p className="text-slate-300 text-sm leading-relaxed">{project.problem}</p>
+                  </div>
+                )}
+                {project.solution && (
+                  <div>
+                    <h4 className="text-xs font-mono font-bold text-orange-500/80 uppercase tracking-widest mb-1">The Solution</h4>
+                    <p className="text-slate-300 text-sm leading-relaxed">{project.solution}</p>
+                  </div>
+                )}
+                {project.impact && (
+                  <div>
+                    <h4 className="text-xs font-mono font-bold text-green-500/80 uppercase tracking-widest mb-1">The Impact</h4>
+                    <p className="text-slate-300 text-sm leading-relaxed">{project.impact}</p>
+                  </div>
+                )}
+                {project.bullets && project.bullets.length > 0 && (
+                  <ul className="space-y-3 mt-4">
+                    {project.bullets.map((bullet: string, bIdx: number) => (
+                      <li key={bIdx} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
+                        <ArrowRight className="w-4 h-4 text-orange-500 shrink-0 mt-0.5 opacity-70 group-hover:opacity-100 transition-opacity" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center gap-4 mt-auto pt-6 border-t border-white/5">

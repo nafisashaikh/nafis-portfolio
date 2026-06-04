@@ -2,7 +2,11 @@ export interface Project {
   title: string;
   stack: string;
   link?: string;
-  bullets: string[];
+  demoLink?: string;
+  problem?: string;
+  solution?: string;
+  impact?: string;
+  bullets?: string[];
 }
 
 export interface ExperienceItem {
