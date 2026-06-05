@@ -6,6 +6,51 @@
   --font-mono: "Space Grotesk", "JetBrains Mono", ui-monospace, monospace;
   --font-serif: "Playfair Display", ui-serif, Georgia, serif;
   --font-signature: "Great Vibes", cursive;
+
+  /* Map theme colors */
+  --color-theme-100: var(--theme-100);
+  --color-theme-300: var(--theme-300);
+  --color-theme-400: var(--theme-400);
+  --color-theme-500: var(--theme-500);
+  --color-theme-600: var(--theme-600);
+  --color-theme-850: var(--theme-850);
+}
+
+:root {
+  /* Default Orange Theme */
+  --theme-100: #ffedd5;
+  --theme-300: #fdba74;
+  --theme-400: #fb923c;
+  --theme-500: #f97316;
+  --theme-600: #ea580c;
+  --theme-850: #7c2d12;
+}
+
+html[data-theme="blue"] {
+  --theme-100: #dbeafe;
+  --theme-300: #93c5fd;
+  --theme-400: #60a5fa;
+  --theme-500: #3b82f6;
+  --theme-600: #2563eb;
+  --theme-850: #1e3a8a;
+}
+
+html[data-theme="emerald"] {
+  --theme-100: #d1fae5;
+  --theme-300: #6ee7b7;
+  --theme-400: #34d399;
+  --theme-500: #10b981;
+  --theme-600: #059669;
+  --theme-850: #064e3b;
+}
+
+html[data-theme="purple"] {
+  --theme-100: #f3e8ff;
+  --theme-300: #d8b4fe;
+  --theme-400: #c084fc;
+  --theme-500: #a855f7;
+  --theme-600: #9333ea;
+  --theme-850: #581c87;
 }
 
 

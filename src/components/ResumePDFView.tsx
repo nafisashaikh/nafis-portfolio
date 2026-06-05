@@ -20,8 +20,8 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
   return (
     <div className="fixed inset-0 z-50 bg-[#050505]/98 overflow-y-auto flex items-start justify-center p-4 sm:p-10 backdrop-blur-md">
       {/* High-tech overlay borders */}
-      <div className="absolute top-4 left-4 right-4 h-[1px] bg-orange-500/10 pointer-events-none" />
-      <div className="absolute bottom-4 left-4 right-4 h-[1px] bg-orange-500/10 pointer-events-none" />
+      <div className="absolute top-4 left-4 right-4 h-[1px] bg-theme-500/10 pointer-events-none" />
+      <div className="absolute bottom-4 left-4 right-4 h-[1px] bg-theme-500/10 pointer-events-none" />
 
       <div className="w-full max-w-4xl relative z-10 flex flex-col gap-6 my-4">
         {/* Top Control Bar (Screen only, hidden on print) */}
@@ -29,13 +29,13 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
           <div className="flex items-center gap-3">
             <button
               onClick={onClose}
-              className="p-2 rounded-none bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-orange-500/30 transition-all flex items-center gap-1.5 font-mono text-xs cursor-pointer"
+              className="p-2 rounded-none bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-theme-500/30 transition-all flex items-center gap-1.5 font-mono text-xs cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" />
               <span>Back to App</span>
             </button>
             <div>
-              <span className="text-xs font-mono text-orange-500">NAFIS ABID SHAIKH //</span>
+              <span className="text-xs font-mono text-theme-500">NAFIS ABID SHAIKH //</span>
               <p className="text-[10px] font-mono text-slate-400 leading-none mt-0.5">FORMAL ATS-COMPATIBLE PORTRAIT</p>
             </div>
           </div>
@@ -43,14 +43,14 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="flex items-center gap-2 px-4.5 py-2 rounded-none bg-orange-500 hover:bg-orange-600 text-black font-semibold font-mono text-xs tracking-wide transition-all cursor-pointer"
+              className="flex items-center gap-2 px-4.5 py-2 rounded-none bg-theme-500 hover:bg-theme-600 text-black font-semibold font-mono text-xs tracking-wide transition-all cursor-pointer"
             >
               <Printer className="w-4 h-4" />
               <span>Print / Save as PDF</span>
             </button>
             <button
               onClick={onClose}
-              className="p-2 rounded-none bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:border-orange-500/35 transition-all cursor-pointer"
+              className="p-2 rounded-none bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:border-theme-500/35 transition-all cursor-pointer"
               title="Close modal"
             >
               <X className="w-4.5 h-4.5" />
@@ -69,7 +69,7 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
               <h1 className="text-3xl font-serif font-bold tracking-tight text-slate-950 uppercase">
                 {activePersona.basics.name}
               </h1>
-              <p className="text-sm font-mono text-orange-600 font-semibold uppercase mt-1 tracking-wider">
+              <p className="text-sm font-mono text-theme-600 font-semibold uppercase mt-1 tracking-wider">
                 {activePersona.basics.titles[0]}
               </p>
             </div>

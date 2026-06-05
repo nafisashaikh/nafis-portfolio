@@ -10,6 +10,13 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
   const [activeSection, setActiveSection] = useState("hero");
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState("orange");
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("portfolio-theme") || "orange";
+    setCurrentTheme(savedTheme);
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  }, []);
 
   const navItems = [
     { id: "hero", label: "Profile", icon: User },
@@ -65,6 +72,12 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
     }
   };
 
+  const changeTheme = (theme: string) => {
+    setCurrentTheme(theme);
+    localStorage.setItem("portfolio-theme", theme);
+    document.documentElement.setAttribute("data-theme", theme);
+  };
+
   return (
     <>
       {/* Sticky Top Header (Desktop & Mobile title bar) */}
@@ -81,14 +94,14 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <div className="w-10 h-10 border border-orange-500 flex items-center justify-center relative overflow-hidden transition-all duration-300 group-hover:bg-orange-500/10 shrink-0">
+            <div className="w-10 h-10 border border-theme-500 flex items-center justify-center relative overflow-hidden transition-all duration-300 group-hover:bg-theme-500/10 shrink-0">
               <Logo className="w-8 h-8" />
             </div>
             <div>
               <span className="text-xs font-mono font-semibold tracking-[0.25em] text-white hidden sm:inline-block">
                 NAFIS ABID SHAIKH
               </span>
-              <p className="text-[9px] font-mono text-orange-500/80 tracking-widest leading-none hidden sm:block mt-1">
+              <p className="text-[9px] font-mono text-theme-500/80 tracking-widest leading-none hidden sm:block mt-1">
                 // SYSTEM REPORT: LIVE
               </p>
             </div>
@@ -105,7 +118,7 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
                   onClick={() => scrollTo(item.id)}
                   className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-mono text-xs tracking-wider transition-all duration-300 ${
                     isActive
-                      ? "bg-orange-500/10 text-orange-400 border border-orange-500/20"
+                      ? "bg-theme-500/10 text-theme-400 border border-theme-500/20"
                       : "text-gray-400 hover:text-white border border-transparent"
                   }`}
                 >
@@ -118,10 +131,22 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
 
           {/* Action Buttons & Theme Controls */}
           <div className="flex items-center gap-3">
+            {/* Theme Controls */}
+            <div className="hidden sm:flex items-center gap-1.5 mr-2">
+              {['orange', 'blue', 'emerald', 'purple'].map((theme) => (
+                <button
+                  key={theme}
+                  onClick={() => changeTheme(theme)}
+                  className={`w-3.5 h-3.5 rounded-none border border-white/20 transition-all duration-300 ${currentTheme === theme ? 'scale-125 border-white ring-1 ring-white/50' : 'hover:scale-110 opacity-60 hover:opacity-100'} ${theme === 'orange' ? 'bg-[#f97316]' : theme === 'blue' ? 'bg-[#3b82f6]' : theme === 'emerald' ? 'bg-[#10b981]' : 'bg-[#a855f7]'}`}
+                  title={`${theme} theme`}
+                />
+              ))}
+            </div>
+
             {/* Quick Resume Print Trigger Button (Editorial CTA - transparent with amber bounds) */}
             <button
               onClick={onOpenPDF}
-              className="flex items-center gap-1.5 px-4 py-2 bg-orange-500 text-black hover:bg-orange-600 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-300 active:scale-95"
+              className="flex items-center gap-1.5 px-4 py-2 bg-theme-500 text-black hover:bg-theme-600 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-300 active:scale-95"
             >
               <FileText className="w-3.5 h-3.5" />
               <span className="hidden xs:inline">Print Resume</span>
@@ -152,11 +177,11 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
                   onClick={() => scrollTo(item.id)}
                   className={`flex items-center gap-3 px-4 py-3.5 font-mono text-xs tracking-wider text-left transition-all ${
                     isActive
-                      ? "bg-orange-500/10 text-orange-400 border border-orange-500/20"
+                      ? "bg-theme-500/10 text-theme-400 border border-theme-500/20"
                       : "text-gray-400 hover:text-white bg-white/5 border border-white/10"
                   }`}
                 >
-                  <Icon className="w-4 h-4 text-orange-500" />
+                  <Icon className="w-4 h-4 text-theme-500" />
                   {item.label}
                 </button>
               );
@@ -176,7 +201,7 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
                 key={item.id}
                 onClick={() => scrollTo(item.id)}
                 className={`flex flex-col items-center gap-1 p-2 transition-all ${
-                  isActive ? "text-orange-500" : "text-gray-500 hover:text-gray-300"
+                  isActive ? "text-theme-500" : "text-gray-500 hover:text-gray-300"
                 }`}
               >
                 <Icon className="w-4 h-4" />

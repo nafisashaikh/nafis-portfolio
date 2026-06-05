@@ -117,7 +117,7 @@ If someone asks for contact info, tell them to use the links in the header. Keep
       {/* Floating Action Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-24 md:bottom-6 right-4 md:right-6 z-50 p-4 rounded-full bg-gradient-to-r from-orange-500 to-red-600 text-white shadow-lg shadow-orange-500/30 hover:scale-110 transition-all duration-300 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
+        className={`fixed bottom-24 md:bottom-6 right-4 md:right-6 z-50 p-4 rounded-full bg-gradient-to-r from-theme-500 to-theme-600 text-white shadow-lg shadow-theme-500/30 hover:scale-110 transition-all duration-300 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
         aria-label="Open AI Assistant"
       >
         <Sparkles className="w-6 h-6" />
@@ -130,12 +130,12 @@ If someone asks for contact info, tell them to use the links in the header. Keep
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-white/10 bg-white/5 rounded-t-2xl">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center shadow-inner">
+            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-theme-500 to-theme-600 flex items-center justify-center shadow-inner">
               <Sparkles className="w-4 h-4 text-white" />
             </div>
             <div>
               <h3 className="text-white font-semibold text-sm">AI Assistant</h3>
-              <p className="text-orange-400 text-xs">Powered by Gemini</p>
+              <p className="text-theme-400 text-xs">Powered by Gemini</p>
             </div>
           </div>
           <button 
@@ -152,13 +152,13 @@ If someone asks for contact info, tell them to use the links in the header. Keep
             <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
               {msg.role === 'model' && (
                 <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10">
-                  <Sparkles className="w-4 h-4 text-orange-400" />
+                  <Sparkles className="w-4 h-4 text-theme-400" />
                 </div>
               )}
               
               <div className={`max-w-[80%] rounded-2xl p-3 text-sm leading-relaxed ${
                 msg.role === 'user' 
-                  ? 'bg-orange-500 text-white rounded-tr-sm' 
+                  ? 'bg-theme-500 text-white rounded-tr-sm' 
                   : 'bg-white/10 text-slate-200 rounded-tl-sm border border-white/5'
               }`}>
                 {msg.content}
@@ -175,7 +175,7 @@ If someone asks for contact info, tell them to use the links in the header. Keep
           {isLoading && (
             <div className="flex gap-3 justify-start animate-pulse">
               <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10">
-                <Sparkles className="w-4 h-4 text-orange-400" />
+                <Sparkles className="w-4 h-4 text-theme-400" />
               </div>
               <div className="bg-white/10 rounded-2xl rounded-tl-sm p-4 flex gap-1 items-center">
                 <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" />
@@ -186,7 +186,7 @@ If someone asks for contact info, tell them to use the links in the header. Keep
           )}
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500/20 text-red-400 text-xs p-3 rounded-lg text-center">
+            <div className="bg-theme-500/10 border border-theme-500/20 text-red-400 text-xs p-3 rounded-lg text-center">
               {error}
             </div>
           )}
@@ -200,7 +200,7 @@ If someone asks for contact info, tell them to use the links in the header. Keep
               <button
                 key={i}
                 onClick={() => handleSend(undefined, reply)}
-                className="text-xs px-3 py-1.5 bg-white/5 hover:bg-orange-500/20 text-orange-400 hover:text-orange-300 border border-orange-500/20 rounded-full transition-colors whitespace-nowrap"
+                className="text-xs px-3 py-1.5 bg-white/5 hover:bg-theme-500/20 text-theme-400 hover:text-theme-300 border border-theme-500/20 rounded-full transition-colors whitespace-nowrap"
               >
                 {reply}
               </button>
@@ -217,12 +217,12 @@ If someone asks for contact info, tell them to use the links in the header. Keep
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about my experience..."
               disabled={isLoading}
-              className="w-full bg-slate-900/50 border border-white/10 rounded-full py-3 pl-4 pr-12 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-orange-500/50 focus:ring-1 focus:ring-orange-500/50 transition-all disabled:opacity-50"
+              className="w-full bg-slate-900/50 border border-white/10 rounded-full py-3 pl-4 pr-12 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-theme-500/50 focus:ring-1 focus:ring-theme-500/50 transition-all disabled:opacity-50"
             />
             <button
               type="submit"
               disabled={!input.trim() || isLoading}
-              className="absolute right-2 p-2 rounded-full bg-orange-500 text-white hover:bg-orange-400 disabled:opacity-50 disabled:hover:bg-orange-500 transition-colors"
+              className="absolute right-2 p-2 rounded-full bg-theme-500 text-white hover:bg-theme-400 disabled:opacity-50 disabled:hover:bg-theme-500 transition-colors"
             >
               <Send className="w-4 h-4" />
             </button>

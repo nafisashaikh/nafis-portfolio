@@ -26,21 +26,19 @@ export default function App() {
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden ${darkMode ? "dark bg-[#050505] text-[#e5e5e5]" : "bg-white text-slate-900"} selection:bg-orange-100 selection:text-orange-850`}>
+    <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden ${darkMode ? "dark bg-[#050505] text-[#e5e5e5]" : "bg-white text-slate-900"} selection:bg-theme-100 selection:text-theme-850`}>
       {/* 1. Fully-reactive Canvas Background Animation */}
       <AnimatedBackground />
 
       {/* Editorial aesthetic ambient spots underneath */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
-        <div className="absolute top-[-5%] right-[-10%] w-[50%] h-[50%] bg-orange-500/10 rounded-full blur-[140px]" />
+        <div className="absolute top-[-5%] right-[-10%] w-[50%] h-[50%] bg-theme-500/10 rounded-full blur-[140px]" />
         <div className="absolute bottom-[-5%] left-[-10%] w-[50%] h-[50%] bg-blue-500/8 rounded-full blur-[140px]" />
       </div>
 
       {/* 2. Responsive Sticky Header & Drawer Layout */}
       <Navbar 
         onOpenPDF={() => setPdfOpen(true)} 
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
       />
 
       {/* Main Container Wrapper */}
@@ -68,7 +66,7 @@ export default function App() {
           {/* Looking For Segment */}
           <div className="max-w-4xl mx-auto px-6 py-12 mb-16 border border-white/10 rounded-2xl bg-slate-900/40 backdrop-blur-sm text-center flex flex-col items-center">
             <div className="flex flex-col gap-2 mb-6 items-center">
-              <span className="font-mono text-xs tracking-[0.25em] text-orange-500 uppercase font-semibold">Open To Work</span>
+              <span className="font-mono text-xs tracking-[0.25em] text-theme-500 uppercase font-semibold">Open To Work</span>
               <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight">
                 Looking for <span className="text-slate-400 italic font-serif">Opportunities</span>
               </h2>
@@ -80,7 +78,7 @@ export default function App() {
             <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 text-slate-400">
               <a 
                 href={`mailto:${activePersona.basics.email}`}
-                className="hover:text-orange-400 transition-colors flex items-center gap-2"
+                className="hover:text-theme-400 transition-colors flex items-center gap-2"
               >
                 {activePersona.basics.email}
               </a>
@@ -88,7 +86,7 @@ export default function App() {
                 href={activePersona.basics.github} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-orange-400 transition-colors flex items-center gap-2"
+                className="hover:text-theme-400 transition-colors flex items-center gap-2"
               >
                 GitHub
               </a>
@@ -96,7 +94,7 @@ export default function App() {
                 href={activePersona.basics.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-orange-400 transition-colors flex items-center gap-2"
+                className="hover:text-theme-400 transition-colors flex items-center gap-2"
               >
                 LinkedIn
               </a>
