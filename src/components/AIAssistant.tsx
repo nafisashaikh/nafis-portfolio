@@ -41,6 +41,12 @@ If someone asks for contact info, tell them to use the links in the header. Keep
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   
+  const QUICK_REPLIES = [
+    "What are your top skills?",
+    "Tell me about your SIH project",
+    "How can I contact you?",
+  ];
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom of chat
@@ -50,11 +56,11 @@ If someone asks for contact info, tell them to use the links in the header. Keep
     }
   }, [messages, isOpen]);
 
-  const handleSend = async (e?: React.FormEvent) => {
+  const handleSend = async (e?: React.FormEvent, textOverride?: string) => {
     e?.preventDefault();
-    if (!input.trim() || isLoading) return;
+    const userMessage = (textOverride || input).trim();
+    if (!userMessage || isLoading) return;
 
-    const userMessage = input.trim();
     setInput('');
     setError(null);
     setMessages(prev => [...prev, { id: Date.now().toString(), role: 'user', content: userMessage }]);
@@ -187,8 +193,23 @@ If someone asks for contact info, tell them to use the links in the header. Keep
           <div ref={messagesEndRef} />
         </div>
 
+        {/* Quick Replies */}
+        {!isLoading && messages.length < 3 && (
+          <div className="px-4 pb-3 flex flex-wrap gap-2">
+            {QUICK_REPLIES.map((reply, i) => (
+              <button
+                key={i}
+                onClick={() => handleSend(undefined, reply)}
+                className="text-xs px-3 py-1.5 bg-white/5 hover:bg-orange-500/20 text-orange-400 hover:text-orange-300 border border-orange-500/20 rounded-full transition-colors whitespace-nowrap"
+              >
+                {reply}
+              </button>
+            ))}
+          </div>
+        )}
+
         {/* Input Area */}
-        <form onSubmit={handleSend} className="p-4 border-t border-white/10 bg-white/5 rounded-b-2xl">
+        <form onSubmit={(e) => handleSend(e)} className="p-4 border-t border-white/10 bg-white/5 rounded-b-2xl">
           <div className="relative flex items-center">
             <input
               type="text"
