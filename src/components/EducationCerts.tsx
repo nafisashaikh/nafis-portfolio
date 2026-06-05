@@ -1,4 +1,5 @@
 import { GraduationCap, Award, ExternalLink, Calendar, MapPin, CornerDownRight } from "lucide-react";
+import { motion } from "motion/react";
 import { resumeData as activePersona } from "../data/resumeData";
 
 export default function EducationCerts() {
@@ -17,8 +18,12 @@ export default function EducationCerts() {
 
           <div className="space-y-6">
             {activePersona.education.map((edu, idx) => (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="bg-white/[0.02] border border-white/10 p-6 relative overflow-hidden group hover:border-orange-500/20 transition-all rounded-none"
               >
                 {/* Cyber laser node decoration */}
@@ -43,7 +48,7 @@ export default function EducationCerts() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
@@ -59,8 +64,12 @@ export default function EducationCerts() {
 
           <div className="space-y-6">
             {(activePersona.certifications || activePersona.experience.slice(0, 2)).map((cert, idx) => (
-              <div
+              <motion.div
                 key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className="bg-white/[0.02] border border-white/10 p-6 relative overflow-hidden group hover:border-orange-500/20 transition-all rounded-none"
               >
                 {/* Accent glow on list item hover */}
@@ -93,7 +102,7 @@ export default function EducationCerts() {
                     </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>

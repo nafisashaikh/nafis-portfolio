@@ -1,4 +1,5 @@
 import { Briefcase, Calendar, MapPin, ChevronDown, ChevronUp } from "lucide-react";
+import { motion } from "motion/react";
 import { resumeData as activePersona } from '../data/resumeData';
 import { useState } from "react";
 
@@ -20,10 +21,13 @@ export default function ExperienceTimeline() {
 
       <div className="relative border-l-2 border-slate-800/50 ml-4 md:ml-6 space-y-8">
         {activePersona.experience.map((exp, idx) => (
-          <div 
+          <motion.div 
             key={idx}
-            className="relative pl-8 md:pl-12 group animate-fade-in-up"
-            style={{ animationDelay: `${idx * 0.15}s` }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.5, delay: idx * 0.15 }}
+            className="relative pl-8 md:pl-12 group"
           >
             {/* Timeline dot */}
             <div className="absolute left-[-9px] top-1.5 w-4 h-4 rounded-full bg-slate-900 border-2 border-orange-500 shadow-[0_0_10px_rgba(249,115,22,0.5)] group-hover:scale-125 transition-transform duration-300" />
@@ -67,8 +71,8 @@ export default function ExperienceTimeline() {
                   </ul>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         ))}
       </div>
     </section>

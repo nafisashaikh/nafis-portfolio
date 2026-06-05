@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Cpu, Terminal, Brackets, Sliders, LayoutDashboard, Compass, Monitor, Database, LineChart, Code2, Wrench } from "lucide-react";
+import { motion } from "motion/react";
 import { resumeData as activePersona } from '../data/resumeData';
 
 export default function SkillsGrid() {
@@ -33,8 +34,12 @@ export default function SkillsGrid() {
           const IconComponent = ICONS[cat.category] || Cpu;
           const isSelected = activeCategory === cat.category;
           return (
-            <div
+            <motion.div
               key={idx}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: idx * 0.1 }}
               onMouseEnter={() => setActiveCategory(cat.category)}
               onMouseLeave={() => setActiveCategory(null)}
               className={`bg-white/[0.02] border p-6 relative overflow-hidden transition-all duration-300 transform group rounded-none ${
@@ -75,13 +80,19 @@ export default function SkillsGrid() {
 
               {/* Gentle visual radar glow */}
               <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-orange-500/5 rounded-full blur-xl pointer-events-none group-hover:opacity-100 opacity-50 transition-opacity" />
-            </div>
+            </motion.div>
           );
         })}
       </div>
 
       {/* Embedded Skill Spotlight panel indicating core tools */}
-      <div className="mt-10 p-6 bg-white/[0.02] border border-white/10 rounded-none flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="mt-10 p-6 bg-white/[0.02] border border-white/10 rounded-none flex flex-col sm:flex-row sm:items-center justify-between gap-6"
+      >
         <div>
           <h4 className="font-mono text-xs font-bold text-orange-500 uppercase tracking-widest">
             Primary Framework Stack
@@ -100,7 +111,7 @@ export default function SkillsGrid() {
             </span>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

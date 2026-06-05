@@ -1,4 +1,5 @@
 import { ExternalLink, Github, Terminal, ArrowRight } from "lucide-react";
+import { motion } from "motion/react";
 import { resumeData as activePersona } from '../data/resumeData';
 
 // Helper function to extract cleanly formatted stack tags
@@ -28,8 +29,12 @@ export default function ProjectGallery() {
           const tags = parseStack(project.stack);
           
           return (
-            <div 
+            <motion.div 
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               className="group relative flex flex-col bg-slate-900/50 backdrop-blur-sm border border-white/10 p-8 hover:border-orange-500/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(249,115,22,0.1)] rounded-2xl overflow-hidden"
             >
               {/* Subtle hover gradient backdrop */}
@@ -110,7 +115,7 @@ export default function ProjectGallery() {
                   </a>
                 )}
               </div>
-            </div>
+            </motion.div>
           );
         })}
       </div>

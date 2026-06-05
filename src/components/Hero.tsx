@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowDown, FileText, CheckCircle2, ChevronRight } from "lucide-react";
+import { motion } from "motion/react";
 import { resumeData as activePersona } from '../data/resumeData';
 import { Logo } from "./Logo";
 
@@ -65,7 +66,12 @@ export default function Hero({ onOpenPDF }: HeroProps) {
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-orange-500/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute right-10 top-20 w-72 h-72 border border-white/[0.02] rounded-full pointer-events-none hidden lg:block" />
 
-      <div className="grid lg:grid-cols-12 gap-12 items-center relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="grid lg:grid-cols-12 gap-12 items-center relative z-10"
+      >
         {/* Left main branding header columns */}
         <div className="lg:col-span-7 flex flex-col gap-6">
           {/* Top subtle high-tech tag */}
@@ -126,7 +132,12 @@ export default function Hero({ onOpenPDF }: HeroProps) {
         </div>
 
         {/* Right visualization column showing metrics or a futuristic card */}
-        <div className="lg:col-span-5 relative flex justify-center">
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
+          className="lg:col-span-5 relative flex justify-center"
+        >
           {/* Glass design grid block */}
           <div className="w-full max-w-[360px] bg-white/[0.02] backdrop-blur-md border border-white/10 p-6 relative overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.7)] group hover:border-orange-500/20 transition-all duration-500">
             {/* Corner literal decals */}
@@ -185,8 +196,8 @@ export default function Hero({ onOpenPDF }: HeroProps) {
             {/* Glowing bottom line */}
             <div className="h-[1px] bg-gradient-to-r from-transparent via-orange-500/20 to-transparent mt-6" />
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
