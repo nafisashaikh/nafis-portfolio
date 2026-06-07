@@ -171,13 +171,11 @@ export default function ResumePDFView({ isOpen, onClose }: ResumePDFViewProps) {
                       </h3>
                       <span className="text-xs font-mono text-slate-500 shrink-0">{p.stack}</span>
                     </div>
-                    <ul className="list-disc pl-4 space-y-1">
-                      {p.bullets.map((b, bIdx) => (
-                        <li key={bIdx} className="text-xs font-sans text-slate-700 leading-relaxed">
-                          {b}
-                        </li>
-                      ))}
-                    </ul>
+                    <div className="space-y-1.5 mt-2">
+                      {p.problem && <p className="text-xs font-sans text-slate-700 leading-relaxed"><span className="font-semibold">Problem:</span> {p.problem}</p>}
+                      {p.solution && <p className="text-xs font-sans text-slate-700 leading-relaxed"><span className="font-semibold">Solution:</span> {p.solution}</p>}
+                      {p.impact && <p className="text-xs font-sans text-slate-700 leading-relaxed"><span className="font-semibold">Impact:</span> {p.impact}</p>}
+                    </div>
                   </div>
                 ))}
               </div>
