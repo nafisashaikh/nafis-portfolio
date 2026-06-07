@@ -59,7 +59,7 @@ export const resumeData: ResumeData = {
       title: "AI News Platform",
       stack: "Next.js, Python, OpenAI API, PostgreSQL",
       link: "https://github.com/nafisashaikh",
-      demoLink: "https://nafisashaikh.github.io",
+      demoLink: "https://news-intelligence-platform-frontend.vercel.app/",
       problem: "Readers are overwhelmed by information overload and struggle to find concise, categorized global news.",
       solution: "Engineered an automated aggregation pipeline using advanced NLP to distill lengthy articles into actionable intelligence briefs.",
       impact: "Delivered a highly responsive frontend ecosystem that provides categorized, real-time news intelligence at a glance."
