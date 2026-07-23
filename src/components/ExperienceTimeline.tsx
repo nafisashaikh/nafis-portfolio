@@ -53,7 +53,7 @@ export default function ExperienceTimeline() {
                 <div className="flex flex-row md:flex-col items-center md:items-end gap-3 text-sm text-slate-400">
                   <div className="flex items-center gap-1.5 bg-slate-800/50 px-3 py-1 rounded-full border border-white/5">
                     <Calendar className="w-4 h-4 text-theme-400" />
-                    <span>{exp.duration}</span>
+                    <span>{(exp as any).dates || (exp as any).duration}</span>
                   </div>
                   {expandedIndex === idx ? <ChevronUp className="w-5 h-5 text-slate-500 hidden md:block" /> : <ChevronDown className="w-5 h-5 text-slate-500 hidden md:block" />}
                 </div>

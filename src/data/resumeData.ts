@@ -22,6 +22,16 @@ export const resumeData: ResumeData = {
   },
   experience: [
     {
+      company: "Cipla",
+      role: "Data Analyst Intern",
+      dates: "June 2026 - Present",
+      location: "Mumbai, India",
+      bullets: [
+        "Currently participating in an internship program, successfully completing the first month.",
+        "Gaining hands-on industry experience and contributing to team objectives."
+      ]
+    },
+    {
       company: "Smart India Hackathon (SIH)",
       role: "System Engineer & NLP Specialist",
       dates: "2024",

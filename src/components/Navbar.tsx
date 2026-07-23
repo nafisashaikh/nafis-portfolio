@@ -82,13 +82,22 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
     <>
       {/* Sticky Top Header (Desktop & Mobile title bar) */}
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-50 flex flex-col transition-all duration-300 ${
           scrolled
-            ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.6)]"
-            : "bg-transparent py-5"
+            ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.6)]"
+            : "bg-transparent"
         }`}
       >
-        <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        {/* Global Broadcast Banner */}
+        <div className="w-full bg-theme-500 text-black py-1.5 px-4 text-center text-[10px] sm:text-xs font-mono font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-2 relative overflow-hidden group">
+          {/* Subtle animated shine */}
+          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
+          <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+          <span>Live Update: Successfully completed 1st month of Data Analyst Internship @ Cipla</span>
+          <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+        </div>
+
+        <div className={`max-w-6xl w-full mx-auto px-6 flex items-center justify-between transition-all duration-300 ${scrolled ? 'py-2.5' : 'py-4 mt-1'}`}>
           {/* Logo / Monogram (Fuses directly with the Editorial NAS border spec) */}
           <div
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}

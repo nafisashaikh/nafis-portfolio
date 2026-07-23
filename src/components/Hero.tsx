@@ -75,9 +75,9 @@ export default function Hero({ onOpenPDF }: HeroProps) {
         {/* Left main branding header columns */}
         <div className="lg:col-span-7 flex flex-col gap-6">
           {/* Top subtle high-tech tag */}
-          <div className="inline-flex items-center gap-2 self-start px-3.5 py-1.5 bg-white/5 border border-white/10 text-theme-500 font-mono text-[10px] tracking-[0.25em] uppercase">
+          <div className="inline-flex items-center gap-2 self-start px-3.5 py-1.5 bg-theme-500/10 border border-theme-500/30 text-theme-400 font-mono text-[10px] tracking-[0.25em] uppercase">
             <span className="w-1.5 h-1.5 rounded-full bg-theme-500 animate-pulse" />
-            Active Internship Aspirant
+            Currently Interning @ Cipla
           </div>
 
           <div className="flex flex-col gap-2">
