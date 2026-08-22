@@ -30,29 +30,6 @@ export const resumeData: ResumeData = {
         "Build and maintain dashboards and visual reports in Power BI/Excel, translating raw survey and operational data into clear, actionable summaries for internal stakeholders.",
         "Apply SQL and Excel to identify trends and anomalies within reporting datasets, supporting data-driven decisions across HR reporting cycles."
       ]
-    },
-    {
-      company: "Smart India Hackathon (SIH)",
-      role: "System Engineer & NLP Specialist",
-      dates: "2024",
-      location: "Mumbai (National Challenge)",
-      bullets: [
-        "Engineered an automated NLP pipeline involving data ingestion, preprocessing, model inference, and visual reporting.",
-        "Developed a sentiment analysis model classifying raw text inputs with high accuracy as part of a Smart India Hackathon submission.",
-        "Analyzed operational transportation datasets to identify efficiency gaps for an 'AI Driven Metro Rail Project'.",
-        "Performed system-level debugging and optimization to improve processing throughput."
-      ]
-    },
-    {
-      company: "Deloitte Australia (Forage)",
-      role: "Forensic Data Analyst Intern",
-      dates: "Mar 2026",
-      location: "Remote Simulation",
-      bullets: [
-        "Completed a realistic forensic corporate data analysis simulation.",
-        "Built a detailed Tableau dashboard to audit corporate data patterns and surface anomalies.",
-        "Utilized advanced Excel modeling to analyze metrics and draw verified business conclusions for stakeholders."
-      ]
     }
   ],
   projects: [
