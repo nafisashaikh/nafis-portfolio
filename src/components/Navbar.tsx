@@ -143,16 +143,14 @@ export default function Navbar({ onOpenPDF, darkMode = true, onToggleDarkMode }:
           {/* Action Buttons & Theme Controls */}
           <div className="flex items-center gap-3">
             {/* Dark / Light Mode Toggle */}
-            {onToggleDarkMode && (
-              <button
-                onClick={onToggleDarkMode}
-                className="p-2 bg-white/5 border border-white/10 rounded-full text-slate-300 hover:text-white hover:border-theme-500/30 transition-all flex items-center justify-center cursor-pointer"
-                title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-                aria-label="Toggle dark/light mode"
-              >
-                {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-slate-300" />}
-              </button>
-            )}
+            <button
+              onClick={onToggleDarkMode}
+              className="p-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-slate-200 hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-sm"
+              title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+              aria-label="Toggle dark/light mode"
+            >
+              {darkMode ? <Sun className="w-4.5 h-4.5 text-amber-400" /> : <Moon className="w-4.5 h-4.5 text-indigo-300" />}
+            </button>
 
             {/* Quick Resume Print Trigger Button (Editorial CTA - transparent with amber bounds) */}
             <button
