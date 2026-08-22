@@ -39,6 +39,8 @@ export default function App() {
       {/* 2. Responsive Sticky Header & Drawer Layout */}
       <Navbar 
         onOpenPDF={() => setPdfOpen(true)} 
+        darkMode={darkMode}
+        onToggleDarkMode={() => setDarkMode(!darkMode)}
       />
 
       {/* Main Container Wrapper */}
