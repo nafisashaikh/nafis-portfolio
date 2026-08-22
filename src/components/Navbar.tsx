@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { User, Zap, Terminal, Cpu, GraduationCap, FileText, Menu, X, Sun, Moon } from "lucide-react";
+import { User, Zap, Terminal, Cpu, GraduationCap, FileText, Menu, X } from "lucide-react";
 import { Logo } from "./Logo";
 
 interface NavbarProps {
@@ -140,17 +140,8 @@ export default function Navbar({ onOpenPDF, darkMode = true, onToggleDarkMode }:
             })}
           </nav>
 
-          {/* Action Buttons & Theme Controls */}
+          {/* Action Buttons */}
           <div className="flex items-center gap-3">
-            {/* Dark / Light Mode Toggle */}
-            <button
-              onClick={onToggleDarkMode}
-              className="p-2 dark:bg-white/10 dark:hover:bg-white/20 bg-slate-200 hover:bg-slate-300 dark:border-white/20 border-slate-300 rounded-full dark:text-slate-200 text-slate-700 transition-all flex items-center justify-center cursor-pointer shadow-sm"
-              title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-              aria-label="Toggle dark/light mode"
-            >
-              {darkMode ? <Sun className="w-4.5 h-4.5 text-amber-400" /> : <Moon className="w-4.5 h-4.5 text-indigo-600" />}
-            </button>
 
             {/* Quick Resume Print Trigger Button (Editorial CTA - transparent with amber bounds) */}
             <button
