@@ -1,5 +1,5 @@
 import { useState } from "react";
-import AnimatedBackground from "./components/AnimatedBackground";
+import ThreeBackground from "./components/ThreeBackground";
 import SplashScreen from "./components/SplashScreen";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
@@ -27,8 +27,8 @@ export default function App() {
 
   return (
     <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden ${darkMode ? "dark bg-[#050505] text-[#e5e5e5]" : "bg-slate-50 text-slate-900"} selection:bg-theme-100 selection:text-theme-850`}>
-      {/* 1. Fully-reactive Canvas Background Animation */}
-      <AnimatedBackground />
+      {/* 1. Three.js 3D Background */}
+      <ThreeBackground />
 
       {/* Editorial aesthetic ambient spots underneath */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
