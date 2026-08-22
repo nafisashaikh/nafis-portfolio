@@ -93,7 +93,7 @@ export default function Navbar({ onOpenPDF }: NavbarProps) {
           {/* Subtle animated shine */}
           <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
           <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-          <span>Live Update: Successfully completed 1st month of Data Analyst Internship @ Cipla</span>
+          <span>Live Update: Successfully completed 2 months of Data Analyst Internship @ Cipla</span>
           <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
         </div>
 
