@@ -86,7 +86,7 @@ export default function Navbar({ onOpenPDF, darkMode = true, onToggleDarkMode }:
       <header
         className={`fixed top-0 left-0 right-0 z-50 flex flex-col transition-all duration-300 ${
           scrolled
-            ? "bg-[#050505]/80 backdrop-blur-md border-b border-white/5 shadow-[0_4px_30px_rgba(0,0,0,0.6)]"
+            ? "dark:bg-[#050505]/80 bg-white/90 backdrop-blur-md border-b dark:border-white/5 border-slate-200 shadow-md"
             : "bg-transparent"
         }`}
       >
@@ -109,7 +109,7 @@ export default function Navbar({ onOpenPDF, darkMode = true, onToggleDarkMode }:
               <Logo className="w-8 h-8" />
             </div>
             <div>
-              <span className="text-xs font-mono font-semibold tracking-[0.25em] text-white hidden sm:inline-block">
+              <span className="text-xs font-mono font-semibold tracking-[0.25em] dark:text-white text-slate-900 hidden sm:inline-block">
                 NAFIS ABID SHAIKH
               </span>
               <p className="text-[9px] font-mono text-theme-500/80 tracking-widest leading-none hidden sm:block mt-1">
@@ -119,7 +119,7 @@ export default function Navbar({ onOpenPDF, darkMode = true, onToggleDarkMode }:
           </div>
 
           {/* Desktop Nav Items */}
-          <nav className="hidden md:flex items-center gap-1 bg-white/5 border border-white/10 p-1 rounded-full backdrop-blur-sm">
+          <nav className="hidden md:flex items-center gap-1 dark:bg-white/5 bg-slate-900/5 dark:border-white/10 border-slate-200 p-1 rounded-full backdrop-blur-sm">
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeSection === item.id;
@@ -130,7 +130,7 @@ export default function Navbar({ onOpenPDF, darkMode = true, onToggleDarkMode }:
                   className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-mono text-xs tracking-wider transition-all duration-300 ${
                     isActive
                       ? "bg-theme-500/10 text-theme-400 border border-theme-500/20"
-                      : "text-gray-400 hover:text-white border border-transparent"
+                      : "dark:text-gray-400 text-slate-600 dark:hover:text-white hover:text-slate-900 border border-transparent"
                   }`}
                 >
                   <Icon className="w-3.5 h-3.5" />
@@ -145,11 +145,11 @@ export default function Navbar({ onOpenPDF, darkMode = true, onToggleDarkMode }:
             {/* Dark / Light Mode Toggle */}
             <button
               onClick={onToggleDarkMode}
-              className="p-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full text-slate-200 hover:text-white transition-all flex items-center justify-center cursor-pointer shadow-sm"
+              className="p-2 dark:bg-white/10 dark:hover:bg-white/20 bg-slate-200 hover:bg-slate-300 dark:border-white/20 border-slate-300 rounded-full dark:text-slate-200 text-slate-700 transition-all flex items-center justify-center cursor-pointer shadow-sm"
               title={darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
               aria-label="Toggle dark/light mode"
             >
-              {darkMode ? <Sun className="w-4.5 h-4.5 text-amber-400" /> : <Moon className="w-4.5 h-4.5 text-indigo-300" />}
+              {darkMode ? <Sun className="w-4.5 h-4.5 text-amber-400" /> : <Moon className="w-4.5 h-4.5 text-indigo-600" />}
             </button>
 
             {/* Quick Resume Print Trigger Button (Editorial CTA - transparent with amber bounds) */}

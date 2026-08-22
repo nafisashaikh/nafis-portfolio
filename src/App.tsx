@@ -26,7 +26,7 @@ export default function App() {
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden ${darkMode ? "dark bg-[#050505] text-[#e5e5e5]" : "bg-white text-slate-900"} selection:bg-theme-100 selection:text-theme-850`}>
+    <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden ${darkMode ? "dark bg-[#050505] text-[#e5e5e5]" : "bg-slate-50 text-slate-900"} selection:bg-theme-100 selection:text-theme-850`}>
       {/* 1. Fully-reactive Canvas Background Animation */}
       <AnimatedBackground />
 
@@ -64,23 +64,23 @@ export default function App() {
         <EducationCerts />
 
         {/* Additional Info Completeness Footer section */}
-        <footer className="mt-20 border-t border-white/5 pt-16 pb-32 md:pb-24 max-w-6xl mx-auto px-6 text-center">
+        <footer className="mt-20 border-t dark:border-white/5 border-slate-200 pt-16 pb-32 md:pb-24 max-w-6xl mx-auto px-6 text-center">
           {/* Looking For Segment */}
-          <div className="max-w-4xl mx-auto px-6 py-12 mb-16 border border-white/10 rounded-2xl bg-slate-900/40 backdrop-blur-sm text-center flex flex-col items-center">
+          <div className="max-w-4xl mx-auto px-6 py-12 mb-16 border dark:border-white/10 border-slate-200 rounded-2xl dark:bg-slate-900/40 bg-white shadow-sm backdrop-blur-sm text-center flex flex-col items-center">
             <div className="flex flex-col gap-2 mb-6 items-center">
               <span className="font-mono text-xs tracking-[0.25em] text-theme-500 uppercase font-semibold">Open To Work</span>
-              <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight">
-                Looking for <span className="text-slate-400 italic font-serif">Opportunities</span>
+              <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight dark:text-white text-slate-900">
+                Looking for <span className="dark:text-slate-400 text-slate-500 italic font-serif">Opportunities</span>
               </h2>
             </div>
-            <p className="text-slate-400 leading-relaxed max-w-2xl mx-auto">
+            <p className="dark:text-slate-400 text-slate-700 leading-relaxed max-w-2xl mx-auto">
               {activePersona.basics.lookingFor || "I am currently looking for internship opportunities in Data Analytics, MIS, or Business Analytics where I can apply my skills and gain real world experience."}
             </p>
           </div>  
-            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-12 text-slate-400">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 dark:text-slate-400 text-slate-700">
               <a 
                 href={`mailto:${activePersona.basics.email}`}
-                className="hover:text-theme-400 transition-colors flex items-center gap-2"
+                className="hover:text-theme-500 transition-colors flex items-center gap-2"
               >
                 {activePersona.basics.email}
               </a>
@@ -88,7 +88,7 @@ export default function App() {
                 href={activePersona.basics.github} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-theme-400 transition-colors flex items-center gap-2"
+                className="hover:text-theme-500 transition-colors flex items-center gap-2"
               >
                 GitHub
               </a>
@@ -96,13 +96,13 @@ export default function App() {
                 href={activePersona.basics.linkedin} 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="hover:text-theme-400 transition-colors flex items-center gap-2"
+                className="hover:text-theme-500 transition-colors flex items-center gap-2"
               >
                 LinkedIn
               </a>
             </div>
 
-            <p className="text-[10px] font-mono text-slate-500 mt-8 tracking-widest uppercase opacity-40">
+            <p className="text-[10px] font-mono dark:text-slate-500 text-slate-400 mt-8 tracking-widest uppercase opacity-80">
               NAFIS ABID SHAIKH © {new Date().getFullYear()} // ALL FACTS VERIFIED
             </p>
         </footer>

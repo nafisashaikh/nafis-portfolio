@@ -18,8 +18,8 @@ export default function ProjectGallery() {
       {/* Section Header */}
       <div className="flex flex-col gap-2 mb-12">
         <span className="font-mono text-xs tracking-[0.25em] text-theme-500 uppercase font-semibold">Featured Work</span>
-        <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight">
-          Engineering <span className="text-slate-400 italic font-serif">Showcase</span>
+        <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight dark:text-white text-slate-900">
+          Engineering <span className="dark:text-slate-400 text-slate-500 italic font-serif">Showcase</span>
         </h2>
       </div>
 
@@ -35,13 +35,13 @@ export default function ProjectGallery() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="group relative flex flex-col bg-slate-900/50 backdrop-blur-sm border border-white/10 p-8 hover:border-theme-500/50 transition-all duration-500 hover:shadow-[0_0_40px_rgba(249,115,22,0.1)] rounded-2xl overflow-hidden"
+              className="group relative flex flex-col dark:bg-slate-900/50 bg-white backdrop-blur-sm border dark:border-white/10 border-slate-200 p-8 hover:border-theme-500/50 transition-all duration-500 shadow-sm hover:shadow-xl rounded-2xl overflow-hidden"
             >
               {/* Subtle hover gradient backdrop */}
               <div className="absolute inset-0 bg-gradient-to-br from-theme-500/0 via-transparent to-theme-500/0 group-hover:from-theme-500/5 group-hover:to-theme-500/5 transition-colors duration-500 -z-10" />
 
               {/* Title Header */}
-              <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-theme-400 transition-colors duration-300">
+              <h3 className="text-2xl font-bold dark:text-white text-slate-900 mb-4 group-hover:text-theme-500 transition-colors duration-300">
                 {project.title}
               </h3>
 
@@ -50,7 +50,7 @@ export default function ProjectGallery() {
                 {tags.map((tag: string, tIdx: number) => (
                   <span 
                     key={tIdx}
-                    className="px-3 py-1 text-xs font-mono font-semibold bg-theme-500/10 text-theme-400 border border-theme-500/20 rounded-full"
+                    className="px-3 py-1 text-xs font-mono font-semibold bg-theme-500/10 text-theme-500 dark:text-theme-400 border border-theme-500/20 rounded-full"
                   >
                     {tag}
                   </span>
@@ -61,26 +61,26 @@ export default function ProjectGallery() {
               <div className="flex-1 space-y-4 mb-8">
                 {project.problem && (
                   <div>
-                    <h4 className="text-xs font-mono font-bold text-slate-500 uppercase tracking-widest mb-1">The Problem</h4>
-                    <p className="text-slate-300 text-sm leading-relaxed">{project.problem}</p>
+                    <h4 className="text-xs font-mono font-bold dark:text-slate-500 text-slate-400 uppercase tracking-widest mb-1">The Problem</h4>
+                    <p className="dark:text-slate-300 text-slate-700 text-sm leading-relaxed">{project.problem}</p>
                   </div>
                 )}
                 {project.solution && (
                   <div>
                     <h4 className="text-xs font-mono font-bold text-theme-500/80 uppercase tracking-widest mb-1">The Solution</h4>
-                    <p className="text-slate-300 text-sm leading-relaxed">{project.solution}</p>
+                    <p className="dark:text-slate-300 text-slate-700 text-sm leading-relaxed">{project.solution}</p>
                   </div>
                 )}
                 {project.impact && (
                   <div>
-                    <h4 className="text-xs font-mono font-bold text-green-500/80 uppercase tracking-widest mb-1">The Impact</h4>
-                    <p className="text-slate-300 text-sm leading-relaxed">{project.impact}</p>
+                    <h4 className="text-xs font-mono font-bold text-emerald-600 dark:text-green-500/80 uppercase tracking-widest mb-1">The Impact</h4>
+                    <p className="dark:text-slate-300 text-slate-700 text-sm leading-relaxed">{project.impact}</p>
                   </div>
                 )}
                 {project.bullets && project.bullets.length > 0 && (
                   <ul className="space-y-3 mt-4">
                     {project.bullets.map((bullet: string, bIdx: number) => (
-                      <li key={bIdx} className="flex items-start gap-3 text-slate-300 text-sm leading-relaxed">
+                      <li key={bIdx} className="flex items-start gap-3 dark:text-slate-300 text-slate-700 text-sm leading-relaxed">
                         <ArrowRight className="w-4 h-4 text-theme-500 shrink-0 mt-0.5 opacity-70 group-hover:opacity-100 transition-opacity" />
                         <span>{bullet}</span>
                       </li>
@@ -90,13 +90,13 @@ export default function ProjectGallery() {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4 mt-auto pt-6 border-t border-white/5">
+              <div className="flex flex-wrap items-center gap-4 mt-auto pt-6 border-t dark:border-white/5 border-slate-200">
                 {project.demoLink && (
                   <a
                     href={project.demoLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 bg-theme-500 text-black font-semibold text-sm rounded-lg hover:bg-theme-400 transition-colors duration-300 shadow-[0_0_15px_rgba(249,115,22,0.3)] hover:shadow-[0_0_25px_rgba(249,115,22,0.5)]"
+                    className="flex items-center gap-2 px-5 py-2.5 bg-theme-500 text-black font-semibold text-sm rounded-lg hover:bg-theme-400 transition-colors duration-300 shadow-sm"
                   >
                     <ExternalLink className="w-4 h-4" />
                     Live Demo
@@ -108,7 +108,7 @@ export default function ProjectGallery() {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-5 py-2.5 bg-white/5 text-white font-semibold text-sm rounded-lg hover:bg-white/10 transition-colors duration-300 border border-white/10 hover:border-white/30"
+                    className="flex items-center gap-2 px-5 py-2.5 dark:bg-white/5 bg-slate-100 dark:text-white text-slate-900 font-semibold text-sm rounded-lg hover:bg-slate-200 dark:hover:bg-white/10 transition-colors duration-300 border dark:border-white/10 border-slate-300"
                   >
                     <Github className="w-4 h-4" />
                     Source Code

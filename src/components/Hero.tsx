@@ -81,13 +81,13 @@ export default function Hero({ onOpenPDF }: HeroProps) {
           </div>
 
           <div className="flex flex-col gap-2">
-            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-sans font-light tracking-tighter text-white leading-none">
+            <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl font-sans font-light tracking-tighter dark:text-white text-slate-900 leading-none">
               NAFIS ABID <span className="text-theme-500 italic block mt-2 font-serif text-5xl xs:text-6xl sm:text-7xl md:text-8xl leading-none">Shaikh</span>
             </h1>
             
             {/* Editorial cycler with typing effect */}
             <div className="h-10 mt-3 flex items-center">
-              <div className="font-mono text-xs sm:text-sm tracking-[0.3em] text-slate-400 flex items-center gap-2 uppercase">
+              <div className="font-mono text-xs sm:text-sm tracking-[0.3em] dark:text-slate-400 text-slate-600 flex items-center gap-2 uppercase">
                 <span className="text-theme-500 font-bold">//</span>
                 <span className="relative">
                   {displayText}
@@ -98,16 +98,16 @@ export default function Hero({ onOpenPDF }: HeroProps) {
           </div>
 
           {/* High-Impact summary context */}
-          <p className="text-sm sm:text-base font-sans font-light text-slate-355 leading-relaxed max-w-xl opacity-90">
+          <p className="text-sm sm:text-base font-sans font-light dark:text-slate-300 text-slate-700 leading-relaxed max-w-xl opacity-90">
             {activePersona.basics.objective}
           </p>
 
-          <div className="flex flex-col gap-1.5 text-slate-400 font-mono text-xs border-l border-theme-500/30 pl-4 mt-2">
+          <div className="flex flex-col gap-1.5 dark:text-slate-400 text-slate-700 font-mono text-xs border-l border-theme-500/30 pl-4 mt-2">
             <div>
-              <span className="text-theme-500">Location:</span> {activePersona.basics.location}
+              <span className="text-theme-500 font-semibold">Location:</span> {activePersona.basics.location}
             </div>
             <div>
-              <span className="text-theme-500">Comm-Channel:</span> {activePersona.basics.email} // {activePersona.basics.phone}
+              <span className="text-theme-500 font-semibold">Comm-Channel:</span> {activePersona.basics.email} // {activePersona.basics.phone}
             </div>
           </div>
 
@@ -123,7 +123,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
             
             <button
               onClick={onOpenPDF}
-              className="flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent text-white hover:text-black hover:bg-white font-mono text-xs font-bold uppercase tracking-widest border border-white/20 hover:border-white transition-all duration-300 active:scale-95 cursor-pointer"
+              className="flex items-center justify-center gap-2 px-6 py-3.5 bg-transparent dark:text-white text-slate-900 hover:text-black hover:bg-slate-200 font-mono text-xs font-bold uppercase tracking-widest border dark:border-white/20 border-slate-300 hover:border-slate-400 transition-all duration-300 active:scale-95 cursor-pointer"
             >
               <FileText className="w-4 h-4" />
               Download Resume
@@ -139,12 +139,12 @@ export default function Hero({ onOpenPDF }: HeroProps) {
           className="lg:col-span-5 relative flex justify-center"
         >
           {/* Glass design grid block */}
-          <div className="w-full max-w-[360px] bg-white/[0.02] backdrop-blur-md border border-white/10 p-6 relative overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.7)] group hover:border-theme-500/20 transition-all duration-500">
+          <div className="w-full max-w-[360px] dark:bg-white/[0.02] bg-white backdrop-blur-md border dark:border-white/10 border-slate-200 p-6 relative overflow-hidden dark:shadow-[0_15px_40px_rgba(0,0,0,0.7)] shadow-lg group hover:border-theme-500/20 transition-all duration-500">
             {/* Corner literal decals */}
             <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-theme-500" />
             <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-theme-500" />
             
-            <div className="font-mono text-[9px] text-theme-500 tracking-[0.2em] mb-4 flex items-center justify-between opacity-80">
+            <div className="font-mono text-[9px] text-theme-500 tracking-[0.2em] mb-4 flex items-center justify-between opacity-80 font-bold">
               <span>SYSTEM PROFILE STATE</span>
               <span>ACTIVE // 2026</span>
             </div>
@@ -154,39 +154,39 @@ export default function Hero({ onOpenPDF }: HeroProps) {
                 <Logo className="w-9 h-9" />
               </div>
               <div>
-                <h3 className="font-mono text-xs font-semibold tracking-wider text-white uppercase">Nafis Abid Shaikh</h3>
-                <p className="text-[9px] font-mono text-slate-400 leading-tight mt-1 uppercase tracking-widest">
+                <h3 className="font-mono text-xs font-semibold tracking-wider dark:text-white text-slate-900 uppercase">Nafis Abid Shaikh</h3>
+                <p className="text-[9px] font-mono dark:text-slate-400 text-slate-600 leading-tight mt-1 uppercase tracking-widest">
                   Computer Engg. / MU
                 </p>
               </div>
             </div>
 
             <div className="space-y-4">
-              <div className="bg-white/[0.02] border border-white/5 p-3 flex items-start gap-2.5">
+              <div className="dark:bg-white/[0.02] bg-slate-50 border dark:border-white/5 border-slate-200 p-3 flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-theme-500 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider text-white">Structured Analytics</h4>
-                  <p className="text-[10px] font-sans text-slate-400 mt-1 leading-relaxed">
+                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider dark:text-white text-slate-900">Structured Analytics</h4>
+                  <p className="text-[10px] font-sans dark:text-slate-400 text-slate-600 mt-1 leading-relaxed">
                     Excel, SQL & Power BI predictive models and interactive dashboards.
                   </p>
                 </div>
               </div>
 
-              <div className="bg-white/[0.02] border border-white/5 p-3 flex items-start gap-2.5">
+              <div className="dark:bg-white/[0.02] bg-slate-50 border dark:border-white/5 border-slate-200 p-3 flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-theme-500 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider text-white">SIH Hackathon Winner</h4>
-                  <p className="text-[10px] font-sans text-slate-400 mt-1 leading-relaxed">
+                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider dark:text-white text-slate-900">SIH Hackathon Winner</h4>
+                  <p className="text-[10px] font-sans dark:text-slate-400 text-slate-600 mt-1 leading-relaxed">
                     National Hackathon. Deployed NLP and transit platforms.
                   </p>
                 </div>
               </div>
 
-              <div className="bg-white/[0.02] border border-white/5 p-3 flex items-start gap-2.5">
+              <div className="dark:bg-white/[0.02] bg-slate-50 border dark:border-white/5 border-slate-200 p-3 flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-theme-500 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider text-white">Forensic Simulation</h4>
-                  <p className="text-[10px] font-sans text-slate-400 mt-1 leading-relaxed">
+                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider dark:text-white text-slate-900">Forensic Simulation</h4>
+                  <p className="text-[10px] font-sans dark:text-slate-400 text-slate-600 mt-1 leading-relaxed">
                     Deloitte Australia forensic data analytics industry simulation.
                   </p>
                 </div>
