@@ -23,7 +23,7 @@ SKILLS:
 ${activePersona.skills.map((s: any) => s.category ? `${s.category}: ${s.items.join(', ')}` : s).join('\n')}
 
 EDUCATION:
-${activePersona.education.map((e: any) => `- ${e.degree} from ${e.university} (${e.duration || e.dates})`).join('\n')}
+${activePersona.education.map((e: any) => `- ${e.degree} from ${e.institution || e.university} (${e.duration || e.dates})`).join('\n')}
 
 EXPERIENCE:
 ${activePersona.experience.map((e: any) => `- ${e.role} at ${e.company} (${e.duration || e.dates}):\n  ${e.bullets.join('\n  ')}`).join('\n\n')}

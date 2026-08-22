@@ -154,7 +154,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
                 <Logo className="w-9 h-9" />
               </div>
               <div>
-                <h3 className="font-mono text-xs font-semibold tracking-wider text-white uppercase">Nafit Abid Shaikh</h3>
+                <h3 className="font-mono text-xs font-semibold tracking-wider text-white uppercase">Nafis Abid Shaikh</h3>
                 <p className="text-[9px] font-mono text-slate-400 leading-tight mt-1 uppercase tracking-widest">
                   Computer Engg. / MU
                 </p>

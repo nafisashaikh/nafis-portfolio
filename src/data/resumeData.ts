@@ -2,33 +2,33 @@ import { ResumeData } from "../types";
 
 export const resumeData: ResumeData = {
   basics: {
-    name: "Nafis Abid Shaikh",
+    name: "NAFIS ABID SHAIKH",
     titles: [
-      "Software Engineer",
-      "Full Stack Developer",
-      "Data Analytics Intern",
-      "AI/ML Enthusiast",
-      "UI/UX Designer",
-      "Python & SQL Specialist"
+      "Data Analyst Intern",
+      "Computer Engineer (B.E.)",
+      "Power BI & Excel Specialist",
+      "Python & SQL Analyst",
+      "Full Stack Developer"
     ],
-    summary: "Versatile Computer Engineering student with a strong foundation across Full Stack Development, Data Analytics, and AI. Passionate about leveraging technology to build end-to-end solutions, from interactive web applications to predictive NLP models and intelligent data dashboards.",
-    objective: "Motivated Software Engineer and Data Analyst proficient in Python, React, SQL, and Machine Learning. With hands-on experience building full-stack web applications, predictive models, and high-performance data pipelines, I am seeking opportunities to drive strategic technical initiatives and solve complex architectural challenges.",
-    location: "Mumbai, Maharashtra, India",
+    summary: "Final-year Computer Engineering student (B.E., lateral entry) and Data Analyst Intern at Cipla, with hands-on experience turning raw datasets into Power BI dashboards and actionable reporting. Skilled in SQL, Python (Pandas), and Excel (Power Pivot, DAX, VBA), with a track record of self-driven projects spanning sentiment analysis, ETL pipelines, and BI systems.",
+    objective: "Final-year Computer Engineering student (B.E., lateral entry) and Data Analyst Intern at Cipla, with hands-on experience turning raw datasets into Power BI dashboards and actionable reporting. Skilled in SQL, Python (Pandas), and Excel (Power Pivot, DAX, VBA), with a track record of self-driven projects spanning sentiment analysis, ETL pipelines, and BI systems. Seeking a full-time Data Analyst role to apply and grow these skills in a professional environment.",
+    location: "Saphale, Palghar, Maharashtra – 401102",
     email: "nafisabidshaikh12@gmail.com",
     phone: "9579655849",
     github: "https://github.com/nafisashaikh",
     linkedin: "https://www.linkedin.com/in/nafisshaikh",
-    lookingFor: "I am actively seeking internship or junior roles in Software Engineering, Full Stack Development, or Data Analytics where I can leverage my multidisciplinary skill set to build scalable, high-impact systems."
+    lookingFor: "Seeking a full-time Data Analyst role to apply and grow SQL, Python (Pandas), Excel (Power Pivot, DAX, VBA), and Power BI skills in a professional environment."
   },
   experience: [
     {
       company: "Cipla",
       role: "Data Analyst Intern",
-      dates: "June 2026 - Present",
+      dates: "Jun 2026 – Present",
       location: "Mumbai, India",
       bullets: [
-        "Currently participating in an internship program, successfully completing the first month.",
-        "Gaining hands-on industry experience and contributing to team objectives."
+        "Clean and structure employee survey datasets for HR analytics reporting, reducing manual data-prep effort and turnaround time for stakeholder deliverables.",
+        "Build and maintain dashboards and visual reports in Power BI/Excel, translating raw survey and operational data into clear, actionable summaries for internal stakeholders.",
+        "Apply SQL and Excel to identify trends and anomalies within reporting datasets, supporting data-driven decisions across HR reporting cycles."
       ]
     },
     {
@@ -37,33 +37,60 @@ export const resumeData: ResumeData = {
       dates: "2024",
       location: "Mumbai (National Challenge)",
       bullets: [
-        "Engineered an automated NLP pipeline involving data ingestion, preprocessing, model inference, and visual reporting",
-        "Developed a sentiment analysis model classifying raw text inputs with high accuracy",
-        "Analyzed operational transportation datasets to identify efficiency gaps for an 'AI Driven Metro Rail Project'",
-        "Performed system-level debugging and optimization to improve processing throughput for national presentation"
+        "Engineered an automated NLP pipeline involving data ingestion, preprocessing, model inference, and visual reporting.",
+        "Developed a sentiment analysis model classifying raw text inputs with high accuracy as part of a Smart India Hackathon submission.",
+        "Analyzed operational transportation datasets to identify efficiency gaps for an 'AI Driven Metro Rail Project'.",
+        "Performed system-level debugging and optimization to improve processing throughput."
       ]
     },
     {
       company: "Deloitte Australia (Forage)",
       role: "Forensic Data Analyst Intern",
-      dates: "March 2026",
+      dates: "Mar 2026",
       location: "Remote Simulation",
       bullets: [
-        "Completed a realistic forensic corporate data analysis simulation",
-        "Built a detailed Tableau dashboard to audit corporate data patterns and surface anomalies",
-        "Utilized advanced Excel modeling to analyze metrics and draw verified business conclusions for stakeholders"
+        "Completed a realistic forensic corporate data analysis simulation.",
+        "Built a detailed Tableau dashboard to audit corporate data patterns and surface anomalies.",
+        "Utilized advanced Excel modeling to analyze metrics and draw verified business conclusions for stakeholders."
       ]
     }
   ],
   projects: [
     {
-      title: "Sehtsetu - Healthcare Application",
-      stack: "React, Python, MySQL, REST APIs",
+      title: "Sales Dashboard Analysis (Excel)",
+      stack: "Excel, Pivot Tables, Power Pivot, DAX, VBA, Slicers",
+      link: "https://github.com/12Nafis12/excel-sales-dashboard",
+      demoLink: "https://github.com/12Nafis12/excel-sales-dashboard",
+      problem: "Evaluating multi-dimensional revenue metrics across regions, categories, and monthly timelines required static manual reporting.",
+      solution: "Built an interactive sales dashboard using Excel Pivot Tables, Charts, and Slicers to dynamically analyze performance by region, category, and month.",
+      impact: "Identified top-performing regions and products, presenting insights through Sales-by-Region, Monthly Trend, and Top-Products visual reports."
+    },
+    {
+      title: "Employee Sentiment Analysis Dashboard",
+      stack: "Power BI, DAX, Data Transformation, ETL, HR Analytics",
+      link: "https://github.com/nafisashaikh",
+      demoLink: "https://github.com/nafisashaikh",
+      problem: "Organizations needed an efficient cross-question sentiment tracking system for large employee survey datasets (~20,000 responses).",
+      solution: "Built a Power BI dashboard analyzing sentiment across ~20,000 employee survey responses, using DAX measures and a wide-to-long data transformation for cross-question comparison.",
+      impact: "Designed clustered visualizations by question and sentiment to help identify engagement trends."
+    },
+    {
+      title: "Sentiment Analysis System",
+      stack: "Python, Pandas, Matplotlib, NLP, Text Preprocessing",
+      link: "https://github.com/nafisashaikh/sentiment-engine",
+      demoLink: "https://github.com/nafisashaikh/sentiment-engine",
+      problem: "Categorizing public opinion and sentiment from unstructured text data required automated classification.",
+      solution: "Built a sentiment analysis model in Python to classify public sentiment (positive/negative/neutral) from text data, as part of a Smart India Hackathon submission.",
+      impact: "Performed data preprocessing, text cleaning, and result visualization for high-accuracy sentiment detection."
+    },
+    {
+      title: "SehtSetu — Rural Healthcare Web Platform",
+      stack: "React, Python, MySQL, REST APIs, Telemedicine",
       link: "https://github.com/nafisashaikh/sehtsetu",
       demoLink: "https://sehtsetu-demo.vercel.app",
-      problem: "Managing patient data and coordinating service delivery across multiple healthcare touchpoints is fragmented and inefficient.",
-      solution: "Architected a comprehensive full-stack platform with secure authentication, intuitive data entry forms, and RESTful API data synchronization.",
-      impact: "Streamlined user data management and enabled real-time dashboard tracking for healthcare providers."
+      problem: "Rural healthcare coordination suffered from fragmented patient data management and limited telemedicine coverage.",
+      solution: "Developed a telemedicine web application for rural healthcare access, covering backend data handling and user data management.",
+      impact: "Streamlined healthcare delivery and patient management for Nabha, Punjab and 173 surrounding villages."
     },
     {
       title: "AI News Platform",
@@ -71,91 +98,73 @@ export const resumeData: ResumeData = {
       link: "https://github.com/nafisashaikh",
       demoLink: "https://news-intelligence-platform-frontend.vercel.app/",
       problem: "Readers are overwhelmed by information overload and struggle to find concise, categorized global news.",
-      solution: "Engineered an automated aggregation pipeline using advanced NLP to distill lengthy articles into actionable intelligence briefs.",
-      impact: "Delivered a highly responsive frontend ecosystem that provides categorized, real-time news intelligence at a glance."
-    },
-    {
-      title: "AI Driven Metro Rail Automation",
-      stack: "Python, Pandas, Data Engineering",
-      link: "https://github.com/nafisashaikh/Metro-Rail-Scheduler",
-      problem: "Suboptimal metro transportation scheduling leads to congestion and inefficient layout planning.",
-      solution: "Processed large-scale transit datasets using AI-assisted analysis to detect temporal patterns and passenger load distributions.",
-      impact: "Generated data-driven strategic planning recommendations to optimize scheduling and layout efficiency."
-    },
-    {
-      title: "Cognitive Sentiment Analysis Engine",
-      stack: "Python, NLP, Machine Learning, Scikit-learn",
-      link: "https://github.com/nafisashaikh/sentiment-engine",
-      problem: "Organizations struggle to categorize and understand public sentiment from massive unstructued text data.",
-      solution: "Developed a robust NLP preprocessing pipeline and machine learning classification model to analyze text sentiment.",
-      impact: "Provided visual reporting metrics that enable data-driven decision making with high-accuracy sentiment detection."
-    },
-    {
-      title: "Enterprise Sales Intelligence Dashboard",
-      stack: "Excel, Predictive Analytics, UI/UX",
-      link: "https://github.com/nafisashaikh/excel-sales-dashboard",
-      problem: "Non-technical leadership lacked an intuitive way to explore multi-dimensional revenue data and forecast trends.",
-      solution: "Designed a visually intuitive sales dashboard with user-friendly slicers and complex Pivot structures.",
-      impact: "Surfaced predictive trends across regions and products, empowering leaders to make strategic business forecasts."
+      solution: "Engineered an automated aggregation pipeline using advanced NLP to distill article feeds into actionable intelligence briefs.",
+      impact: "Delivered a responsive frontend ecosystem providing real-time, categorized news intelligence at a glance."
     }
   ],
   skills: [
     {
-      category: "Frontend & UI/UX",
+      category: "Languages & Tools",
+      items: [
+        "Python (Pandas, Matplotlib)",
+        "SQL (MySQL)",
+        "MS Excel (Power Pivot, DAX, VBA, Pivot Tables)",
+        "Power BI",
+        "Tableau",
+        "VS Code",
+        "GitHub"
+      ]
+    },
+    {
+      category: "Core Skills",
+      items: [
+        "Data Cleaning",
+        "Data Analysis",
+        "Data Visualization",
+        "Dashboarding",
+        "Basic Data Modeling",
+        "ETL Data Pipelines"
+      ]
+    },
+    {
+      category: "Web & Frameworks",
       items: [
         "React",
         "Next.js",
         "JavaScript / TypeScript",
-        "HTML & CSS / Tailwind",
-        "Figma",
-        "Dashboard Design"
-      ]
-    },
-    {
-      category: "Backend & Databases",
-      items: [
-        "Python",
-        "Node.js",
-        "SQL",
-        "MySQL / PostgreSQL",
+        "HTML5 & CSS3",
         "REST APIs",
-        "Redis Caching"
+        "Tailwind CSS"
       ]
     },
     {
-      category: "Data & AI / ML",
+      category: "Analytics & Techniques",
       items: [
-        "Machine Learning",
-        "NLP / Sentiment Analysis",
-        "Pandas & NumPy",
-        "Data Engineering",
-        "Tableau / Power BI",
-        "Data Visualization"
-      ]
-    },
-    {
-      category: "Tools & Methodologies",
-      items: [
-        "Git / GitHub",
-        "VS Code",
-        "Agile / SDLC",
-        "System Architecture",
-        "Postman",
-        "Linux"
+        "DAX Measures",
+        "Sentiment Analysis",
+        "HR Analytics",
+        "Pivot Reporting",
+        "Text Preprocessing"
       ]
     }
   ],
   education: [
     {
       institution: "University of Mumbai",
-      degree: "Bachelor of Engineering - BE, Computer Engineering",
-      dates: "August 2023 - May 2027 (Expected)",
+      degree: "Bachelor of Engineering, Computer Engineering",
+      dates: "Pursuing (Final Year)",
       location: "Mumbai, India"
     },
     {
-      institution: "Maharashtra State Board of Technical Education",
-      degree: "Diploma of Education, Computer Engineering",
-      dates: "July 2021 - June 2024",
+      institution: "M.S.B.T.E., Mumbai",
+      degree: "Diploma in Computer Engineering",
+      dates: "May 2024 — 73.89%",
+      location: "Mumbai, India"
+    },
+    {
+      institution: "University of Mumbai",
+      degree: "S.S.C.",
+      dates: "Mar 2021 — 73.60%",
       location: "Mumbai, India"
     }
   ],
@@ -165,37 +174,38 @@ export const resumeData: ResumeData = {
       issuer: "freeCodeCamp",
       date: "Dec 2025",
       bullets: [
-        "Advanced Python scripting, Pandas dataframes, NumPy arrays, and interactive Data Visualizations"
+        "Python, Pandas, NumPy, data cleaning, and visualization."
       ]
     },
     {
       name: "Data Analytics Job Simulation",
-      issuer: "Deloitte Australia (Forage)",
-      date: "March 2026",
+      issuer: "Deloitte Australia, Forage",
+      date: "Mar 2026",
       bullets: [
-        "Completed simulation for forensic corporate analytics and engineered business dashboards using Tableau"
+        "Built a Tableau dashboard and used Excel to classify data and draw business conclusions."
       ]
     }
   ],
   achievements: [
     {
-      title: "AI News Platform Deployment",
-      context: "Engineered and launched an automated AI-driven platform that aggregates, analyzes, and summarizes real-time global news data.",
-      badge: "Full Stack AI"
+      title: "Data Analyst Intern @ Cipla",
+      context: "Building Power BI and Excel dashboards for HR analytics reporting, analyzing survey datasets with SQL and DAX.",
+      badge: "Industry Experience"
     },
     {
-      title: "Sehtsetu Healthcare System",
-      context: "Architected a comprehensive full-stack healthcare web application, successfully implementing secure user data management and service delivery.",
-      badge: "System Architecture"
+      title: "Employee Sentiment Analysis (~20k Responses)",
+      context: "Transformed survey datasets and designed clustered Power BI visual reports to track employee engagement trends.",
+      badge: "Power BI & DAX"
     },
     {
-      title: "AI Driven Metro Rail Planning",
-      context: "Optimized operational scheduling models using extensive transportation datasets for the Smart India Hackathon.",
-      badge: "National Hackathon"
+      title: "SehtSetu Telemedicine Platform",
+      context: "Developed backend data infrastructure serving Nabha, Punjab and 173 surrounding villages.",
+      badge: "Healthcare Impact"
     }
   ],
   extra: [
-    "I am open to software engineering and data analytics internship opportunities.",
-    "Feel free to connect or contact me!"
+    "Seeking a full-time Data Analyst role to apply and grow SQL, Python, Excel, and BI skills.",
+    "Feel free to connect or contact me via email or LinkedIn!"
   ]
 };
+
