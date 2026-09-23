@@ -43,7 +43,7 @@ If someone asks for contact info, tell them to use the links in the header. Keep
   
   const QUICK_REPLIES = [
     "What are your top skills?",
-    "Tell me about your SIH project",
+    "Tell me about your SIH participation",
     "How can I contact you?",
   ];
 

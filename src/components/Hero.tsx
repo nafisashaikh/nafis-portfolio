@@ -175,7 +175,7 @@ export default function Hero({ onOpenPDF }: HeroProps) {
               <div className="dark:bg-white/[0.02] bg-slate-50 border dark:border-white/5 border-slate-200 p-3 flex items-start gap-2.5">
                 <CheckCircle2 className="w-4 h-4 text-theme-500 shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider dark:text-white text-slate-900">SIH Hackathon Winner</h4>
+                  <h4 className="font-mono text-[10px] uppercase font-bold tracking-wider dark:text-white text-slate-900">SIH Hackathon Participant</h4>
                   <p className="text-[10px] font-sans dark:text-slate-400 text-slate-600 mt-1 leading-relaxed">
                     National Hackathon. Deployed NLP and transit platforms.
                   </p>
