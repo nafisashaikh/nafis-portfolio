@@ -10,8 +10,8 @@ export const resumeData: ResumeData = {
       "Python & SQL Analyst",
       "Full Stack Developer"
     ],
-    summary: "Final-year Computer Engineering student (B.E., lateral entry) and Data Analyst Intern at Cipla, with hands-on experience turning raw datasets into Power BI dashboards and actionable reporting. Skilled in SQL, Python (Pandas), and Excel (Power Pivot, DAX, VBA), with a track record of self-driven projects spanning sentiment analysis, ETL pipelines, and BI systems.",
-    objective: "Final-year Computer Engineering student (B.E., lateral entry) and Data Analyst Intern at Cipla, with hands-on experience turning raw datasets into Power BI dashboards and actionable reporting. Skilled in SQL, Python (Pandas), and Excel (Power Pivot, DAX, VBA), with a track record of self-driven projects spanning sentiment analysis, ETL pipelines, and BI systems. Seeking a full-time Data Analyst role to apply and grow these skills in a professional environment.",
+    summary: "Final-year Computer Engineering student (B.E., lateral entry) and former Data Analyst Intern at Cipla, with hands-on experience turning raw datasets into Power BI dashboards and actionable reporting. Skilled in SQL, Python (Pandas), and Excel (Power Pivot, DAX, VBA), with a track record of self-driven projects spanning sentiment analysis, ETL pipelines, and BI systems.",
+    objective: "Final-year Computer Engineering student (B.E., lateral entry) and former Data Analyst Intern at Cipla, with hands-on experience turning raw datasets into Power BI dashboards and actionable reporting. Skilled in SQL, Python (Pandas), and Excel (Power Pivot, DAX, VBA), with a track record of self-driven projects spanning sentiment analysis, ETL pipelines, and BI systems. Seeking a full-time Data Analyst role to apply and grow these skills in a professional environment.",
     location: "Saphale, Palghar, Maharashtra – 401102",
     email: "nafisabidshaikh12@gmail.com",
     phone: "9579655849",
@@ -23,7 +23,7 @@ export const resumeData: ResumeData = {
     {
       company: "Cipla",
       role: "Data Analyst Intern",
-      dates: "Jun 2026 – Present",
+      dates: "Jun 2026 – Sep 2026",
       location: "Mumbai, India",
       bullets: [
         "Clean and structure employee survey datasets for HR analytics reporting, reducing manual data-prep effort and turnaround time for stakeholder deliverables.",
