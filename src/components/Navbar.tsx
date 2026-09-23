@@ -95,7 +95,7 @@ export default function Navbar({ onOpenPDF, darkMode = true, onToggleDarkMode }:
           {/* Subtle animated shine */}
           <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
           <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-          <span>🎉 Successfully completed Data Analyst Internship @ Cipla (Jun 2026 – Sep 2026) — Open to full-time opportunities!</span>
+          <span>🎉 Successfully completed 3-month Data Analyst Internship @ Cipla (Jun 2026 – Sep 2026) — Open to full-time opportunities!</span>
           <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
         </div>
 
