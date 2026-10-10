@@ -1,134 +1,256 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────────────────────────────────
+   Design tokens — "quiet luxury meets futuristic technology"
+   A cool blue-black system with electric-blue + cyan accents and real glass.
+   ───────────────────────────────────────────────────────────────────────── */
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Space Grotesk", "JetBrains Mono", ui-monospace, monospace;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
-  --font-signature: "Great Vibes", cursive;
+  --font-display: "Sora", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  /* Map theme colors */
-  --color-theme-100: var(--theme-100);
-  --color-theme-300: var(--theme-300);
-  --color-theme-400: var(--theme-400);
-  --color-theme-500: var(--theme-500);
-  --color-theme-600: var(--theme-600);
-  --color-theme-850: var(--theme-850);
+  /* Base surfaces */
+  --color-base: #080a10;
+  --color-base-2: #0d1220;
+  --color-surface: #131a29;
+
+  /* Text */
+  --color-ink: #f5f7fb;
+  --color-dim: #a6b0c0;
+  --color-muted: #737e90;
+
+  /* Accents */
+  --color-accent: #7792ff;
+  --color-accent-soft: #97acff;
+  --color-cyan: #6be4ed;
+  --color-danger: #ff9b9b;
+
+  /* Lines */
+  --color-line: rgba(255, 255, 255, 0.12);
+  --color-line-strong: rgba(255, 255, 255, 0.2);
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Elevation */
+  --shadow-glass: 0 24px 60px -24px rgba(2, 4, 10, 0.85), 0 2px 8px -2px rgba(2, 4, 10, 0.6);
+  --shadow-float: 0 40px 90px -30px rgba(2, 4, 10, 0.9);
 }
 
 :root {
-  /* Default Orange Theme */
-  --theme-100: #ffedd5;
-  --theme-300: #fdba74;
-  --theme-400: #fb923c;
-  --theme-500: #f97316;
-  --theme-600: #ea580c;
-  --theme-850: #7c2d12;
+  color-scheme: dark;
+  --nav-h: 76px;
 }
 
-html[data-theme="blue"] {
-  --theme-100: #dbeafe;
-  --theme-300: #93c5fd;
-  --theme-400: #60a5fa;
-  --theme-500: #3b82f6;
-  --theme-600: #2563eb;
-  --theme-850: #1e3a8a;
-}
-
-html[data-theme="emerald"] {
-  --theme-100: #d1fae5;
-  --theme-300: #6ee7b7;
-  --theme-400: #34d399;
-  --theme-500: #10b981;
-  --theme-600: #059669;
-  --theme-850: #064e3b;
-}
-
-html[data-theme="purple"] {
-  --theme-100: #f3e8ff;
-  --theme-300: #d8b4fe;
-  --theme-400: #c084fc;
-  --theme-500: #a855f7;
-  --theme-600: #9333ea;
-  --theme-850: #581c87;
-}
-
-
-/* Hide scrollbar globally */
-::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-* {
-  -ms-overflow-style: none !important;
-  scrollbar-width: none !important;
-}
-
-@layer utilities {
-  .no-scrollbar::-webkit-scrollbar {
-    display: none !important;
-    width: 0 !important;
-    height: 0 !important;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none !important;
-    scrollbar-width: none !important;
-  }
-  /* Print media stylesheet overrides to print the resume perfectly in black/white on physical paper/PDF */
-  @media print {
-    body {
-      background-color: #ffffff !important;
-      color: #000000 !important;
-    }
-    
-    main, header, footer, #animated-bg-canvas, #animated-bg-static {
-      display: none !important;
-    }
-
-    #printable-resume-card {
-      margin: 0 !important;
-      padding: 0 !important;
-      border: none !important;
-      box-shadow: none !important;
-      width: 100% !important;
-      color: #000000 !important;
-      background-color: #ffffff !important;
-      display: block !important;
-    }
-
-    /* Keep lists and bullets styled correctly on printers */
-    ul {
-      list-style-type: disc !important;
-      padding-left: 1.5rem !important;
-    }
+@layer base {
+  * {
+    border-color: var(--color-line);
   }
 
-  /* Support subtle hidden print setups during normal application flow */
-  @media screen {
-    .print\:hidden {
-      display: flex !important;
-    }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--nav-h);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-base);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    text-wrap: balance;
+  }
+
+  p { text-wrap: pretty; }
+
+  ::selection {
+    background: color-mix(in srgb, var(--color-accent) 32%, transparent);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Thin, unobtrusive scrollbar instead of hiding it entirely */
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); background-clip: content-box; }
+
+  .skip-link {
+    position: fixed;
+    top: 0; left: 50%;
+    translate: -50% -120%;
+    z-index: 100;
+    padding: 0.6rem 1.1rem;
+    background: var(--color-accent);
+    color: #06080f;
+    font-weight: 600;
+    border-radius: 0 0 0.75rem 0.75rem;
+    transition: translate 0.2s var(--ease-out-soft);
+  }
+  .skip-link:focus { translate: -50% 0; }
+}
+
+@layer components {
+  /* Real glass: layered translucency, blur, hairline border, inner highlight */
+  .glass {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.022));
+    backdrop-filter: blur(14px) saturate(135%);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+    border: 1px solid var(--color-line);
+    box-shadow: var(--shadow-glass), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-soft {
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
+    border: 1px solid var(--color-line);
+  }
+
+  /* Hairline divider that fades at both ends */
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-line-strong), transparent);
+  }
+
+  .text-gradient {
+    background: linear-gradient(100deg, var(--color-ink) 30%, var(--color-accent-soft) 70%, var(--color-cyan));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Fine technical grid used sparingly behind atmosphere */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, #000 30%, transparent 85%);
+  }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  /* Chip for skills / tags */
+  .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 0.6rem;
+    border: 1px solid var(--color-line);
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--color-dim);
+    font-size: 0.8rem;
+    transition: color 0.25s, border-color 0.25s, background 0.25s, transform 0.25s;
+  }
+  .chip:hover, .chip:focus-visible {
+    color: var(--color-ink);
+    border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+    background: color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+
+  .field {
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-line);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 0.75rem 1rem;
+    color: var(--color-ink);
+    font-size: 0.95rem;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+  .field::placeholder { color: var(--color-muted); }
+  .field:focus {
+    outline: none;
+    border-color: color-mix(in srgb, var(--color-accent) 60%, transparent);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-accent) 18%, transparent);
+  }
+  .field[aria-invalid="true"] {
+    border-color: color-mix(in srgb, var(--color-danger) 65%, transparent);
   }
 }
 
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* ─── Motion ──────────────────────────────────────────────────────────── */
+@keyframes aurora-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); opacity: 0.55; }
+  50% { transform: translate3d(4%, -3%, 0) scale(1.12); opacity: 0.8; }
 }
-
-.animate-fade-in-up {
-  animation: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }
-
 @keyframes shimmer {
-  100% {
-    transform: translateX(100%);
+  100% { transform: translateX(100%); }
+}
+@keyframes scroll-dot {
+  0% { transform: translateY(0); opacity: 0; }
+  35% { opacity: 1; }
+  70% { transform: translateY(14px); opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes pulse-ring {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  70% { transform: scale(2.2); opacity: 0; }
+  100% { opacity: 0; }
+}
+
+.animate-aurora { animation: aurora-drift 18s ease-in-out infinite; }
+.animate-float { animation: float-y 7s ease-in-out infinite; }
+
+/* One-shot entrance used only for the orchestrated hero load */
+@keyframes hero-rise {
+  from { opacity: 0; transform: translateY(24px); filter: blur(6px); }
+  to { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+.hero-rise {
+  opacity: 0;
+  animation: hero-rise 0.9s var(--ease-out-soft) forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
   }
+  .hero-rise { opacity: 1; }
+}
+
+/* ─── Print: clean résumé only ───────────────────────────────────────────── */
+@media print {
+  body { background: #fff !important; color: #000 !important; }
+  main, header, footer, #atmosphere, #hero-canvas, .ai-assistant-root { display: none !important; }
+  #printable-resume-card {
+    margin: 0 !important; padding: 0 !important; border: none !important;
+    box-shadow: none !important; width: 100% !important;
+    color: #000 !important; background: #fff !important; display: block !important;
+  }
+  ul { list-style-type: disc !important; padding-left: 1.5rem !important; }
 }

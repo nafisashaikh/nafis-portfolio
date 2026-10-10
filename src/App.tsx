@@ -1,118 +1,49 @@
-import { useState } from "react";
-import ThreeBackground from "./components/ThreeBackground";
+import { lazy, Suspense, useState } from "react";
+import AtmosphereBackground from "./components/background/AtmosphereBackground";
 import SplashScreen from "./components/SplashScreen";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
-import ImpactStrip from "./components/ImpactStrip";
-import ProjectGallery from "./components/ProjectGallery";
-import ExperienceTimeline from "./components/ExperienceTimeline";
-import SkillsGrid from "./components/SkillsGrid";
-import EducationCerts from "./components/EducationCerts";
-import ResumePDFView from "./components/ResumePDFView";
-import AIAssistant from "./components/AIAssistant";
-import { resumeData } from "./data/resumeData";
+import Hero from "./components/hero/Hero";
+import About from "./components/sections/About";
+import Highlights from "./components/sections/Highlights";
+import Skills from "./components/sections/Skills";
+import Projects from "./components/sections/Projects";
+import Experience from "./components/sections/Experience";
+import Contact from "./components/sections/Contact";
+import Footer from "./components/Footer";
+
+// Non-critical, interaction-driven — kept out of the initial bundle.
+const AIAssistant = lazy(() => import("./components/AIAssistant"));
+const ResumePDFView = lazy(() => import("./components/ResumePDFView"));
 
 export default function App() {
-  const [splashComplete, setSplashComplete] = useState(false);
-  const [pdfOpen, setPdfOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
-  
-  // Direct access to master profile data
-  const activePersona = resumeData;
-
-
-  if (!splashComplete) {
-    return <SplashScreen onComplete={() => setSplashComplete(true)} />;
-  }
+  const [splashDone, setSplashDone] = useState(false);
+  const [resumeOpen, setResumeOpen] = useState(false);
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 overflow-x-hidden ${darkMode ? "dark bg-[#050505] text-[#e5e5e5]" : "bg-slate-50 text-slate-900"} selection:bg-theme-100 selection:text-theme-850`}>
-      {/* 1. Three.js 3D Background */}
-      <ThreeBackground />
+    <>
+      <a className="skip-link" href="#home">Skip to content</a>
+      <AtmosphereBackground />
 
-      {/* Editorial aesthetic ambient spots underneath */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden -z-10">
-        <div className="absolute top-[-5%] right-[-10%] w-[50%] h-[50%] bg-theme-500/10 rounded-full blur-[140px]" />
-        <div className="absolute bottom-[-5%] left-[-10%] w-[50%] h-[50%] bg-blue-500/8 rounded-full blur-[140px]" />
-      </div>
+      <Navbar onOpenResume={() => setResumeOpen(true)} />
 
-      {/* 2. Responsive Sticky Header & Drawer Layout */}
-      <Navbar 
-        onOpenPDF={() => setPdfOpen(true)} 
-        darkMode={darkMode}
-        onToggleDarkMode={() => setDarkMode(!darkMode)}
-      />
-
-      {/* Main Container Wrapper */}
-      <main className="relative z-10 pt-10 pb-32">
-        {/* 3. Hero Interactive Showcase */}
-        <Hero onOpenPDF={() => setPdfOpen(true)} />
-
-        {/* 4. Top 3 Impact Accolades strip */}
-        <ImpactStrip />
-
-        {/* 4.5. Project Gallery Showcase */}
-        <ProjectGallery />
-
-        {/* 5. story timeline Experience accordion */}
-        <ExperienceTimeline />
-
-        {/* 6. Skills Matrices */}
-        <SkillsGrid />
-
-        {/* 7. Educational Registries & Certifications */}
-        <EducationCerts />
-
-        {/* Additional Info Completeness Footer section */}
-        <footer className="mt-20 border-t dark:border-white/5 border-slate-200 pt-16 pb-32 md:pb-24 max-w-6xl mx-auto px-6 text-center">
-          {/* Looking For Segment */}
-          <div className="max-w-4xl mx-auto px-6 py-12 mb-16 border dark:border-white/10 border-slate-200 rounded-2xl dark:bg-slate-900/40 bg-white shadow-sm backdrop-blur-sm text-center flex flex-col items-center">
-            <div className="flex flex-col gap-2 mb-6 items-center">
-              <span className="font-mono text-xs tracking-[0.25em] text-theme-500 uppercase font-semibold">Open To Work</span>
-              <h2 className="text-2xl sm:text-3xl font-sans font-light tracking-tight dark:text-white text-slate-900">
-                Looking for <span className="dark:text-slate-400 text-slate-500 italic font-serif">Opportunities</span>
-              </h2>
-            </div>
-            <p className="dark:text-slate-400 text-slate-700 leading-relaxed max-w-2xl mx-auto">
-              {activePersona.basics.lookingFor || "I am currently looking for internship opportunities in Data Analytics, MIS, or Business Analytics where I can apply my skills and gain real world experience."}
-            </p>
-          </div>  
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 dark:text-slate-400 text-slate-700">
-              <a 
-                href={`mailto:${activePersona.basics.email}`}
-                className="hover:text-theme-500 transition-colors flex items-center gap-2"
-              >
-                {activePersona.basics.email}
-              </a>
-              <a 
-                href={activePersona.basics.github} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-theme-500 transition-colors flex items-center gap-2"
-              >
-                GitHub
-              </a>
-              <a 
-                href={activePersona.basics.linkedin} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="hover:text-theme-500 transition-colors flex items-center gap-2"
-              >
-                LinkedIn
-              </a>
-            </div>
-
-            <p className="text-[10px] font-mono dark:text-slate-500 text-slate-400 mt-8 tracking-widest uppercase opacity-80">
-              NAFIS ABID SHAIKH © {new Date().getFullYear()} // ALL FACTS VERIFIED
-            </p>
-        </footer>
+      <main id="main">
+        <Hero />
+        <About />
+        <Highlights />
+        <Skills />
+        <Projects />
+        <Experience />
+        <Contact />
       </main>
 
-      {/* 8. Fullscreen printable ATS portrait Resume Overlay */}
-      <AIAssistant />
-      <ResumePDFView isOpen={pdfOpen} onClose={() => setPdfOpen(false)} />
-    </div>
+      <Footer onOpenResume={() => setResumeOpen(true)} />
+
+      <Suspense fallback={null}>
+        <AIAssistant />
+        {resumeOpen && <ResumePDFView isOpen onClose={() => setResumeOpen(false)} />}
+      </Suspense>
+
+      {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
+    </>
   );
 }
-
-// Cache bust timestamp: 2026-05-27T18:29:00Z

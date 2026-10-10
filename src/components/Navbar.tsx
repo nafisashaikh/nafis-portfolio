@@ -1,216 +1,129 @@
 import { useEffect, useState } from "react";
-import { User, Zap, Terminal, Cpu, GraduationCap, FileText, Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { Menu, X, FileText } from "lucide-react";
 import { Logo } from "./Logo";
+import { NAV_ITEMS, scrollToSection } from "../lib/constants";
 
 interface NavbarProps {
-  onOpenPDF: () => void;
-  darkMode?: boolean;
-  onToggleDarkMode?: () => void;
+  onOpenResume: () => void;
 }
 
-export default function Navbar({ onOpenPDF, darkMode = true, onToggleDarkMode }: NavbarProps) {
-  const [activeSection, setActiveSection] = useState("hero");
+export default function Navbar({ onOpenResume }: NavbarProps) {
+  const [active, setActive] = useState("home");
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentTheme, setCurrentTheme] = useState("orange");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("portfolio-theme") || "orange";
-    setCurrentTheme(savedTheme);
-    document.documentElement.setAttribute("data-theme", savedTheme);
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navItems = [
-    { id: "hero", label: "Profile", icon: User },
-    { id: "impact", label: "Highlights", icon: Zap },
-    { id: "projects", label: "Experience", icon: Terminal },
-    { id: "skills", label: "Skills", icon: Cpu },
-    { id: "education", label: "Background", icon: GraduationCap },
-  ];
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px", threshold: 0 }
+    );
+    NAV_ITEMS.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+    return () => obs.disconnect();
+  }, []);
 
   useEffect(() => {
-    const handleScroll = () => {
-      // Toggle sticky backdrop on small scroll
-      if (window.scrollY > 40) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-
-      // Scroll spy logic
-      const sections = navItems.map((item) => document.getElementById(item.id));
-      let currentSection = "hero";
-
-      for (const section of sections) {
-        if (section) {
-          const rect = section.getBoundingClientRect();
-          // If the section top is near the viewport top
-          if (rect.top <= 160) {
-            currentSection = section.id;
-          }
-        }
-      }
-      setActiveSection(currentSection);
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = "";
+      window.removeEventListener("keydown", onKey);
     };
+  }, [menuOpen]);
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollTo = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80; // height of navbar
-      const bodyRect = document.body.getBoundingClientRect().top;
-      const elementRect = element.getBoundingClientRect().top;
-      const elementPosition = elementRect - bodyRect;
-      const offsetPosition = elementPosition - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-      setMobileMenuOpen(false);
-    }
-  };
-
-  const changeTheme = (theme: string) => {
-    setCurrentTheme(theme);
-    localStorage.setItem("portfolio-theme", theme);
-    document.documentElement.setAttribute("data-theme", theme);
+  const go = (id: string) => {
+    scrollToSection(id);
+    setMenuOpen(false);
   };
 
   return (
     <>
-      {/* Sticky Top Header (Desktop & Mobile title bar) */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 flex flex-col transition-all duration-300 ${
-          scrolled
-            ? "dark:bg-[#050505]/80 bg-white/90 backdrop-blur-md border-b dark:border-white/5 border-slate-200 shadow-md"
-            : "bg-transparent"
-        }`}
-      >
-        {/* Global Broadcast Banner */}
-        <div className="w-full bg-theme-500 text-black py-1.5 px-4 text-center text-[10px] sm:text-xs font-mono font-bold tracking-[0.2em] uppercase flex items-center justify-center gap-2 relative overflow-hidden group">
-          {/* Subtle animated shine */}
-          <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent group-hover:animate-[shimmer_1.5s_infinite]" />
-          <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-          <span>🎉 Successfully completed 3-month Data Analyst Internship @ Cipla (Jun 2026 – Sep 2026) — Open to full-time opportunities!</span>
-          <Zap className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
-        </div>
+      <header className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${scrolled ? "py-3" : "py-5"}`}>
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6">
+          <button onClick={() => go("home")} className="flex items-center gap-2.5" aria-label="Nafis Shaikh — home">
+            <span className={`grid h-10 w-10 place-items-center rounded-xl transition-colors ${scrolled ? "glass" : "glass-soft"}`}>
+              <Logo className="h-6 w-6" />
+            </span>
+            <span className="hidden text-sm font-semibold tracking-tight text-ink sm:block">Nafis Shaikh</span>
+          </button>
 
-        <div className={`max-w-6xl w-full mx-auto px-6 flex items-center justify-between transition-all duration-300 ${scrolled ? 'py-2.5' : 'py-4 mt-1'}`}>
-          {/* Logo / Monogram (Fuses directly with the Editorial NAS border spec) */}
-          <div
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-3 cursor-pointer group"
-          >
-            <div className="w-10 h-10 border border-theme-500 flex items-center justify-center relative overflow-hidden transition-all duration-300 group-hover:bg-theme-500/10 shrink-0">
-              <Logo className="w-8 h-8" />
-            </div>
-            <div>
-              <span className="text-xs font-mono font-semibold tracking-[0.25em] dark:text-white text-slate-900 hidden sm:inline-block">
-                NAFIS ABID SHAIKH
-              </span>
-              <p className="text-[9px] font-mono text-theme-500/80 tracking-widest leading-none hidden sm:block mt-1">
-                // SYSTEM REPORT: LIVE
-              </p>
-            </div>
-          </div>
-
-          {/* Desktop Nav Items */}
-          <nav className="hidden md:flex items-center gap-1 dark:bg-white/5 bg-slate-900/5 dark:border-white/10 border-slate-200 p-1 rounded-full backdrop-blur-sm">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeSection === item.id;
+          <nav className={`hidden items-center gap-1 rounded-full p-1 transition-colors duration-300 md:flex ${scrolled ? "glass" : "glass-soft"}`} aria-label="Primary">
+            {NAV_ITEMS.map(({ id, label }) => {
+              const on = active === id;
               return (
-                <button
-                  key={item.id}
-                  onClick={() => scrollTo(item.id)}
-                  className={`flex items-center gap-1.5 px-4 py-2 rounded-full font-mono text-xs tracking-wider transition-all duration-300 ${
-                    isActive
-                      ? "bg-theme-500/10 text-theme-400 border border-theme-500/20"
-                      : "dark:text-gray-400 text-slate-600 dark:hover:text-white hover:text-slate-900 border border-transparent"
-                  }`}
-                >
-                  <Icon className="w-3.5 h-3.5" />
-                  {item.label}
+                <button key={id} onClick={() => go(id)} aria-current={on ? "page" : undefined}
+                  className={`relative rounded-full px-4 py-2 text-sm transition-colors ${on ? "text-ink" : "text-dim hover:text-ink"}`}>
+                  {on && (
+                    <motion.span layoutId="nav-active" className="absolute inset-0 rounded-full bg-white/[0.08] ring-1 ring-[color:var(--color-line-strong)]"
+                      transition={{ type: "spring", stiffness: 380, damping: 32 }} />
+                  )}
+                  <span className="relative z-10">{label}</span>
                 </button>
               );
             })}
           </nav>
 
-          {/* Action Buttons */}
-          <div className="flex items-center gap-3">
-
-            {/* Quick Resume Print Trigger Button (Editorial CTA - transparent with amber bounds) */}
-            <button
-              onClick={onOpenPDF}
-              className="flex items-center gap-1.5 px-4 py-2 bg-theme-500 text-black hover:bg-theme-600 font-mono text-xs font-bold uppercase tracking-widest transition-all duration-300 active:scale-95"
-            >
-              <FileText className="w-3.5 h-3.5" />
-              <span className="hidden xs:inline">Print Resume</span>
-              <span className="inline xs:hidden">CV</span>
+          <div className="flex items-center gap-2">
+            <button onClick={onOpenResume} className="hidden items-center gap-1.5 rounded-xl glass-soft px-3.5 py-2 text-sm text-dim transition-colors hover:text-ink lg:flex">
+              <FileText className="h-4 w-4" /> Résumé
             </button>
-
-            {/* Mobile Burger Open button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-1.5 bg-white/5 border border-white/10 text-gray-400 hover:text-white md:hidden transition-all"
-            >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            <button onClick={() => go("contact")} className="hidden rounded-xl bg-accent px-4 py-2 text-sm font-semibold text-[#06080f] transition-colors hover:bg-accent-soft md:block">
+              Let&apos;s connect
+            </button>
+            <button onClick={() => setMenuOpen(true)} className="grid h-10 w-10 place-items-center rounded-xl glass-soft text-ink md:hidden" aria-label="Open menu" aria-expanded={menuOpen}>
+              <Menu className="h-5 w-5" />
             </button>
           </div>
         </div>
       </header>
-
-      {/* Mobile Drawer Navigation overlay */}
-      {mobileMenuOpen && (
-        <div className="fixed inset-0 top-[60px] bg-[#050505]/95 backdrop-blur-lg z-30 md:hidden flex flex-col border-b border-white/5">
-          <div className="flex flex-col p-6 gap-3">
-            {navItems.map((item) => {
-              const Icon = item.icon;
-              const isActive = activeSection === item.id;
-              return (
-                <button
-                  key={item.id}
-                  onClick={() => scrollTo(item.id)}
-                  className={`flex items-center gap-3 px-4 py-3.5 font-mono text-xs tracking-wider text-left transition-all ${
-                    isActive
-                      ? "bg-theme-500/10 text-theme-400 border border-theme-500/20"
-                      : "text-gray-400 hover:text-white bg-white/5 border border-white/10"
-                  }`}
-                >
-                  <Icon className="w-4 h-4 text-theme-500" />
-                  {item.label}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div className="fixed inset-0 z-[60] md:hidden" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+            <div className="absolute inset-0 bg-base/80 backdrop-blur-xl" onClick={() => setMenuOpen(false)} />
+            <motion.nav aria-label="Mobile" className="absolute inset-x-0 top-0 glass rounded-b-3xl p-6 pt-5"
+              initial={{ y: "-100%" }} animate={{ y: 0 }} exit={{ y: "-100%" }} transition={{ type: "spring", stiffness: 300, damping: 32 }}>
+              <div className="flex items-center justify-between">
+                <span className="flex items-center gap-2.5">
+                  <span className="grid h-10 w-10 place-items-center rounded-xl glass-soft"><Logo className="h-6 w-6" /></span>
+                  <span className="text-sm font-semibold text-ink">Nafis Shaikh</span>
+                </span>
+                <button onClick={() => setMenuOpen(false)} className="grid h-10 w-10 place-items-center rounded-xl glass-soft text-ink" aria-label="Close menu">
+                  <X className="h-5 w-5" />
                 </button>
-              );
-            })}
-          </div>
-        </div>
-      )}
-
-      {/* Mobile Bottom Navigation Bar (Sleek High-Tech Capsule Grid) */}
-      <div className="fixed bottom-4 left-4 right-4 md:hidden z-40">
-        <nav className="bg-[#050505]/90 backdrop-blur-lg border border-white/10 p-2 flex items-center justify-around shadow-[0_-5px_25px_rgba(0,0,0,0.8)]">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const isActive = activeSection === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => scrollTo(item.id)}
-                className={`flex flex-col items-center gap-1 p-2 transition-all ${
-                  isActive ? "text-theme-500" : "text-gray-500 hover:text-gray-300"
-                }`}
-              >
-                <Icon className="w-4 h-4" />
-                <span className="text-[9px] font-mono uppercase tracking-widest scale-90">{item.label}</span>
-              </button>
-            );
-          })}
-        </nav>
-      </div>
+              </div>
+              <div className="mt-6 flex flex-col gap-1">
+                {NAV_ITEMS.map(({ id, label }, i) => (
+                  <motion.button key={id} onClick={() => go(id)} initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.05 + i * 0.05 }}
+                    className={`rounded-xl px-4 py-3 text-left text-lg transition-colors ${active === id ? "bg-white/[0.06] text-ink" : "text-dim"}`}>
+                    {label}
+                  </motion.button>
+                ))}
+              </div>
+              <div className="mt-5 flex flex-col gap-3">
+                <button onClick={() => go("contact")} className="rounded-xl bg-accent px-4 py-3 font-semibold text-[#06080f]">Let&apos;s connect</button>
+                <button onClick={() => { onOpenResume(); setMenuOpen(false); }} className="flex items-center justify-center gap-2 rounded-xl glass-soft px-4 py-3 text-dim">
+                  <FileText className="h-4 w-4" /> View résumé
+                </button>
+              </div>
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }

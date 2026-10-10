@@ -1,98 +1,50 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { Logo } from "./Logo";
+import { useReducedMotion } from "../lib/useReducedMotion";
 
 interface SplashScreenProps {
   onComplete: () => void;
 }
 
 export default function SplashScreen({ onComplete }: SplashScreenProps) {
-  const [progress, setProgress] = useState(0);
+  const reduced = useReducedMotion();
+  const [leaving, setLeaving] = useState(false);
+  const duration = reduced ? 250 : 1200;
 
   useEffect(() => {
-    const duration = 1500; // 1.5 seconds loading
-    const intervalTime = 30;
-    const increment = 100 / (duration / intervalTime);
-
-    const timer = setInterval(() => {
-      setProgress((prev) => {
-        const next = prev + increment;
-        if (next >= 100) {
-          clearInterval(timer);
-          setTimeout(() => {
-            onComplete();
-          }, 200);
-          return 100;
-        }
-        return next;
-      });
-    }, intervalTime);
-
-    return () => clearInterval(timer);
-  }, [onComplete]);
+    const t = setTimeout(() => setLeaving(true), duration);
+    return () => clearTimeout(t);
+  }, [duration]);
 
   return (
-    <div className="fixed inset-0 bg-[#050505] flex flex-col items-center justify-center z-50 text-white overflow-hidden">
-      {/* Decorative futuristic backlines */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.01)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.01)_1px,transparent_1px)] bg-[size:32px_32px]" />
-      <div className="absolute w-[500px] h-[500px] bg-theme-500/10 rounded-full blur-[140px] top-1/4 left-1/4 animate-pulse pointer-events-none" />
-
-      <div className="relative z-10 flex flex-col items-center">
-        {/* Monogram Monolith */}
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+    <motion.div
+      className="fixed inset-0 z-[80] grid place-items-center bg-base"
+      initial={{ opacity: 1 }}
+      animate={{ opacity: leaving ? 0 : 1 }}
+      transition={{ duration: reduced ? 0.1 : 0.5, ease: [0.16, 1, 0.3, 1] }}
+      onAnimationComplete={() => leaving && onComplete()}
+    >
+      <div className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full bg-accent/15 blur-[120px]" />
+      <div className="relative flex flex-col items-center gap-6">
+        <motion.span
+          initial={{ scale: 0.85, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative w-16 h-16 border border-theme-500 flex items-center justify-center mb-8"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="grid h-16 w-16 place-items-center rounded-2xl glass"
         >
-          <Logo className="w-12 h-12" />
-
-          {/* Tiny scanning laser */}
+          <Logo className="h-9 w-9" />
+        </motion.span>
+        <span className="text-sm tracking-[0.08em] text-dim">Nafis Shaikh</span>
+        <div className="h-px w-40 overflow-hidden rounded-full bg-white/10">
           <motion.div
-            animate={{
-              y: [-25, 25, -25],
-            }}
-            transition={{
-              duration: 2.2,
-              repeat: Infinity,
-              ease: "easeInOut",
-            }}
-            className="absolute left-2 right-2 h-[1px] bg-theme-500/80 shadow-[0_0_8px_rgba(249,115,22,0.6)] pointer-events-none"
-          />
-        </motion.div>
-
-        {/* Identity statement */}
-        <motion.h1
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-base font-sans tracking-[0.3em] text-white font-light uppercase text-center"
-        >
-          Nafis Abid Shaikh
-        </motion.h1>
-        
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.8 }}
-          transition={{ delay: 0.5, duration: 0.6 }}
-          className="text-[9px] font-mono text-theme-500 mt-2 tracking-[0.2em] font-semibold"
-        >
-          // INITIALIZING DATA PORTFOLIO
-        </motion.p>
-
-        {/* Loading Bar Container */}
-        <div className="w-48 h-[2px] bg-white/10 mt-10 overflow-hidden relative">
-          <motion.div
-            className="h-full bg-theme-500"
-            style={{ width: `${progress}%` }}
+            className="h-full bg-gradient-to-r from-accent to-cyan"
+            initial={{ width: "0%" }}
+            animate={{ width: "100%" }}
+            transition={{ duration: duration / 1000, ease: "easeInOut" }}
           />
         </div>
-
-        {/* Dynamic percentage readout */}
-        <span className="text-[10px] font-mono text-theme-500/80 mt-2 tracking-widest">
-          {Math.floor(progress)}%
-        </span>
       </div>
-    </div>
+    </motion.div>
   );
 }

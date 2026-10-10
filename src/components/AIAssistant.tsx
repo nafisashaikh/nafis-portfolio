@@ -1,234 +1,161 @@
-import { useState, useRef, useEffect } from 'react';
-import { MessageCircle, X, Send, Sparkles, User } from 'lucide-react';
-import { GoogleGenAI } from '@google/genai';
-import { resumeData as activePersona } from '../data/resumeData';
+import { useState, useRef, useEffect, type FormEvent } from "react";
+import { X, Send, Sparkles, User } from "lucide-react";
+import { GoogleGenAI } from "@google/genai";
+import { resumeData as d } from "../data/resumeData";
 
-type Message = {
-  id: string;
-  role: 'user' | 'model';
-  content: string;
-};
+type Message = { id: string; role: "user" | "model"; content: string };
 
-export default function AIAssistant() {
-  
-  // Generate the system prompt dynamically based on the active persona
-  const systemPrompt = `You are Nafis Abid Shaikh's official AI assistant, embedded on his portfolio website.
-Your job is to answer questions from recruiters, hiring managers, and clients about Nafis's skills, experience, and projects.
-Be professional, concise, enthusiastic, and confident. Never make up information. Use only the following data.
+const SYSTEM_PROMPT = `You are the AI assistant on Nafis Shaikh's portfolio. Answer questions from recruiters and hiring managers about his skills, experience, and projects. Be professional, concise, and confident. Never invent facts — use only the data below. Keep answers to 2-3 short paragraphs.
 
-ABOUT NAFIS (${activePersona.basics.titles[0]}):
-${activePersona.basics.summary}
+ABOUT: ${d.basics.about} Focus areas: ${d.basics.disciplines.join(", ")}. ${d.basics.availability}.
 
 SKILLS:
-${activePersona.skills.map((s: any) => s.category ? `${s.category}: ${s.items.join(', ')}` : s).join('\n')}
-
-EDUCATION:
-${activePersona.education.map((e: any) => `- ${e.degree} from ${e.institution || e.university} (${e.duration || e.dates})`).join('\n')}
+${d.skills.map((s) => `${s.category}: ${s.items.join(", ")}`).join("\n")}
 
 EXPERIENCE:
-${activePersona.experience.map((e: any) => `- ${e.role} at ${e.company} (${e.duration || e.dates}):\n  ${e.bullets.join('\n  ')}`).join('\n\n')}
+${d.experience.map((e) => `${e.role} at ${e.company} (${e.dates}): ${e.bullets.join(" ")}`).join("\n")}
 
 PROJECTS:
-${activePersona.projects.map((p: any) => `- ${p.title} (${p.stack}):\n  Problem: ${p.problem}\n  Solution: ${p.solution}`).join('\n\n')}
+${d.projects.map((p) => `${p.title} [${p.status}] (${p.stack.join(", ")}): ${p.problem} ${p.approach}`).join("\n")}
 
-If someone asks for contact info, tell them to use the links in the header. Keep answers to 2-3 short paragraphs max.`;
+EDUCATION:
+${d.education.map((e) => `${e.degree}, ${e.institution} (${e.dates}${e.result ? ", " + e.result : ""})`).join("\n")}
 
-  const [isOpen, setIsOpen] = useState(false);
+For contact, point them to the contact section, email (${d.basics.email}), LinkedIn, or GitHub.`;
+
+const QUICK_REPLIES = [
+  "What are Nafis's top skills?",
+  "Tell me about the Cipla internship",
+  "How can I get in touch?",
+];
+
+export default function AIAssistant() {
+  const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { id: '1', role: 'model', content: "Hi! I'm Nafis's AI Assistant. Ask me anything about his experience, projects, or skills!" }
+    { id: "1", role: "model", content: "Hi — I'm Nafis's assistant. Ask me about his experience, projects, or skills." },
   ]);
-  const [input, setInput] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  
-  const QUICK_REPLIES = [
-    "What are your top skills?",
-    "Tell me about your SIH participation",
-    "How can I contact you?",
-  ];
+  const endRef = useRef<HTMLDivElement>(null);
 
-  const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  // Auto-scroll to bottom of chat
   useEffect(() => {
-    if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [messages, isOpen]);
+    endRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, open, loading]);
 
-  const handleSend = async (e?: React.FormEvent, textOverride?: string) => {
+  const send = async (e?: FormEvent, override?: string) => {
     e?.preventDefault();
-    const userMessage = (textOverride || input).trim();
-    if (!userMessage || isLoading) return;
-
-    setInput('');
+    const text = (override ?? input).trim();
+    if (!text || loading) return;
+    setInput("");
     setError(null);
-    setMessages(prev => [...prev, { id: Date.now().toString(), role: 'user', content: userMessage }]);
-    setIsLoading(true);
-
+    const history = [...messages, { id: Date.now().toString(), role: "user" as const, content: text }];
+    setMessages(history);
+    setLoading(true);
     try {
       const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
-      
-      if (!apiKey) {
-        throw new Error("API key missing. The site administrator needs to configure VITE_GEMINI_API_KEY in the environment.");
-      }
-
+      if (!apiKey) throw new Error("The assistant isn't configured yet — please use the contact section to reach Nafis directly.");
       const ai = new GoogleGenAI({ apiKey });
-      
-      // We pass the conversation history and the system instruction to Gemini
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
+      const res = await ai.models.generateContent({
+        model: "gemini-2.5-flash",
         contents: [
-          // Inject system instructions as the very first context message (if the SDK supports system_instruction directly, that's better, but this is a safe fallback)
-          { role: 'user', parts: [{ text: `SYSTEM INSTRUCTION (Do not reply to this directly, just follow the rules): ${systemPrompt}` }] },
-          { role: 'model', parts: [{ text: "Understood. I am Nafis's AI Assistant. How can I help the user?" }] },
-          ...messages.map(m => ({ role: m.role, parts: [{ text: m.content }] })),
-          { role: 'user', parts: [{ text: userMessage }] }
+          { role: "user", parts: [{ text: `Follow these rules: ${SYSTEM_PROMPT}` }] },
+          { role: "model", parts: [{ text: "Understood — I'll answer as Nafis's assistant." }] },
+          ...history.map((m) => ({ role: m.role, parts: [{ text: m.content }] })),
         ],
       });
-
-      if (response.text) {
-        setMessages(prev => [...prev, { id: Date.now().toString(), role: 'model', content: response.text }]);
-      }
-    } catch (err: any) {
-      console.error("Gemini API Error:", err);
-      let errorMessage = err.message || "Failed to connect to the AI. Please try again later.";
-      
-      // Try to parse raw JSON errors from the Google API
-      try {
-        if (errorMessage.includes('{"error"')) {
-          const parsed = JSON.parse(errorMessage.substring(errorMessage.indexOf('{')));
-          if (parsed.error && parsed.error.message) {
-            errorMessage = parsed.error.message;
-          }
-        }
-      } catch (e) {
-        // Ignore parsing errors and fallback to original
-      }
-      
-      setError(`AI Error: ${errorMessage}`);
+      if (res.text) setMessages((p) => [...p, { id: Date.now().toString(), role: "model", content: res.text as string }]);
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
-      setIsLoading(false);
+      setLoading(false);
     }
   };
 
   return (
-    <>
-      {/* Floating Action Button */}
+    <div className="ai-assistant-root">
       <button
-        onClick={() => setIsOpen(true)}
-        className={`fixed bottom-24 md:bottom-6 right-4 md:right-6 z-50 p-4 rounded-full bg-gradient-to-r from-theme-500 to-theme-600 text-white shadow-lg shadow-theme-500/30 hover:scale-110 transition-all duration-300 ${isOpen ? 'scale-0 opacity-0 pointer-events-none' : 'scale-100 opacity-100'}`}
-        aria-label="Open AI Assistant"
+        onClick={() => setOpen(true)}
+        aria-label="Open AI assistant"
+        className={`fixed bottom-6 right-6 z-40 grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-accent to-cyan text-[#06080f] shadow-[0_12px_30px_-8px_rgba(119,146,255,0.6)] transition-all duration-300 hover:scale-105 ${open ? "scale-0 opacity-0" : "scale-100 opacity-100"}`}
       >
-        <Sparkles className="w-6 h-6" />
+        <Sparkles className="h-6 w-6" />
       </button>
 
-      {/* Chat Window */}
-      <div 
-        className={`fixed bottom-24 md:bottom-6 right-4 md:right-6 z-50 w-[calc(100%-2rem)] md:w-full max-w-sm sm:max-w-md h-[500px] max-h-[75vh] md:max-h-[80vh] flex flex-col bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl transition-all duration-500 origin-bottom-right ${isOpen ? 'scale-100 opacity-100' : 'scale-0 opacity-0 pointer-events-none'}`}
+      <div
+        role="dialog"
+        aria-label="AI assistant"
+        className={`fixed bottom-6 right-4 left-4 z-40 flex h-[32rem] max-h-[76vh] flex-col rounded-2xl glass transition-all duration-300 sm:left-auto sm:right-6 sm:w-[26rem] ${open ? "scale-100 opacity-100" : "pointer-events-none scale-95 opacity-0"}`}
+        style={{ transformOrigin: "bottom right" }}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-white/10 bg-white/5 rounded-t-2xl">
+        <div className="flex items-center justify-between border-b border-[color:var(--color-line)] p-4">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-theme-500 to-theme-600 flex items-center justify-center shadow-inner">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-accent to-cyan text-[#06080f]">
+              <Sparkles className="h-4 w-4" />
+            </span>
             <div>
-              <h3 className="text-white font-semibold text-sm">AI Assistant</h3>
-              <p className="text-theme-400 text-xs">Powered by Gemini</p>
+              <h3 className="text-sm font-semibold text-ink">Assistant</h3>
+              <p className="text-xs text-muted">Powered by Gemini</p>
             </div>
           </div>
-          <button 
-            onClick={() => setIsOpen(false)}
-            className="p-2 rounded-full hover:bg-white/10 text-slate-400 hover:text-white transition-colors"
-          >
-            <X className="w-5 h-5" />
+          <button onClick={() => setOpen(false)} aria-label="Close assistant" className="grid h-8 w-8 place-items-center rounded-lg text-dim transition-colors hover:bg-white/[0.06] hover:text-ink">
+            <X className="h-4 w-4" />
           </button>
         </div>
 
-        {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
-          {messages.map((msg) => (
-            <div key={msg.id} className={`flex gap-3 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              {msg.role === 'model' && (
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10">
-                  <Sparkles className="w-4 h-4 text-theme-400" />
-                </div>
+        <div className="no-scrollbar flex-1 space-y-4 overflow-y-auto p-4">
+          {messages.map((m) => (
+            <div key={m.id} className={`flex gap-2.5 ${m.role === "user" ? "justify-end" : "justify-start"}`}>
+              {m.role === "model" && (
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full glass-soft text-accent"><Sparkles className="h-3.5 w-3.5" /></span>
               )}
-              
-              <div className={`max-w-[80%] rounded-2xl p-3 text-sm leading-relaxed ${
-                msg.role === 'user' 
-                  ? 'bg-theme-500 text-white rounded-tr-sm' 
-                  : 'bg-white/10 text-slate-200 rounded-tl-sm border border-white/5'
-              }`}>
-                {msg.content}
+              <div className={`max-w-[80%] rounded-2xl px-3.5 py-2.5 text-sm leading-relaxed ${m.role === "user" ? "bg-accent text-[#06080f]" : "bg-white/[0.05] text-ink"}`}>
+                {m.content}
               </div>
-
-              {msg.role === 'user' && (
-                <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center flex-shrink-0 border border-white/10">
-                  <User className="w-4 h-4 text-slate-400" />
-                </div>
+              {m.role === "user" && (
+                <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full glass-soft text-dim"><User className="h-3.5 w-3.5" /></span>
               )}
             </div>
           ))}
-
-          {isLoading && (
-            <div className="flex gap-3 justify-start animate-pulse">
-              <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 border border-white/10">
-                <Sparkles className="w-4 h-4 text-theme-400" />
-              </div>
-              <div className="bg-white/10 rounded-2xl rounded-tl-sm p-4 flex gap-1 items-center">
-                <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" />
-                <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }} />
-                <div className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0.4s' }} />
+          {loading && (
+            <div className="flex gap-2.5">
+              <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full glass-soft text-accent"><Sparkles className="h-3.5 w-3.5" /></span>
+              <div className="flex items-center gap-1 rounded-2xl bg-white/[0.05] px-4 py-3">
+                {[0, 0.2, 0.4].map((d) => (
+                  <span key={d} className="h-1.5 w-1.5 animate-bounce rounded-full bg-dim" style={{ animationDelay: `${d}s` }} />
+                ))}
               </div>
             </div>
           )}
-
-          {error && (
-            <div className="bg-theme-500/10 border border-theme-500/20 text-red-400 text-xs p-3 rounded-lg text-center">
-              {error}
-            </div>
-          )}
-          <div ref={messagesEndRef} />
+          {error && <p className="rounded-lg bg-white/[0.05] px-3 py-2 text-center text-xs text-danger">{error}</p>}
+          <div ref={endRef} />
         </div>
-
-        {/* Quick Replies */}
-        {!isLoading && messages.length < 3 && (
-          <div className="px-4 pb-3 flex flex-wrap gap-2">
-            {QUICK_REPLIES.map((reply, i) => (
-              <button
-                key={i}
-                onClick={() => handleSend(undefined, reply)}
-                className="text-xs px-3 py-1.5 bg-white/5 hover:bg-theme-500/20 text-theme-400 hover:text-theme-300 border border-theme-500/20 rounded-full transition-colors whitespace-nowrap"
-              >
-                {reply}
+        {!loading && messages.length < 3 && (
+          <div className="flex flex-wrap gap-2 px-4 pb-3">
+            {QUICK_REPLIES.map((q) => (
+              <button key={q} onClick={() => send(undefined, q)} className="rounded-full glass-soft px-3 py-1.5 text-xs text-dim transition-colors hover:text-ink">
+                {q}
               </button>
             ))}
           </div>
         )}
 
-        {/* Input Area */}
-        <form onSubmit={(e) => handleSend(e)} className="p-4 border-t border-white/10 bg-white/5 rounded-b-2xl">
+        <form onSubmit={(e) => send(e)} className="border-t border-[color:var(--color-line)] p-3">
           <div className="relative flex items-center">
             <input
-              type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about my experience..."
-              disabled={isLoading}
-              className="w-full bg-slate-900/50 border border-white/10 rounded-full py-3 pl-4 pr-12 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-theme-500/50 focus:ring-1 focus:ring-theme-500/50 transition-all disabled:opacity-50"
+              placeholder="Ask about my work…"
+              aria-label="Message"
+              disabled={loading}
+              className="w-full rounded-full border border-[color:var(--color-line)] bg-white/[0.03] py-3 pl-4 pr-12 text-sm text-ink placeholder-muted focus:border-[color:var(--color-accent)] focus:outline-none disabled:opacity-50"
             />
-            <button
-              type="submit"
-              disabled={!input.trim() || isLoading}
-              className="absolute right-2 p-2 rounded-full bg-theme-500 text-white hover:bg-theme-400 disabled:opacity-50 disabled:hover:bg-theme-500 transition-colors"
-            >
-              <Send className="w-4 h-4" />
+            <button type="submit" disabled={!input.trim() || loading} aria-label="Send" className="absolute right-1.5 grid h-9 w-9 place-items-center rounded-full bg-accent text-[#06080f] transition-colors hover:bg-accent-soft disabled:opacity-40">
+              <Send className="h-4 w-4" />
             </button>
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 }
