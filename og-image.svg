@@ -29,10 +29,10 @@
   </g>
 
   <!-- headline -->
-  <text x="80" y="300" font-family="'Sora','Segoe UI',sans-serif" font-weight="600" font-size="76" letter-spacing="-2" fill="#f5f7fb">Turning complex data</text>
-  <text x="80" y="388" font-family="'Sora','Segoe UI',sans-serif" font-weight="600" font-size="76" letter-spacing="-2" fill="#f5f7fb">into clear decisions.</text>
+  <text x="80" y="300" font-family="'Sora','Segoe UI',sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#f5f7fb">From complex problems</text>
+  <text x="80" y="384" font-family="'Sora','Segoe UI',sans-serif" font-weight="600" font-size="72" letter-spacing="-2" fill="#f5f7fb">to intelligent solutions.</text>
 
-  <text x="82" y="452" font-family="'JetBrains Mono',monospace" font-size="22" letter-spacing="1" fill="#a6b0c0">Data Analytics · Business Intelligence · AI</text>
+  <text x="82" y="448" font-family="'JetBrains Mono',monospace" font-size="22" letter-spacing="1" fill="#a6b0c0">AI · Software Engineering · Data</text>
 
   <!-- abstract data motif -->
   <g transform="translate(880 150)" opacity="0.9">
