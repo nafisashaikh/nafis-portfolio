@@ -1,10 +1,10 @@
-import { Database, BarChart3, Sparkles, Code2 } from "lucide-react";
+import { Sparkles, Code2, BarChart3, Wrench } from "lucide-react";
 import { resumeData } from "../../data/resumeData";
 import Section from "../ui/Section";
 import SectionHeading from "../ui/SectionHeading";
 import Reveal from "../ui/Reveal";
 
-const ICONS = [Database, BarChart3, Sparkles, Code2];
+const ICONS = [Sparkles, Code2, BarChart3, Wrench];
 
 export default function Skills() {
   const { skills } = resumeData;
@@ -18,7 +18,7 @@ export default function Skills() {
 
       <div className="mt-14 grid gap-5 md:grid-cols-2">
         {skills.map((group, i) => {
-          const Icon = ICONS[i] ?? Database;
+          const Icon = ICONS[i] ?? Sparkles;
           return (
             <Reveal key={group.category} delay={i * 0.07}>
               <div className="group h-full rounded-2xl glass p-7 transition-colors duration-300 hover:border-[color:var(--color-line-strong)]">

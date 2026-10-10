@@ -1,7 +1,5 @@
 import { useId } from "react";
-import type { Accent } from "../../types";
-
-export type Visual = "bars" | "area" | "network" | "scatter" | "feed";
+import type { Accent, Visual } from "../../types";
 
 interface Props {
   variant: Visual;
@@ -107,6 +105,50 @@ export default function ProjectVisual({ variant, accent = "blue" }: Props) {
               <rect x="74" y={y + 11} width={150 - i * 24} height="6" rx="3" fill="rgba(255,255,255,0.22)" />
               <rect x="74" y={y + 23} width={110 - i * 16} height="5" rx="2.5" fill="rgba(255,255,255,0.1)" />
             </g>
+          ))}
+        </g>
+      )}
+
+      {variant === "map" && (
+        <g>
+          <polyline points="40,172 92,120 150,120 212,70 288,70" fill="none" stroke={p} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <polyline points="36,86 110,86 162,150 256,150" fill="none" stroke={s} strokeWidth="3" strokeOpacity="0.85" strokeLinecap="round" strokeLinejoin="round" />
+          {[[40, 172], [92, 120], [150, 120], [212, 70], [288, 70], [36, 86], [110, 86], [162, 150], [256, 150]].map(([x, y], i) => (
+            <circle key={i} cx={x} cy={y} r="4.5" fill="#0d1220" stroke={i % 2 ? s : p} strokeWidth="2" />
+          ))}
+        </g>
+      )}
+
+      {variant === "satellite" && (
+        <g>
+          {Array.from({ length: 4 }).map((_, r) =>
+            Array.from({ length: 9 }).map((__, c) => {
+              const on = (r * 9 + c) % 5 === 0;
+              return (
+                <rect key={`${r}-${c}`} x={40 + c * 28} y={58 + r * 31} width="24" height="27" rx="3"
+                  fill={on ? p : "rgba(255,255,255,0.04)"} fillOpacity={on ? 0.5 : 1} stroke="rgba(255,255,255,0.08)" />
+              );
+            })
+          )}
+          <circle cx="250" cy="50" r="5" fill={s} />
+          <path d="M250 50 L298 38" stroke={s} strokeOpacity="0.5" strokeWidth="1.5" strokeDasharray="3 3" />
+        </g>
+      )}
+
+      {variant === "gauge" && (
+        <g>
+          <path d="M70 172 A90 90 0 0 1 250 172" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="12" strokeLinecap="round" />
+          <path d="M70 172 A90 90 0 0 1 214 104" fill="none" stroke={`url(#${uid}-line)`} strokeWidth="12" strokeLinecap="round" />
+          <text x="160" y="150" textAnchor="middle" fontFamily="'JetBrains Mono', monospace" fontSize="34" fontWeight="600" fill="#f5f7fb">72</text>
+          <text x="160" y="172" textAnchor="middle" fontSize="10" letterSpacing="2" fill="rgba(255,255,255,0.45)">SCORE</text>
+        </g>
+      )}
+
+      {variant === "pulse" && (
+        <g>
+          <polyline points="24,118 96,118 116,118 131,78 146,166 161,102 176,118 296,118" fill="none" stroke={`url(#${uid}-line)`} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          {[70, 160, 250].map((x, i) => (
+            <circle key={i} cx={x} cy={188} r="4" fill={[s, p, "rgba(255,255,255,0.3)"][i]} />
           ))}
         </g>
       )}

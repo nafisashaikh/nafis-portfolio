@@ -1,15 +1,16 @@
+import { useState } from "react";
 import { Github, ExternalLink } from "lucide-react";
 import type { Project } from "../../types";
-import ProjectVisual, { type Visual } from "./ProjectVisual";
+import ProjectVisual from "./ProjectVisual";
 import StatusBadge from "../ui/StatusBadge";
 
 interface Props {
   project: Project;
-  visual: Visual;
 }
 
 /** Compact supporting-project card for the secondary grid. */
-export default function ProjectCardCompact({ project, visual }: Props) {
+export default function ProjectCardCompact({ project }: Props) {
+  const [imgError, setImgError] = useState(false);
   return (
     <div className="group flex h-full flex-col overflow-hidden rounded-2xl glass transition-colors duration-300 hover:border-[color:var(--color-line-strong)]">
       <div className="relative border-b border-[color:var(--color-line)] p-4">
@@ -18,7 +19,11 @@ export default function ProjectCardCompact({ project, visual }: Props) {
           style={{ background: project.accent === "cyan" ? "rgba(107,228,237,0.16)" : "rgba(119,146,255,0.16)" }}
         />
         <div className="relative aspect-[320/150]">
-          <ProjectVisual variant={visual} accent={project.accent} />
+          {project.image && !imgError ? (
+            <img src={project.image} alt={`${project.title} preview`} loading="lazy" onError={() => setImgError(true)} className="h-full w-full rounded-md object-cover" />
+          ) : (
+            <ProjectVisual variant={project.visual} accent={project.accent} />
+          )}
         </div>
       </div>
 

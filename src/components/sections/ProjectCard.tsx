@@ -1,19 +1,20 @@
-import { useRef, type MouseEvent } from "react";
-import { Github, ExternalLink } from "lucide-react";
+import { useRef, useState, type MouseEvent } from "react";
+import { Github, ExternalLink, ChevronDown } from "lucide-react";
 import type { Project } from "../../types";
 import { useReducedMotion } from "../../lib/useReducedMotion";
-import ProjectVisual, { type Visual } from "./ProjectVisual";
+import ProjectVisual from "./ProjectVisual";
 import StatusBadge from "../ui/StatusBadge";
 
 interface Props {
   project: Project;
-  visual: Visual;
   index: number;
 }
 
-export default function ProjectCard({ project, visual, index }: Props) {
+export default function ProjectCard({ project, index }: Props) {
   const reduced = useReducedMotion();
   const frameRef = useRef<HTMLDivElement>(null);
+  const [imgError, setImgError] = useState(false);
+  const [open, setOpen] = useState(false);
   const flipped = index % 2 === 1;
 
   const onMove = (e: MouseEvent) => {
@@ -43,7 +44,17 @@ export default function ProjectCard({ project, visual, index }: Props) {
             style={{ background: project.accent === "cyan" ? "rgba(107,228,237,0.18)" : "rgba(119,146,255,0.18)" }}
           />
           <div className="relative aspect-[320/220]">
-            <ProjectVisual variant={visual} accent={project.accent} />
+            {project.image && !imgError ? (
+              <img
+                src={project.image}
+                alt={`${project.title} preview`}
+                loading="lazy"
+                onError={() => setImgError(true)}
+                className="h-full w-full rounded-lg object-cover"
+              />
+            ) : (
+              <ProjectVisual variant={project.visual} accent={project.accent} />
+            )}
           </div>
         </div>
       </div>
@@ -87,6 +98,34 @@ export default function ProjectCard({ project, visual, index }: Props) {
           <p className="mt-4 rounded-lg border-l-2 border-[color:var(--color-line-strong)] bg-white/[0.02] px-3 py-2 text-xs italic leading-relaxed text-muted">
             {project.note}
           </p>
+        )}
+
+        {project.details && (
+          <div className="mt-5">
+            <button
+              type="button"
+              onClick={() => setOpen((o) => !o)}
+              aria-expanded={open}
+              className="inline-flex items-center gap-1.5 text-sm font-medium text-accent transition-colors hover:text-accent-soft"
+            >
+              {open ? "Hide details" : "Case study"}
+              <ChevronDown className={`h-4 w-4 transition-transform duration-300 ${open ? "rotate-180" : ""}`} />
+            </button>
+            <div className={`grid transition-all duration-300 ${open ? "mt-4 grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
+              <div className="overflow-hidden">
+                <dl className="grid gap-3 border-l-2 border-[color:var(--color-line)] pl-4">
+                  {([["Architecture", project.details.architecture], ["Challenges", project.details.challenges], ["What works today", project.details.whatWorks], ["What's next", project.details.whatsNext]] as const)
+                    .filter(([, v]) => v)
+                    .map(([k, v]) => (
+                      <div key={k}>
+                        <dt className="text-xs font-medium text-accent/80">{k}</dt>
+                        <dd className="mt-0.5 text-sm leading-relaxed text-dim">{v}</dd>
+                      </div>
+                    ))}
+                </dl>
+              </div>
+            </div>
+          </div>
         )}
 
         <ul className="mt-6 flex flex-wrap gap-2">

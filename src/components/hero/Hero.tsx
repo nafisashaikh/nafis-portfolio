@@ -47,8 +47,8 @@ export default function Hero() {
 
         <p className="hero-rise mt-6 max-w-xl text-lg leading-relaxed text-dim" style={{ animationDelay: "0.2s" }}>
           I'm <span className="font-medium text-ink">{basics.name}</span>, a Computer Engineering
-          student focused on data analytics and AI-driven solutions — turning raw information into
-          insights, interactive dashboards, and practical products.
+          student working across AI, software engineering, and data — building intelligent
+          applications, full-stack platforms, and analytical workflows that solve real problems.
         </p>
 
         <div className="hero-rise mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style={{ animationDelay: "0.28s" }}>

@@ -1,17 +1,38 @@
 export type ProjectStatus = "Completed" | "Prototype" | "Research" | "In Progress";
 export type Accent = "blue" | "cyan";
+export type Visual =
+  | "bars" | "area" | "network" | "scatter" | "feed"
+  | "map" | "satellite" | "gauge" | "pulse";
+
+export type ProjectCategory =
+  | "AI & ML"
+  | "Software & Full-Stack"
+  | "Data & Analytics"
+  | "Engineering & Research";
+
+export interface ProjectDetails {
+  architecture?: string;
+  challenges?: string;
+  whatWorks?: string;
+  whatsNext?: string;
+}
 
 export interface Project {
   title: string;
   tagline: string;
-  category: string;
+  category: string; // display label, e.g. "AI · Geospatial"
+  categories: ProjectCategory[]; // used by the filter
   status: ProjectStatus;
+  featured?: boolean;
+  visual: Visual;
+  image?: string; // real screenshot URL (falls back to visual on error)
   year?: string;
   stack: string[];
   problem: string;
   approach: string;
   contribution?: string;
   features?: string[];
+  details?: ProjectDetails;
   note?: string; // honest limitation / clarification
   github?: string;
   demo?: string;
